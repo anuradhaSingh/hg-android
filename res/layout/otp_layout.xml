@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical" >
+    
+     <RelativeLayout 
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    >
+    
+    <ImageView 
+        android:id="@+id/main_logo"
+        android:layout_height="80dp"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/wizkid"/>
+    <TextView 
+        android:id="@+id/textview1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/main_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffffff"
+        android:text="Please Enter your OTP Below"/>
+    
+    <EditText 
+        android:id="@+id/otptext"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/main_logo"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rectangle_image"
+        android:hint="Your OTP"/>
+   <EditText 
+        android:id="@+id/password_text"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/otptext"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle_image"
+        android:hint="New Password"/>
+ 
+<EditText 
+        android:id="@+id/confirm_text"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/password_text"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle_image"
+        android:hint="Confirm Password"/>
+<Button 
+    android:id="@+id/confirem_btn"
+    android:layout_height="wrap_content"
+    android:layout_width="100dp"
+    android:layout_marginTop="10dp"
+    android:background="#FE642E"
+    android:text="Continue"
+    android:textColor="#ffffff"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/confirm_text"/>
+<TextView 
+    android:id="@+id/textview"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_below="@id/confirem_btn"
+    android:layout_marginTop="5dp"
+    android:text="If you don't receive our email in your inbox or spam folder,this could mean you signed up with a different address" 
+    android:textColor="#ffffff"/>
+    </RelativeLayout>
+    
+
+</LinearLayout>
