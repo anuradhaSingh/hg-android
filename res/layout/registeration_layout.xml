@@ -58,14 +58,17 @@
          android:textSize="@dimen/screen_pixel_14"
         android:layout_width="wrap_content"
         android:hint="Gender"/>
-    <RadioButton
+    <ToggleButton
         android:id="@+id/radiobtn"
         android:layout_width="90dp"
         android:layout_height="30dp"
-        
-        android:background="@drawable/malenew"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginRight="3dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/toggle_selector"
+        android:checked="false"
+        android:text=""
+        android:textOff=""
+        android:textOn=""/>
     </RelativeLayout>
     <RelativeLayout 
         android:layout_height="wrap_content"

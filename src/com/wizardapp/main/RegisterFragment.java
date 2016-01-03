@@ -1,21 +1,32 @@
 package com.wizardapp.main;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.example.wizardapp.R;
+import com.wizardapp.apis.UserApi;
+import com.wizardapp.services.UserServices;
+import com.wizardapp.utils.Constants;
+
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 
-public class RegisterFragment extends MyBaseFragment {
+public class RegisterFragment extends MyBaseFragment implements UserServices{
 	private static Activity activitycontext; // activity/context you can use to call any explicit activities like email,sms,etc...
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
@@ -45,6 +56,92 @@ public class RegisterFragment extends MyBaseFragment {
 	    address=(EditText)ll.findViewById(R.id.address_edittext);
 	    pinCode=(EditText)ll.findViewById(R.id.pincode_edittext);
 	    register=(Button)ll.findViewById(R.id.register_btn);
+	    register.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				int count =0;
+				String addressString = address.getText().toString();
+				String pinCodeString = pinCode.getText().toString();
+				String dobString = dateOfBith.getText().toString();
+				String emailString = emailId.getText().toString();
+				String firstString = firstName.getText().toString();
+				String lastString = lastname.getText().toString();
+				String phoneString = mobile.getText().toString();
+				if(!Constants.isValidEmail(emailString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your email id", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				
+				else if(TextUtils.isEmpty(firstString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your first name", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				
+				else if(TextUtils.isEmpty(lastString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your last name", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				
+				else if(TextUtils.isEmpty(phoneString) || phoneString.length() != 10){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your phone number", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}else if(TextUtils.isEmpty(dobString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your date of birth", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				else if(TextUtils.isEmpty(pinCodeString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your pincode", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				else if(TextUtils.isEmpty(addressString)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need address", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}else{
+					if(count == 0)
+						try {
+							String addressValue = address.getText().toString();
+							String pinCodeValue = pinCode.getText().toString();
+							String dobValue = dateOfBith.getText().toString();
+							String emailValue = emailId.getText().toString();
+							String firstValue = firstName.getText().toString();
+							String lastValue = lastname.getText().toString();
+							String phoneValue = mobile.getText().toString();
+								JSONObject requestObj = new JSONObject();
+								requestObj.put("email", emailValue);
+								requestObj.put("firstName", firstValue);
+								requestObj.put("lastName", lastValue);
+								requestObj.put("mobile",phoneValue );
+								requestObj.put("streetAddress", addressValue);
+								requestObj.put("gender", "M");
+								requestObj.put("zipCode", pinCodeValue);
+								
+								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
+							
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+						
+				}
+				
+				
+			}
+		});
 		 return ll;
 			
 	}
@@ -59,6 +156,18 @@ public class RegisterFragment extends MyBaseFragment {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+
+			@Override
+			public void userLoggingIn(String userResponse) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void registerUser(String afterRegisteration) {
+				// TODO Auto-generated method stub
+				
 			}
 
 }
