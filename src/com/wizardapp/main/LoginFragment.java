@@ -6,10 +6,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wizardapp.R;
-import com.indiahomes.main.PropertyListSellFragment;
+
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.services.UserServices;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 
 public class LoginFragment extends MyBaseFragment  implements UserServices{
@@ -40,7 +42,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) 
 	{
 		activity = super.getActivity();
-	    LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
+		RelativeLayout ll = (RelativeLayout) inflater.inflate(layout_to_inflate, container, false);
 	    login_id=(EditText)ll.findViewById(R.id.login_id);
 	    password=(EditText)ll.findViewById(R.id.password);
 	    login=(Button)ll.findViewById(R.id.login_btn);

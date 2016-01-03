@@ -2,6 +2,7 @@ package com.wizardapp.main;
 
 import com.example.wizardapp.R;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class RegisterFragment extends MyBaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) 
 	{   
 		activitycontext = getActivity();
+		
+	    
 	    final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);

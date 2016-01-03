@@ -23,7 +23,7 @@
             android:layout_height="30dp"
             android:layout_width="match_parent"
             android:layout_below="@id/main_image"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/rectangle_image">
             <ImageView 
                 android:id="@+id/login_image"
@@ -74,36 +74,35 @@
             android:layout_below="@id/password_layout"
             android:layout_marginTop="15dp">
             <LinearLayout 
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginRight="5dp"
                 android:orientation="horizontal">
                 <Button 
                 android:id="@+id/login_btn"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/orange"
-                android:gravity="center"
+                android:layout_gravity="center_vertical"
                  android:textSize="@dimen/screen_pixel_14"
                 android:layout_width="match_parent"
                 android:text="Login"/>
             </LinearLayout>
             <LinearLayout 
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_width="0dp"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <Button 
                 android:id="@+id/registration_btn"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/white"
-                android:gravity="center"
+                android:layout_gravity="center_vertical"
                  android:textSize="@dimen/screen_pixel_14"
                 android:layout_width="match_parent"
-                android:layout_alignParentRight="true"
                 android:text="Register"
-                android:layout_toRightOf="@id/login_btn"/>
+                />
             </LinearLayout>
             
         </LinearLayout>
