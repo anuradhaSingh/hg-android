@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginLeft="5dp"
                 android:background="@null"
+                android:inputType="numberPassword"
                 android:textSize="@dimen/screen_pixel_14"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/password_image"

@@ -56,7 +56,7 @@
         android:background="@null"
         android:layout_centerVertical="true"
          android:textSize="@dimen/screen_pixel_14"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:hint="Gender"/>
     <ToggleButton
         android:id="@+id/radiobtn"
@@ -78,7 +78,7 @@
     <EditText 
         android:id="@+id/dateofbirth_edittext"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:background="@null"
          android:textSize="@dimen/screen_pixel_14"
         android:layout_centerVertical="true"
@@ -99,7 +99,7 @@
     <EditText 
         android:id="@+id/email_edittext"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:background="@null"
          android:textSize="@dimen/screen_pixel_14"
         android:hint="Email Address"/>
@@ -120,9 +120,10 @@
     <EditText 
         android:id="@+id/mobile_edittext"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:background="@null"
-         android:textSize="@dimen/screen_pixel_14"
+        android:inputType="number"
+        android:textSize="@dimen/screen_pixel_14"
         android:hint="Mobile no"/>
     <ImageView 
         android:id="@+id/mobile_image"
@@ -132,21 +133,14 @@
         android:src="@drawable/mobile"/>
    
     </RelativeLayout>
-    <RelativeLayout 
+   <EditText 
+        android:id="@+id/city_edittext"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
-         android:background="@drawable/rectangle_edittext">
-    
-    <Spinner 
-        android:id="@+id/city_edittext"
-        android:layout_height="30dp"
-        android:layout_width="30dp"
          android:textSize="@dimen/screen_pixel_14"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/arrow"/>
-    
-    </RelativeLayout>
+        android:background="@drawable/rectangle_edittext"
+        android:hint="City"/>
     
 <EditText 
         android:id="@+id/address_edittext"
@@ -163,12 +157,11 @@
          android:background="@drawable/rectangle_edittext">
     
     <Spinner 
-        android:id="@+id/state_edittext"
+        android:id="@+id/spinStates"
         android:layout_height="30dp"
-        android:layout_width="30dp"
-         android:textSize="@dimen/screen_pixel_14"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/arrow"/>
+        android:layout_width="fill_parent"
+        android:textSize="@dimen/screen_pixel_14"
+         android:background="@drawable/arrow"/>
     
     </RelativeLayout>
 
@@ -177,6 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
+        android:inputType="number"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Pincode"/>

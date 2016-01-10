@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.example.wizardapp.R;
 
+
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.services.UserServices;
 
@@ -22,6 +23,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class LoginFragment extends MyBaseFragment  implements UserServices{
@@ -46,6 +48,15 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 	    login_id=(EditText)ll.findViewById(R.id.login_id);
 	    password=(EditText)ll.findViewById(R.id.password);
 	    login=(Button)ll.findViewById(R.id.login_btn);
+	    TextView forgotpassword=(TextView)ll.findViewById(R.id.forget_password);
+	    forgotpassword.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				createNewFragment(new ForgotPasswordFragment(R.layout.forgetpassword_layout));
+			}
+		});
 	    register=(Button)ll.findViewById(R.id.registration_btn);
 	    login.setOnClickListener(new OnClickListener() {
 			
@@ -78,6 +89,15 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 @Override
 	public void userLoggingIn(String userResponse) {
 		// TODO Auto-generated method stub
+	try{
+		if(null != userResponse){
+			createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification));
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+		
+	}
+	
 		
 	}
 

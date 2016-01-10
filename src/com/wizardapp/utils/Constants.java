@@ -25,7 +25,6 @@ public class Constants {
 	public static final String httpPost = "POST";
 	public static final String httpPut = "PUT";
 	public static final String httpDelete = "DELETE";
-	
 	public static final String loginFailed = "Invalid Creadentials";
 	public static final String connection_error = "Something went wrong for the Connection ";
 	public static final String tokenFailed = "Failed To recieve token"; 

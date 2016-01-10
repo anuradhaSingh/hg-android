@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.wizardapp.R;
+
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
@@ -19,9 +20,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -31,8 +36,10 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
     static ProgressDialog progress;
-    EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode;
+    EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city;
     Button register;
+    Spinner spinState;
+    String [] states;
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -49,12 +56,33 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    
 	    final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
+	    city=(EditText)ll.findViewById(R.id.city_edittext);
+	    states=getResources().getStringArray(R.array.state_Array);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);
 	    emailId=(EditText)ll.findViewById(R.id.email_edittext);
 	    dateOfBith=(EditText)ll.findViewById(R.id.dateofbirth_edittext);
 	    mobile=(EditText)ll.findViewById(R.id.mobile_edittext);
 	    address=(EditText)ll.findViewById(R.id.address_edittext);
 	    pinCode=(EditText)ll.findViewById(R.id.pincode_edittext);
+	    spinState=(Spinner)ll.findViewById(R.id.spinStates);
+	    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activitycontext,
+				android.R.layout.simple_spinner_item, states);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinState.setAdapter(dataAdapter);
+		spinState.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+
+			}
+		});
+	
 	    register=(Button)ll.findViewById(R.id.register_btn);
 	    register.setOnClickListener(new OnClickListener() {
 			
@@ -69,6 +97,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				String firstString = firstName.getText().toString();
 				String lastString = lastname.getText().toString();
 				String phoneString = mobile.getText().toString();
+				String cityString = city.getText().toString();
 				if(!Constants.isValidEmail(emailString)){
 					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your email id", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
@@ -130,6 +159,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								requestObj.put("streetAddress", addressValue);
 								requestObj.put("gender", "M");
 								requestObj.put("zipCode", pinCodeValue);
+								requestObj.put("city", cityString);
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
 							
@@ -167,6 +197,15 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			@Override
 			public void registerUser(String afterRegisteration) {
 				// TODO Auto-generated method stub
+				
+				try{
+					if(null != afterRegisteration){
+						createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification));
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
 				
 			}
 

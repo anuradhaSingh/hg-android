@@ -19,7 +19,7 @@
         android:text="Back"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="@dimen/screen_pixel_12"
         android:textStyle="bold" /> 
         
        
