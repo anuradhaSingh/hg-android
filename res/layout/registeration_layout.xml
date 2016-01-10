@@ -133,6 +133,30 @@
         android:src="@drawable/mobile"/>
    
     </RelativeLayout>
+    <EditText 
+        android:id="@+id/password_edittext"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+         android:textSize="@dimen/screen_pixel_14"
+        android:background="@drawable/rectangle_edittext"
+        android:hint="Password"/>
+    <EditText 
+        android:id="@+id/confirm_password_edittext"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+         android:textSize="@dimen/screen_pixel_14"
+        android:background="@drawable/rectangle_edittext"
+        android:hint="Retype Password"/>
+    <EditText 
+        android:id="@+id/classname_edittext"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+         android:textSize="@dimen/screen_pixel_14"
+        android:background="@drawable/rectangle_edittext"
+        android:hint="Class"/>
    <EditText 
         android:id="@+id/city_edittext"
         android:layout_height="wrap_content"

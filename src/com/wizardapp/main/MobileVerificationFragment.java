@@ -4,6 +4,7 @@ import com.example.wizardapp.R;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +44,15 @@ public class MobileVerificationFragment extends MyBaseFragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				activitycontext.finish();
+			}
+		});
+   		mobile_verified.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(activitycontext,ScholarshipActivity.class);
+				startActivity(intent);
 			}
 		});
 		return ll;
