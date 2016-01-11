@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
       <RelativeLayout 
         android:layout_width="fill_parent"
@@ -17,7 +17,8 @@
                 android:src="@drawable/ic_launcher"/>
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/scholarship_thumb_image"
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
@@ -25,9 +26,9 @@
         android:id="@+id/txt_scholarshiptest_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dg"
+        android:text="June 2015 scholarship test"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/black"
         android:textSize="@dimen/screen_pixel_15"
         />
@@ -35,7 +36,7 @@
         android:id="@+id/txt_pay_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hghf"
+        android:text="Rs. 1500"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:textColor="@color/blue"
@@ -45,21 +46,21 @@
         android:id="@+id/txt_total_pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hfgh"
+        android:text="Rs. 3000"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:textColor="@color/dark_grey"
-        android:textSize="@dimen/screen_pixel_12"
+        android:textSize="@dimen/screen_pixel_10"
         />
             <TextView 
         android:id="@+id/txt_discount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="jghghf"
+        android:text="Rs. 1500 off!"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:textColor="@color/dark_grey"
-        android:textSize="@dimen/screen_pixel_12"
+        android:textSize="@dimen/screen_pixel_10"
         />
             </LinearLayout>
 
@@ -68,9 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
             android:background="@color/orange"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             android:text="Buy Now"
             android:textSize="@dimen/screen_pixel_14" />
 

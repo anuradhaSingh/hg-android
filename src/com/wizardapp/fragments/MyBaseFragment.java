@@ -1,4 +1,4 @@
-package com.wizardapp.main;
+package com.wizardapp.fragments;
 
 
 import android.annotation.SuppressLint;

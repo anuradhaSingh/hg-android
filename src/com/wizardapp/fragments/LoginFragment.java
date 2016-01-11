@@ -1,4 +1,4 @@
-package com.wizardapp.main;
+package com.wizardapp.fragments;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -45,6 +46,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 	{
 		activity = super.getActivity();
 		RelativeLayout ll = (RelativeLayout) inflater.inflate(layout_to_inflate, container, false);
+		 activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	    login_id=(EditText)ll.findViewById(R.id.login_id);
 	    password=(EditText)ll.findViewById(R.id.password);
 	    login=(Button)ll.findViewById(R.id.login_btn);

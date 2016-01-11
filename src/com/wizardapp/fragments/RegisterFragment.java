@@ -1,4 +1,4 @@
-package com.wizardapp.main;
+package com.wizardapp.fragments;
 
 import org.json.JSONException;
 import org.json.JSONObject;

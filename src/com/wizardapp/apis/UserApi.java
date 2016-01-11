@@ -2,7 +2,8 @@ package com.wizardapp.apis;
 
 import org.json.JSONObject;
 
-import com.wizardapp.main.MyBaseFragment;
+
+import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.HeyURLs;
 import com.wizardapp.utils.HttpConnection;

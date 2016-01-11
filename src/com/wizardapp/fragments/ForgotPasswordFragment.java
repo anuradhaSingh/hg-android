@@ -1,4 +1,4 @@
-package com.wizardapp.main;
+package com.wizardapp.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;

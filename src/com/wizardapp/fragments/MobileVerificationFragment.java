@@ -1,6 +1,7 @@
-package com.wizardapp.main;
+package com.wizardapp.fragments;
 
 import com.example.wizardapp.R;
+import com.wizardapp.main.ScholarshipActivity;
 
 import android.app.Activity;
 import android.app.Fragment;

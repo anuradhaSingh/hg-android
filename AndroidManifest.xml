@@ -34,6 +34,10 @@
             android:name="com.wizardapp.main.ScholarshipActivity"
             android:label="@string/app_name" >
             </activity>
+             <activity
+            android:name="com.wizardapp.main.ScholarshipDetailActivity"
+            android:label="@string/app_name" >
+            </activity>
         
     </application>
 
