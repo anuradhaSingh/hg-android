@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-<LinearLayout 
+<RelativeLayout 
     android:layout_width="fill_parent"
     android:id="@+id/back_layout"
     android:layout_height="40dp"
@@ -15,7 +15,7 @@
         android:id="@+id/backbutton"
         android:layout_width="20dp"
         android:layout_height="15dp"
-        android:layout_gravity="center"
+        android:layout_centerVertical="true"
         android:layout_margin="3dp"
          android:src="@drawable/back_button" />
     
@@ -24,22 +24,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
-        android:layout_gravity="center"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="@dimen/screen_pixel_12"
         android:textStyle="bold" /> 
         <TextView
         android:id="@+id/title"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy Scholarship Test"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="@dimen/screen_pixel_12"
         android:textStyle="bold" /> 
         
-       
-</LinearLayout>
+</RelativeLayout>
 <ListView android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/scholarship_listview">
