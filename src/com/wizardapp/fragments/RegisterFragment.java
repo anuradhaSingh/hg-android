@@ -3,14 +3,6 @@ package com.wizardapp.fragments;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.wizardapp.R;
-
-import com.wizardapp.apis.UserApi;
-import com.wizardapp.services.UserServices;
-import com.wizardapp.utils.Constants;
-
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -28,6 +20,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.wizardapp.R;
+import com.wizardapp.apis.UserApi;
+import com.wizardapp.services.UserServices;
+import com.wizardapp.utils.Constants;
 
 
 
