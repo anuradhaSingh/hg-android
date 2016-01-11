@@ -2,17 +2,16 @@ package com.wizardapp.apis;
 
 import java.io.InputStream;
 
+import org.apache.http.HttpEntity;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
 
-import com.wizardapp.main.MyBaseFragment;
-import com.wizardapp.model.Scholarship;
+import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.ScholarshipPrimaryServices;
-import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.HeyURLs;
-import com.wizardapp.utils.HttpConnection;
 import com.wizardapp.utils.RetrieveStream;
 
 public class ScholarshipApi {
@@ -25,7 +24,7 @@ public class ScholarshipApi {
 		else
 			scholarshipServices = (ScholarshipPrimaryServices)context;
 		
-		class GetAllScholarshipTask extends AsyncTask<String, Void, InputStream> {
+		class GetAllScholarshipTask extends AsyncTask<String, Void, HttpEntity> {
 			ProgressDialog Dialog;
 			@Override
 			protected void onPreExecute() {
@@ -38,13 +37,13 @@ public class ScholarshipApi {
 			}
 
 			@Override
-			protected InputStream doInBackground(String... p) {
+			protected HttpEntity doInBackground(String... p) {
 				String url = HeyURLs.Scholarship.getAllByClassNumber +classNumber +".json";
 				return  RetrieveStream.retrieveStreamGET(url);
 			}
 			
 			@Override
-			protected void onPostExecute(InputStream result) {
+			protected void onPostExecute(HttpEntity result) {
 				Dialog.dismiss();
 				if(null != result)
 					scholarshipServices.getAllByClassNumber(result);

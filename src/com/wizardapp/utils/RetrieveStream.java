@@ -16,7 +16,7 @@ import android.util.Log;
 
 public class RetrieveStream {
 
-	public static InputStream retrieveStreamGET(String url) {
+	public static HttpEntity retrieveStreamGET(String url) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(url);
 		try {
@@ -30,7 +30,8 @@ public class RetrieveStream {
 				return null;
 			}
 			HttpEntity getResponseEntity = getResponse.getEntity();
-			return getResponseEntity.getContent();
+			//return getResponseEntity.getContent();
+			return getResponseEntity;
 		} catch (IOException e) {
 			getRequest.abort();
 			Log.w(RetrieveStream.class.getSimpleName(), "Error for URL " + url, e);

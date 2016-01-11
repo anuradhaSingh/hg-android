@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.wizardapp.R;
+
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
@@ -33,7 +34,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
     static ProgressDialog progress;
-    EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city;
+    EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city,password,confirm_password,classNumber;
     Button register;
     Spinner spinState;
     String [] states;
@@ -52,6 +53,15 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 		
 	    
 	    final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
+	    LinearLayout headerback=(LinearLayout)ll.findViewById(R.id.header_layout);
+	    headerback.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				createNewFragment(new LoginFragment(R.layout.login));
+			}
+		});
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
 	    city=(EditText)ll.findViewById(R.id.city_edittext);
 	    states=getResources().getStringArray(R.array.state_Array);
@@ -62,6 +72,9 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    address=(EditText)ll.findViewById(R.id.address_edittext);
 	    pinCode=(EditText)ll.findViewById(R.id.pincode_edittext);
 	    spinState=(Spinner)ll.findViewById(R.id.spinStates);
+	    password=(EditText)ll.findViewById(R.id.password_edittext);
+	    confirm_password=(EditText)ll.findViewById(R.id.confirm_password_edittext);
+	    classNumber=(EditText)ll.findViewById(R.id.classname_edittext);
 	    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activitycontext,
 				android.R.layout.simple_spinner_item, states);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -95,6 +108,9 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				String lastString = lastname.getText().toString();
 				String phoneString = mobile.getText().toString();
 				String cityString = city.getText().toString();
+				String pass = password.getText().toString();
+				String retypepass = confirm_password.getText().toString();
+				String classname = classNumber.getText().toString();
 				if(!Constants.isValidEmail(emailString)){
 					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your email id", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
@@ -138,7 +154,13 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
-				}else{
+				}
+				else if(TextUtils.isEmpty(classname)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your class", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}else if(pass.equals(retypepass)){
 					if(count == 0)
 						try {
 							String addressValue = address.getText().toString();
@@ -148,6 +170,8 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 							String firstValue = firstName.getText().toString();
 							String lastValue = lastname.getText().toString();
 							String phoneValue = mobile.getText().toString();
+							String passvalue = password.getText().toString();
+							String classvalue = classNumber.getText().toString();
 								JSONObject requestObj = new JSONObject();
 								requestObj.put("email", emailValue);
 								requestObj.put("firstName", firstValue);
@@ -157,14 +181,23 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								requestObj.put("gender", "M");
 								requestObj.put("zipCode", pinCodeValue);
 								requestObj.put("city", cityString);
+								requestObj.put("classType", classvalue);
+								requestObj.put("password", passvalue);
+								requestObj.put("state", spinState.getSelectedItem().toString());
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
 							
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}
-						
-				}
+						else
+							
+							Toast.makeText(activitycontext, "Uh ho! We will need your password", Toast.LENGTH_SHORT).show();
+					}else{
+						Toast.makeText(activitycontext, Constants.passwordMisMatch, Toast.LENGTH_SHORT).show();
+					}
+				
+			
 				
 				
 			}

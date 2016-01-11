@@ -1,9 +1,12 @@
 package com.wizardapp.fragments;
 
+import com.example.wizardapp.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
@@ -25,7 +28,15 @@ public class ForgotPasswordFragment extends MyBaseFragment {
    	{   
    		activitycontext = getActivity();
    		final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
-   		
+   		LinearLayout forgot_header=(LinearLayout)ll.findViewById(R.id.forgot_header);
+   		forgot_header.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				createNewFragment(new LoginFragment(R.layout.login));
+			}
+		});
 		return ll;
    	}
 

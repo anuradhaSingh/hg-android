@@ -154,6 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
+        android:inputType="number"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Class"/>
@@ -185,7 +186,9 @@
         android:layout_height="30dp"
         android:layout_width="fill_parent"
         android:textSize="@dimen/screen_pixel_14"
-         android:background="@drawable/arrow"/>
+        style="?android:attr/spinnerItemStyle"
+        android:background="@android:drawable/btn_dropdown"
+        />
     
     </RelativeLayout>
 
