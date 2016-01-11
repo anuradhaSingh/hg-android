@@ -1,10 +1,8 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.example.wizardapp.R;
 
 public class LoginActivity extends MyBaseActivity{
 	@Override

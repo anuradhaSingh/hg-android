@@ -1,9 +1,6 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.example.wizardapp.R;
 
 public class MobileVerificationFragment extends MyBaseFragment {
 	

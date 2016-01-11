@@ -1,17 +1,8 @@
 package com.wizardapp.main;
 
-import java.util.List;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.wizardapp.R;
-
-
-import com.wizardapp.apis.UserApi;
-import com.wizardapp.services.UserServices;
-
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,10 +11,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.wizardapp.R;
+import com.wizardapp.apis.UserApi;
+import com.wizardapp.services.UserServices;
 
 
 public class LoginFragment extends MyBaseFragment  implements UserServices{

@@ -1,11 +1,11 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.example.wizardapp.R;
 
 public class ScholarshipActivity extends MyBaseActivity{
 	ListView listview;
