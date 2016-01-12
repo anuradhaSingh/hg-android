@@ -1,6 +1,7 @@
 package com.wizardapp.fragments;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.LinearLayout;
 
 import com.example.wizardapp.R;
 
-public class ForgotPasswordFragment extends MyBaseFragment {
+public class ForgotPasswordFragment extends Fragment {
 	
 	private static Activity activitycontext; // activity/context you can use to call any explicit activities like email,sms,etc...
     private int layout_to_inflate; // layout which you want to show
@@ -34,7 +35,7 @@ public class ForgotPasswordFragment extends MyBaseFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNewFragment(new LoginFragment(R.layout.login));
+				getActivity().finish();
 			}
 		});
 		return ll;

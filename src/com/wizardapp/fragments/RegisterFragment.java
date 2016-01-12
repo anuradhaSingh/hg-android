@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -42,6 +43,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city,password,confirm_password,classNumber;
     Button register;
     Spinner spinState;
+    CheckBox termsCondition;
     String [] states;
     public RegisterFragment(int layout) 
 	{
@@ -68,6 +70,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			}
 		});
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
+	    termsCondition=(CheckBox)ll.findViewById(R.id.checkbox);
 	    city=(EditText)ll.findViewById(R.id.city_edittext);
 	    states=getResources().getStringArray(R.array.state_Array);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);
@@ -156,6 +159,11 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				}
 				else if(TextUtils.isEmpty(addressString)){
 					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need address", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}else if(termsCondition.isChecked()==true){
+					Toast toast=Toast.makeText(activitycontext, "Please accept terms and conditions!", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
