@@ -22,7 +22,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.wizardapp.R;
-
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;

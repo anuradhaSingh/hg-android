@@ -1,8 +1,6 @@
 package com.wizardapp.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class QuizQuestion implements Serializable {
 
@@ -12,7 +10,7 @@ public class QuizQuestion implements Serializable {
 
 	private String answer;
 
-	private Date createdAt;
+	private long createdAt;
 
 	private String createdBy;
 
@@ -30,7 +28,7 @@ public class QuizQuestion implements Serializable {
 
 	private byte status;
 
-	private Timestamp updatedAt;
+	private long updatedAt;
 
 	private String uploadType;
 
@@ -55,14 +53,6 @@ public class QuizQuestion implements Serializable {
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
-	}
-
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 
 	public String getCreatedBy() {
@@ -129,14 +119,6 @@ public class QuizQuestion implements Serializable {
 		this.status = status;
 	}
 
-	public Timestamp getUpdatedAt() {
-		return this.updatedAt;
-	}
-
-	public void setUpdatedAt(Timestamp updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
 	public String getUploadType() {
 		return this.uploadType;
 	}
@@ -159,6 +141,22 @@ public class QuizQuestion implements Serializable {
 
 	public void setClassSubject(ClassSubject classSubject) {
 		this.classSubject = classSubject;
+	}
+
+	public long getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(long updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }

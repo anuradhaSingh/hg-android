@@ -1,8 +1,6 @@
 package com.wizardapp.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 
 
 public class UserDetail implements Serializable {
@@ -16,7 +14,7 @@ public class UserDetail implements Serializable {
 
 	private String country;
 
-	private Date createdAt;
+	private long createdAt;
 
 	private String email;
 
@@ -42,7 +40,7 @@ public class UserDetail implements Serializable {
 
 	private String streetAddress;
 
-	private Timestamp updatedAt;
+	private long updatedAt;
 
 	private String zipCode;
 
@@ -79,14 +77,6 @@ public class UserDetail implements Serializable {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 
 	public String getEmail() {
@@ -185,11 +175,19 @@ public class UserDetail implements Serializable {
 		this.streetAddress = streetAddress;
 	}
 
-	public Timestamp getUpdatedAt() {
-		return this.updatedAt;
+	public long getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(long updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

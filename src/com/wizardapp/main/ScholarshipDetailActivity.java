@@ -1,10 +1,10 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.ViewGroup;
+
+import com.example.wizardapp.R;
 
 public class ScholarshipDetailActivity extends MyBaseActivity{
 	@Override

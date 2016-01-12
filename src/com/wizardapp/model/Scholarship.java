@@ -1,8 +1,6 @@
 package com.wizardapp.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 
 
 public class Scholarship implements Serializable {
@@ -11,7 +9,7 @@ public class Scholarship implements Serializable {
 
 	private Integer id;
 
-	private Date createdAt;
+	private long createdAt;
 
 	private String createdBy;
 
@@ -25,11 +23,11 @@ public class Scholarship implements Serializable {
 
 	private String scholarshipName;
 
-	private byte[] scholarshipSubject;
+	private String scholarshipSubject;
 
 	private String startDate;
 
-	private Timestamp updatedAt;
+	private long updatedAt;
 
 	private ClassNumber classNumber;
 
@@ -42,14 +40,6 @@ public class Scholarship implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 
 	public String getCreatedBy() {
@@ -100,14 +90,6 @@ public class Scholarship implements Serializable {
 		this.scholarshipName = scholarshipName;
 	}
 
-	public byte[] getScholarshipSubject() {
-		return this.scholarshipSubject;
-	}
-
-	public void setScholarshipSubject(byte[] scholarshipSubject) {
-		this.scholarshipSubject = scholarshipSubject;
-	}
-
 	public String getStartDate() {
 		return this.startDate;
 	}
@@ -116,11 +98,19 @@ public class Scholarship implements Serializable {
 		this.startDate = startDate;
 	}
 
-	public Timestamp getUpdatedAt() {
-		return this.updatedAt;
+	public long getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(long updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
@@ -130,6 +120,14 @@ public class Scholarship implements Serializable {
 
 	public void setClassNumber(ClassNumber classNumber) {
 		this.classNumber = classNumber;
+	}
+
+	public String getScholarshipSubject() {
+		return scholarshipSubject;
+	}
+
+	public void setScholarshipSubject(String scholarshipSubject) {
+		this.scholarshipSubject = scholarshipSubject;
 	}
 
 }

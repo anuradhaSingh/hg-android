@@ -1,10 +1,9 @@
 package com.wizardapp.services;
 
-import org.apache.http.HttpEntity;
 
 public interface ScholarshipPrimaryServices {
 	
-	void getAllByClassNumber(HttpEntity response);
+	void getAllByClassNumber(String response);
 	
-	void getDetailById(HttpEntity response);
+	void getDetailById(String response);
 }

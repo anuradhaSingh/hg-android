@@ -2,16 +2,15 @@ package com.wizardapp.apis;
 
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.view.Window;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.HeyURLs;
 import com.wizardapp.utils.HttpConnection;
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.view.Window;
 
 
 public class UserApi {

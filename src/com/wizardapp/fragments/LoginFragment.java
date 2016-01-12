@@ -1,12 +1,9 @@
 package com.wizardapp.fragments;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.wizardapp.R;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.ScholarshipApi;
@@ -31,7 +27,6 @@ import com.wizardapp.apis.UserApi;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.services.UserServices;
-import com.wizardapp.utils.Util;
 
 
 public class LoginFragment extends MyBaseFragment  implements UserServices,ScholarshipPrimaryServices{
@@ -57,7 +52,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices,Schol
 	    login_id=(EditText)ll.findViewById(R.id.login_id);
 	    password=(EditText)ll.findViewById(R.id.password);
 	    login=(Button)ll.findViewById(R.id.login_btn);
-	    //ScholarshipApi.getAllScholarshipForClassNumber(activity, LoginFragment.this, "1");
+	    ScholarshipApi.getAllScholarshipForClassNumber(activity, LoginFragment.this, "1");
 	    TextView forgotpassword=(TextView)ll.findViewById(R.id.forget_password);
 	    forgotpassword.setOnClickListener(new OnClickListener() {
 			
@@ -118,17 +113,12 @@ public class LoginFragment extends MyBaseFragment  implements UserServices,Schol
 	}
 
 		@Override
-		public void getAllByClassNumber(HttpEntity response) {
+		public void getAllByClassNumber(String response) {
 			try{
-				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				response.writeTo(out);
-		        String responseString = out.toString();
-		        out.close();
-		        GsonBuilder gsonBuilder = new GsonBuilder();
-                Gson gson = gsonBuilder.create();
-                List<Scholarship> posts = new ArrayList<Scholarship>();
-                posts = Arrays.asList(gson.fromJson(responseString, Scholarship[].class));
-                System.out.println(out.toString());
+		        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+                List<Scholarship> list = new GsonBuilder()
+                .create().fromJson(response, listType);
+                System.out.println(list);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -136,7 +126,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices,Schol
 		}
 
 		@Override
-		public void getDetailById(HttpEntity response) {
+		public void getDetailById(String response) {
 			// TODO Auto-generated method stub
 			
 		}
