@@ -34,7 +34,7 @@ import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Util;
 
 
-public class LoginFragment extends MyBaseFragment  implements UserServices,ScholarshipPrimaryServices{
+public class LoginFragment extends MyBaseFragment  implements UserServices{
 	private static Activity activity; // activity/context you can use to call any explicit activities like email,sms,etc...
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
@@ -53,11 +53,10 @@ public class LoginFragment extends MyBaseFragment  implements UserServices,Schol
 	{
 		activity = super.getActivity();
 		RelativeLayout ll = (RelativeLayout) inflater.inflate(layout_to_inflate, container, false);
-		 activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+		activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	    login_id=(EditText)ll.findViewById(R.id.login_id);
 	    password=(EditText)ll.findViewById(R.id.password);
 	    login=(Button)ll.findViewById(R.id.login_btn);
-	    //ScholarshipApi.getAllScholarshipForClassNumber(activity, LoginFragment.this, "1");
 	    TextView forgotpassword=(TextView)ll.findViewById(R.id.forget_password);
 	    forgotpassword.setOnClickListener(new OnClickListener() {
 			
@@ -117,28 +116,6 @@ public class LoginFragment extends MyBaseFragment  implements UserServices,Schol
 		
 	}
 
-		@Override
-		public void getAllByClassNumber(HttpEntity response) {
-			try{
-				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				response.writeTo(out);
-		        String responseString = out.toString();
-		        out.close();
-		        GsonBuilder gsonBuilder = new GsonBuilder();
-                Gson gson = gsonBuilder.create();
-                List<Scholarship> posts = new ArrayList<Scholarship>();
-                posts = Arrays.asList(gson.fromJson(responseString, Scholarship[].class));
-                System.out.println(out.toString());
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			
-		}
-
-		@Override
-		public void getDetailById(HttpEntity response) {
-			// TODO Auto-generated method stub
-			
-		}
+		
 
 }
