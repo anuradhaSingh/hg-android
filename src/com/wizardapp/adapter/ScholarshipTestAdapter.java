@@ -1,10 +1,5 @@
 package com.wizardapp.adapter;
 
-import java.util.List;
-
-import com.example.wizardapp.R;
-import com.wizardapp.main.ScholarshipDetailActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,9 +9,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.wizardapp.R;
+import com.wizardapp.main.ScholarshipDetailActivity;
 
 public class ScholarshipTestAdapter extends BaseAdapter{
 	private Context context;

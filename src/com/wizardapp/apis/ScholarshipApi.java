@@ -1,9 +1,5 @@
 package com.wizardapp.apis;
 
-import java.io.InputStream;
-
-import org.apache.http.HttpEntity;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -24,7 +20,7 @@ public class ScholarshipApi {
 		else
 			scholarshipServices = (ScholarshipPrimaryServices)context;
 		
-		class GetAllScholarshipTask extends AsyncTask<String, Void, HttpEntity> {
+		class GetAllScholarshipTask extends AsyncTask<String, Void, String> {
 			ProgressDialog Dialog;
 			@Override
 			protected void onPreExecute() {
@@ -37,13 +33,13 @@ public class ScholarshipApi {
 			}
 
 			@Override
-			protected HttpEntity doInBackground(String... p) {
+			protected String doInBackground(String... p) {
 				String url = HeyURLs.Scholarship.getAllByClassNumber +classNumber +".json";
 				return  RetrieveStream.retrieveStreamGET(url);
 			}
 			
 			@Override
-			protected void onPostExecute(HttpEntity result) {
+			protected void onPostExecute(String result) {
 				Dialog.dismiss();
 				if(null != result)
 					scholarshipServices.getAllByClassNumber(result);

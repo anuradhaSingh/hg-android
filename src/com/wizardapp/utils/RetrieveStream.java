@@ -1,5 +1,6 @@
 package com.wizardapp.utils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -16,7 +17,7 @@ import android.util.Log;
 
 public class RetrieveStream {
 
-	public static HttpEntity retrieveStreamGET(String url) {
+	public static String retrieveStreamGET(String url) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpGet getRequest = new HttpGet(url);
 		try {
@@ -30,8 +31,11 @@ public class RetrieveStream {
 				return null;
 			}
 			HttpEntity getResponseEntity = getResponse.getEntity();
-			//return getResponseEntity.getContent();
-			return getResponseEntity;
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			getResponseEntity.writeTo(out);
+	        String responseString = out.toString();
+	        out.close();
+			return responseString;
 		} catch (IOException e) {
 			getRequest.abort();
 			Log.w(RetrieveStream.class.getSimpleName(), "Error for URL " + url, e);

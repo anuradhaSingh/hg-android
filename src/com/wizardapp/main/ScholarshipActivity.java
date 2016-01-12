@@ -1,18 +1,16 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-import com.navdrawer.SimpleSideDrawer;
-import com.wizardapp.adapter.ScholarshipTestAdapter;
-
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
+import com.example.wizardapp.R;
+import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.adapter.ScholarshipTestAdapter;
 
 public class ScholarshipActivity extends MyBaseActivity {
 	ListView listview;

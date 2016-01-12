@@ -1,9 +1,6 @@
 package com.wizardapp.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
 
 
 public class ClassSubject implements Serializable {
@@ -11,13 +8,11 @@ public class ClassSubject implements Serializable {
 
 	private Integer id;
 
-	private Date createdAt;
+	private long createdAt;
 
 	private String subjectType;
 
-	private Timestamp updatedAt;
-
-	private List<QuizQuestion> quizQuestions;
+	private long updatedAt;
 
 	public ClassSubject() {
 	}
@@ -30,13 +25,6 @@ public class ClassSubject implements Serializable {
 		this.id = id;
 	}
 
-	public Date getCreatedAt() {
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
 
 	public String getSubjectType() {
 		return this.subjectType;
@@ -46,34 +34,21 @@ public class ClassSubject implements Serializable {
 		this.subjectType = subjectType;
 	}
 
-	public Timestamp getUpdatedAt() {
-		return this.updatedAt;
+	public long getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(long updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<QuizQuestion> getQuizQuestions() {
-		return this.quizQuestions;
-	}
-
-	public void setQuizQuestions(List<QuizQuestion> quizQuestions) {
-		this.quizQuestions = quizQuestions;
-	}
-
-	public QuizQuestion addQuizQuestion(QuizQuestion quizQuestion) {
-		getQuizQuestions().add(quizQuestion);
-		quizQuestion.setClassSubject(this);
-
-		return quizQuestion;
-	}
-
-	public QuizQuestion removeQuizQuestion(QuizQuestion quizQuestion) {
-		getQuizQuestions().remove(quizQuestion);
-		quizQuestion.setClassSubject(null);
-
-		return quizQuestion;
-	}
 
 }
