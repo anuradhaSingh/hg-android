@@ -162,7 +162,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
-				}else if(termsCondition.isChecked()==true){
+				}else if(termsCondition.isChecked()==false){
 					Toast toast=Toast.makeText(activitycontext, "Please accept terms and conditions!", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
