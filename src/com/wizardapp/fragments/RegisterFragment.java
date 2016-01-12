@@ -64,7 +64,6 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				removeThisFragment();
 				createNewFragment(new LoginFragment(R.layout.login));
 			}
 		});
@@ -239,8 +238,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 						Type type = new TypeToken<UserDetail>(){}.getType();
 				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
 				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
-				        removeThisFragment();
-						createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
+				       createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
 					}
 				}catch(Exception e){
 					e.printStackTrace();

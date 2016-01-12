@@ -48,7 +48,6 @@ public class MobileVerificationFragment extends MyBaseFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				removeThisFragment();
 				if(flag==true){
 					
 					createNewFragment(new LoginFragment(R.layout.login));
