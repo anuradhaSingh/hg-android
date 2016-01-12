@@ -1,12 +1,9 @@
 package com.wizardapp.fragments;
 
-import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,18 +20,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.wizardapp.R;
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.services.UserServices;
-import com.wizardapp.utils.Util;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 
-public class LoginFragment extends MyBaseFragment  implements UserServices{
+public class LoginFragment extends MyBaseFragment  implements UserServices {
 	private static Activity activity; // activity/context you can use to call any explicit activities like email,sms,etc...
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
@@ -63,6 +60,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				removeThisFragment();
 				createNewFragment(new ForgotPasswordFragment(R.layout.forgetpassword_layout));
 			}
 		});
@@ -89,6 +87,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				removeThisFragment();
 				createNewFragment(new RegisterFragment(R.layout.registeration_layout));
 			}
 		});
@@ -100,7 +99,11 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 		// TODO Auto-generated method stub
 	try{
 		if(null != userResponse){
-			createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification));
+			   Type type = new TypeToken<UserDetail>(){}.getType();
+	           UserDetail userdetail= new GsonBuilder().create().fromJson(userResponse, type);
+	           SharedPreferencesHelper.setLoggedUserInfo(userdetail);
+	           removeThisFragment();
+	          createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
 		}
 	}catch(Exception e){
 		e.printStackTrace();
@@ -115,7 +118,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices{
 		// TODO Auto-generated method stub
 		
 	}
+	
 
-		
 
 }

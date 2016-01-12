@@ -1,18 +1,28 @@
 package com.wizardapp.main;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.services.ScholarshipPrimaryServices;
 
-public class ScholarshipActivity extends MyBaseActivity {
+public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPrimaryServices{
 	ListView listview;
 	 SimpleSideDrawer slide_me;
 	@Override
@@ -50,5 +60,33 @@ public class ScholarshipActivity extends MyBaseActivity {
 				slide_me.toggleRightDrawer();
 			}
 		});
+		LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
+		profile_view.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,ProfileActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+	@Override
+	public void getAllByClassNumber(String response) {
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder()
+            .create().fromJson(response, listType);
+            System.out.println(list);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void getDetailById(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }

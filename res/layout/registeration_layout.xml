@@ -175,22 +175,17 @@
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Address"/>
-<RelativeLayout 
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-         android:background="@drawable/rectangle_edittext">
-    
-    <Spinner 
+ <Spinner 
         android:id="@+id/spinStates"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_width="fill_parent"
+         android:layout_marginTop="5dp"
         android:textSize="@dimen/screen_pixel_14"
         style="?android:attr/spinnerItemStyle"
         android:background="@android:drawable/btn_dropdown"
         />
     
-    </RelativeLayout>
+   
 
 <EditText 
         android:id="@+id/pincode_edittext"

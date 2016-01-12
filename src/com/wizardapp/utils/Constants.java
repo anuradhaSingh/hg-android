@@ -33,7 +33,9 @@ public class Constants {
 	        }
 	        catch(Exception ex){}
 	    }
-	 
+	 interface SharedPref{
+			String loggedInUserData = "LoggedInUserData";
+		}
 		 public final static boolean isValidEmail(CharSequence target) {
 			  if (TextUtils.isEmpty(target)) {
 			    return false;

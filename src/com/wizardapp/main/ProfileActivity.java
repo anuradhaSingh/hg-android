@@ -1,7 +1,10 @@
 package com.wizardapp.main;
 
+
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -11,21 +14,22 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.example.wizardapp.R;
-
-public class ScholarshipDetailActivity extends MyBaseActivity{
+public class ProfileActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
+	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
+	TextView firstName,lastName,dob,email_id,mobile,state,city,country,address,pincode,gender;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.scholarship_detail);
+		setContentView(R.layout.profile_layout);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
-		RelativeLayout scholarshipDetail=(RelativeLayout)findViewById(R.id.back_layout);
-		scholarshipDetail.setOnClickListener(new OnClickListener() {
+		RelativeLayout back_button=(RelativeLayout)findViewById(R.id.back_button);
+		back_button.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -33,6 +37,27 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+		
+		firstName=(TextView)findViewById(R.id.txtview_firstname);
+		lastName=(TextView)findViewById(R.id.txtview_secondname);
+		dob=(TextView)findViewById(R.id.txtview_dateofbirth);
+		email_id=(TextView)findViewById(R.id.txt_email);
+		mobile=(TextView)findViewById(R.id.txt_mobileno);
+		state=(TextView)findViewById(R.id.txt_state);
+		city=(TextView)findViewById(R.id.txt_city);
+		address=(TextView)findViewById(R.id.txt_address);
+		pincode=(TextView)findViewById(R.id.txt_pincode);
+		gender=(TextView)findViewById(R.id.txtview_gender);
+		firstName.setText(userdata.getFirstName());
+		lastName.setText(userdata.getLastName());
+		email_id.setText(userdata.getEmail());
+		mobile.setText(userdata.getMobile());
+		state.setText(userdata.getState());
+		city.setText(userdata.getCity());
+		address.setText(userdata.getStreetAddress());
+		pincode.setText(userdata.getZipCode());
+		gender.setText(userdata.getGender());
+		
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub
@@ -60,8 +85,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ScholarshipDetailActivity.this,ProfileActivity.class);
-				startActivity(intent);
+				
 			}
 		});
 	}

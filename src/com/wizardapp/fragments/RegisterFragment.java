@@ -1,5 +1,7 @@
 package com.wizardapp.fragments;
 
+import java.lang.reflect.Type;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,9 +24,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.UserApi;
+import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 
 
@@ -58,6 +64,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				removeThisFragment();
 				createNewFragment(new LoginFragment(R.layout.login));
 			}
 		});
@@ -229,7 +236,11 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				
 				try{
 					if(null != afterRegisteration){
-						createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification));
+						Type type = new TypeToken<UserDetail>(){}.getType();
+				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
+				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
+				        removeThisFragment();
+						createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
 					}
 				}catch(Exception e){
 					e.printStackTrace();

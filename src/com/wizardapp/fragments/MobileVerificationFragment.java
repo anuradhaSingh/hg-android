@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 
 import com.example.wizardapp.R;
 import com.wizardapp.main.ScholarshipActivity;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class MobileVerificationFragment extends MyBaseFragment {
 	
@@ -22,9 +24,12 @@ public class MobileVerificationFragment extends MyBaseFragment {
     Button mobile_verified;
     LinearLayout back_button;
     EditText otp;
-    public MobileVerificationFragment(int layout) 
+    boolean flag=false;
+    UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
+    public MobileVerificationFragment(int layout,boolean from) 
    	{
    	  layout_to_inflate = layout;
+   	  flag=from; 
    	}
    	
    	public MobileVerificationFragment() 
@@ -43,9 +48,16 @@ public class MobileVerificationFragment extends MyBaseFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				activitycontext.finish();
+				removeThisFragment();
+				if(flag==true){
+					
+					createNewFragment(new LoginFragment(R.layout.login));
+				}else{
+					createNewFragment(new RegisterFragment(R.layout.registeration_layout));
+				}
 			}
 		});
+   		otp.setText(userdata.getOneTimePassword());
    		mobile_verified.setOnClickListener(new OnClickListener() {
 			
 			@Override
