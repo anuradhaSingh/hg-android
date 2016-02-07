@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.wizardapp.R;
+import com.wizardapp.main.MainActivity;
 import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.utils.SharedPreferencesHelper;
@@ -62,7 +63,7 @@ public class MobileVerificationFragment extends MyBaseFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(activitycontext,ScholarshipActivity.class);
+				Intent intent=new Intent(activitycontext,MainActivity.class);
 				startActivity(intent);
 			}
 		});

@@ -68,6 +68,61 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(ScholarshipActivity.this,ProfileActivity.class);
 				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout refer_friend=(LinearLayout)findViewById(R.id.reffer_friend_view);
+		refer_friend.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,RefferFriendActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout contact_us=(LinearLayout)findViewById(R.id.contact_us_view);
+		contact_us.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,ContactUsActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout myTest=(LinearLayout)findViewById(R.id.mytest_view);
+		myTest.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout scoreboard=(LinearLayout)findViewById(R.id.scoreboard_view);
+		scoreboard.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,ScoreBoardActivity.class);
+				startActivity(intent);
+			}
+		});
+		LinearLayout start_test=(LinearLayout)findViewById(R.id.start_view);
+		start_test.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ScholarshipActivity.this,StartTestActivity.class);
+				startActivity(intent);
+				finish();
 			}
 		});
 	}

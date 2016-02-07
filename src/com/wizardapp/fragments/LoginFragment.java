@@ -86,6 +86,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
 				createNewFragment(new RegisterFragment(R.layout.registeration_layout));
 			}
 		});

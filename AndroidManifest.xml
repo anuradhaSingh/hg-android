@@ -42,7 +42,34 @@
             android:name="com.wizardapp.main.ProfileActivity"
             android:label="@string/app_name" >
             </activity>
-        
+            <activity
+            android:name="com.wizardapp.main.ScoreBoardActivity"
+            android:label="@string/app_name" >
+            </activity>
+            <activity
+            android:name="com.wizardapp.main.RefferFriendActivity"
+            android:label="@string/app_name" >
+            </activity>
+            <activity
+            android:name="com.wizardapp.main.ContactUsActivity"
+            android:label="@string/app_name" >
+            </activity>
+        <activity
+            android:name="com.wizardapp.main.MainActivity"
+            android:label="@string/app_name" >
+            </activity>
+            <activity
+            android:name="com.wizardapp.main.ScoreBoardDetailActivity"
+            android:label="@string/app_name" >
+            </activity>
+            <activity
+            android:name="com.wizardapp.main.StartTestActivity"
+            android:label="@string/app_name" >
+            </activity>
+             <activity
+            android:name="com.wizardapp.main.MyTestActivity"
+            android:label="@string/app_name" >
+            </activity>
     </application>
 
 </manifest>

@@ -1,10 +1,7 @@
 package com.wizardapp.main;
 
-
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
-import com.wizardapp.model.UserDetail;
-import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -12,52 +9,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-public class ProfileActivity extends MyBaseActivity{
+public class StartTestActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
-	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
-	TextView firstName,lastName,dob,email_id,mobile,state,city,country,address,pincode,gender;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.profile_layout);
+		setContentView(R.layout.start_test);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
-		RelativeLayout back_button=(RelativeLayout)findViewById(R.id.back_button);
-		back_button.setOnClickListener(new OnClickListener() {
+		Button buyTest=(Button)findViewById(R.id.test_buy);
+		buyTest.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent intent=new Intent(StartTestActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
 				finish();
 			}
 		});
-		
-		firstName=(TextView)findViewById(R.id.txtview_firstname);
-		lastName=(TextView)findViewById(R.id.txtview_secondname);
-		dob=(TextView)findViewById(R.id.txtview_dateofbirth);
-		email_id=(TextView)findViewById(R.id.txt_email);
-		mobile=(TextView)findViewById(R.id.txt_mobileno);
-		state=(TextView)findViewById(R.id.txt_state);
-		city=(TextView)findViewById(R.id.txt_city);
-		address=(TextView)findViewById(R.id.txt_address);
-		pincode=(TextView)findViewById(R.id.txt_pincode);
-		gender=(TextView)findViewById(R.id.txtview_gender);
-		firstName.setText(userdata.getFirstName());
-		lastName.setText(userdata.getLastName());
-		email_id.setText(userdata.getEmail());
-		mobile.setText(userdata.getMobile());
-		state.setText(userdata.getState());
-		city.setText(userdata.getCity());
-		address.setText(userdata.getStreetAddress());
-		pincode.setText(userdata.getZipCode());
-		gender.setText(userdata.getGender());
-		
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub
@@ -85,7 +61,9 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				slide_me.closeRightSide();
+				Intent intent=new Intent(StartTestActivity.this,ProfileActivity.class);
+				startActivity(intent);
+				finish();
 			}
 		});
 		LinearLayout refer_friend=(LinearLayout)findViewById(R.id.reffer_friend_view);
@@ -94,7 +72,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ProfileActivity.this,RefferFriendActivity.class);
+				Intent intent=new Intent(StartTestActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
 			}
@@ -105,7 +83,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ProfileActivity.this,ContactUsActivity.class);
+				Intent intent=new Intent(StartTestActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
 			}
@@ -116,7 +94,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ProfileActivity.this,MyTestActivity.class);
+				Intent intent=new Intent(StartTestActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
 			}
@@ -127,7 +105,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ProfileActivity.this,ScoreBoardActivity.class);
+				Intent intent=new Intent(StartTestActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
 			}
@@ -139,7 +117,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(ProfileActivity.this,StartTestActivity.class);
+				Intent intent=new Intent(StartTestActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
 			}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    android:orientation="vertical" >
+    
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:id="@+id/back_layout"
+    android:layout_height="40dp"
+    android:background="@color/dark_grey"
+    android:orientation="horizontal"
+    >
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="3dp"
+         android:src="@drawable/back_button" />
+    
+    <TextView
+        android:id="@+id/datetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MyTest"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+</RelativeLayout>
+
+<LinearLayout android:id="@+id/headerlayout"
+    android:layout_width="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:weightSum="2"
+   >
+    
+     <Button
+        android:id="@+id/available_test"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="Available"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:textSize="@dimen/screen_pixel_15"
+        android:textStyle="bold" />
+ <View
+   	    android:layout_width="1dp"
+   	    android:layout_height="40dp"
+   	    android:layout_weight="0" 
+   	    android:background="@android:color/darker_gray"/>
+    <Button
+        android:id="@+id/taken_test"
+         android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:text="Taken"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/screen_pixel_15"
+        android:textStyle="bold" />
+   </LinearLayout>
+   <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_margin="10dp"
+    android:id="@+id/available_layout"
+    android:orientation="vertical">
+ <TextView
+        android:id="@+id/maths_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. You won 2015 June Scholarship"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  <TextView
+        android:id="@+id/science_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="2. You won 2015 June Scholarship"
+         android:layout_margin="10dp"
+         android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  <TextView
+        android:id="@+id/ss_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. You won 2015 June Scholarship"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  <TextView
+        android:id="@+id/english_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. You won 2015 June Scholarship"
+         android:layout_margin="10dp"
+         android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+ <TextView
+        android:id="@+id/english_percentile1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5. You won 2015 June Scholarship"
+         android:layout_margin="10dp"
+         android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+android:layout_marginBottom="5dp"
+></View>
+ </LinearLayout>
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_margin="10dp"
+    android:visibility="gone"
+    android:id="@+id/taken_layout"
+    android:orientation="vertical">
+ <TextView
+        android:id="@+id/takenmaths_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. You won 2015 June Scholarship"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  <TextView
+        android:id="@+id/takenscience_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="2. You won 2015 June Scholarship"
+         android:layout_margin="10dp"
+         android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  <TextView
+        android:id="@+id/takenss_percentile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. You won 2015 June Scholarship"
+        android:layout_margin="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+        
+ <View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_height="1dp"
+></View>
+  
+ </LinearLayout>
+</LinearLayout>

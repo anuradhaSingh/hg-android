@@ -18,6 +18,7 @@
  <LinearLayout android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_marginLeft="10dp"
+     android:id="@+id/start_view"
      android:orientation="horizontal">
      
       <ImageView 
@@ -46,6 +47,7 @@ android:layout_height="1dp"
     <LinearLayout android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_marginLeft="10dp"
+      android:id="@+id/mytest_view"
      android:orientation="horizontal">
      
       <ImageView 
@@ -74,6 +76,7 @@ android:layout_height="1dp"
     <LinearLayout android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_marginLeft="10dp"
+     android:id="@+id/scoreboard_view"
      android:orientation="horizontal">
      
       <ImageView 
@@ -159,6 +162,7 @@ android:layout_height="1dp"
     <LinearLayout android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_marginLeft="10dp"
+     android:id="@+id/contact_us_view"
      android:orientation="horizontal">
      
       <ImageView 
@@ -187,6 +191,7 @@ android:layout_height="1dp"
     <LinearLayout android:layout_width="fill_parent"
      android:layout_height="wrap_content"
      android:layout_marginLeft="10dp"
+     android:id="@+id/reffer_friend_view"
      android:orientation="horizontal">
      
       <ImageView 
