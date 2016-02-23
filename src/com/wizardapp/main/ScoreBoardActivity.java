@@ -3,6 +3,7 @@ package com.wizardapp.main;
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
+import com.wizardapp.adapter.ScoreBoardAdapter;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -26,8 +27,8 @@ public class ScoreBoardActivity extends MyBaseActivity{
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 		
-		listview=(ListView)findViewById(R.id.scholarship_listview);
-		listview.setAdapter(new ScholarshipTestAdapter(ScoreBoardActivity.this));
+		listview=(ListView)findViewById(R.id.scoreboard_listview);
+		listview.setAdapter(new ScoreBoardAdapter(ScoreBoardActivity.this));
 				
 	}
 	private void showCustomActionBar() {

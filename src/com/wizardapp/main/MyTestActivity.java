@@ -42,8 +42,8 @@ public class MyTestActivity extends MyBaseActivity{
 					  ((Button)v).setTextColor(Color.parseColor("#FE642E"));
 				  }
 				  taken.setTextColor(Color.parseColor("#FE642E"));
-				  available.setBackgroundResource(Color.parseColor("#FE642E"));
-				taken.setBackgroundResource(Color.parseColor("#ffffff"));
+				  available.setBackgroundColor(Color.parseColor("#FE642E"));
+				taken.setBackgroundColor(Color.parseColor("#ffffff"));
 				available_view.setVisibility(View.VISIBLE);
 				taken_view.setVisibility(View.GONE);
 			}
@@ -59,8 +59,8 @@ public class MyTestActivity extends MyBaseActivity{
 						  ((Button)v).setTextColor(Color.parseColor("#FE642E"));
 					  }
 				available.setTextColor(Color.parseColor("#FE642E"));
-				available.setBackgroundResource(Color.parseColor("#ffffff"));
-				taken.setBackgroundResource(Color.parseColor("#FE642E"));
+				available.setBackgroundColor(Color.parseColor("#ffffff"));
+				taken.setBackgroundColor(Color.parseColor("#FE642E"));
 				available_view.setVisibility(View.GONE);
 				taken_view.setVisibility(View.VISIBLE);
 			}
