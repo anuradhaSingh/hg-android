@@ -38,6 +38,7 @@ import com.wizardapp.main.LoginActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
+import com.wizardapp.utils.DateUtil;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 
@@ -109,6 +110,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 
 			}
 		});
+		updateButtonDisplay(dateOfBith, DateUtil.addDays(new Date(), -0));
 		dateOfBith.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
