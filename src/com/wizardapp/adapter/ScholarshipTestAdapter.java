@@ -2,27 +2,35 @@ package com.wizardapp.adapter;
 
 import java.util.List;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wizardapp.R;
+import com.wizardapp.main.MainActivity;
+import com.wizardapp.main.MyTestActivity;
+import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.main.ScholarshipDetailActivity;
 import com.wizardapp.model.Scholarship;
 
 public class ScholarshipTestAdapter extends BaseAdapter{
-	private Context context;
+	private Activity context;
 	private static LayoutInflater inflater=null;
 	Holder holder;
+	Dialog dialogpopUp = null;
 	private List<Scholarship> scholarshipList;
-	public ScholarshipTestAdapter(Context context) {
+	public ScholarshipTestAdapter(Activity context) {
 		this.context = context;
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.scholarshipList = scholarshipList;
@@ -51,7 +59,7 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 			
 			@Override
 			public void onClick(View v) {
-				
+				showPaymentPopUp();
 			}
 		});
 		
@@ -90,5 +98,40 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	    Button buy;
 	    
 	}
+	
+	 private void showPaymentPopUp() {
+		  dialogpopUp = new Dialog(context);
+		  context.getWindow().setBackgroundDrawable(
+		    new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		  Window window = dialogpopUp.getWindow();
+		  window.setBackgroundDrawableResource(android.R.color.transparent);
+		  window.requestFeature(window.FEATURE_NO_TITLE);
+		  dialogpopUp.setContentView(R.layout.payment);
+		  Button buttnSuccess = (Button) dialogpopUp.findViewById(R.id.btn_success);
+		  buttnSuccess.setOnClickListener(new OnClickListener() {
+		   @Override
+		   public void onClick(View v) {
+			   Intent intent =new Intent(context,MyTestActivity.class);
+				context.startActivity(intent);
+				context.finish();
+		    dialogpopUp.dismiss();
+		   }
+
+		  });
+		  Button btnFail = (Button) dialogpopUp.findViewById(R.id.btn_failure);
+		  btnFail.setOnClickListener(new OnClickListener() {
+		   @Override
+		   public void onClick(View v) {
+			   Intent intent =new Intent(context,MyTestActivity.class);
+				context.startActivity(intent);
+				context.finish();
+		    dialogpopUp.dismiss();
+		   }
+
+		  });
+		  
+		  dialogpopUp.show();
+
+		 }
 
 }
