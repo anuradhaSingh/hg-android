@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -84,9 +85,9 @@ public class LoginActivity extends MyBaseActivity{
 			}
 			
 		    public static class DateSetListener implements OnDateSetListener {
-				private EditText button;
+				private Button button;
 
-				public DateSetListener(EditText button) {
+				public DateSetListener(Button button) {
 					super();
 					this.button = button;
 				}
@@ -98,7 +99,7 @@ public class LoginActivity extends MyBaseActivity{
 					updateButtonDisplay(button, c.getTime());
 				}
 			}
-			private static void updateButtonDisplay(EditText button, Date dateToSet) {
+			private static void updateButtonDisplay(Button button, Date dateToSet) {
 				button.setText(new SimpleDateFormat("dd-MM-yyyy").format(dateToSet));
 			}
 

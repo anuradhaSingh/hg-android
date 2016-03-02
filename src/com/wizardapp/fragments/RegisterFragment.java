@@ -1,6 +1,7 @@
 package com.wizardapp.fragments;
 
 import java.lang.reflect.Type;
+import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,8 +47,9 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
     static ProgressDialog progress;
-  public static   EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city,password,confirm_password,classNumber;
+    public static   EditText firstName,lastname,emailId,mobile,address,pinCode,city,password,confirm_password,classNumber;
     Button register;
+    public static Button dateOfBith;
     Spinner spinState;
     CheckBox termsCondition;
     String [] states;
@@ -82,7 +84,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    states=getResources().getStringArray(R.array.state_Array);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);
 	    emailId=(EditText)ll.findViewById(R.id.email_edittext);
-	    dateOfBith=(EditText)ll.findViewById(R.id.dateofbirth_edittext);
+	    dateOfBith=(Button)ll.findViewById(R.id.dateofbirth_edittext);
 	    mobile=(EditText)ll.findViewById(R.id.mobile_edittext);
 	    address=(EditText)ll.findViewById(R.id.address_edittext);
 	    pinCode=(EditText)ll.findViewById(R.id.pincode_edittext);
