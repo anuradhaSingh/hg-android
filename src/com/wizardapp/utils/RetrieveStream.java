@@ -43,7 +43,7 @@ public class RetrieveStream {
 		return null;
 	}
 	
-	public static InputStream retrieveStreamPOST(String url,JSONObject requestObj) {
+	public static String retrieveStreamPOST(String url,JSONObject requestObj) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpPost postRequest = new HttpPost(url);
 		try {
@@ -59,7 +59,11 @@ public class RetrieveStream {
 				return null;
 			}
 			HttpEntity getResponseEntity = getResponse.getEntity();
-			return getResponseEntity.getContent();
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			getResponseEntity.writeTo(out);
+	        String responseString = out.toString();
+	        out.close();
+	        return responseString;
 		} catch (IOException e) {
 			postRequest.abort();
 			Log.w(RetrieveStream.class.getSimpleName(), "Error for URL " + url, e);

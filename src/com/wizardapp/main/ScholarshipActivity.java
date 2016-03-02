@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
+import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 
@@ -35,6 +36,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		showCustomActionBar();
 		
 		listview=(ListView)findViewById(R.id.scholarship_listview);
+		//ScholarshipApi.getAllScholarshipForClassNumber(ScholarshipActivity.this, null, classNumber);
 		listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this));
 				
 		
@@ -141,6 +143,12 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 
 	@Override
 	public void getDetailById(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buyScholarship(String response) {
 		// TODO Auto-generated method stub
 		
 	}
