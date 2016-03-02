@@ -1,11 +1,15 @@
 package com.wizardapp.fragments;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,6 +23,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -28,6 +33,7 @@ import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.UserApi;
+import com.wizardapp.main.LoginActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
@@ -40,11 +46,12 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
     static ProgressDialog progress;
-    EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city,password,confirm_password,classNumber;
+  public static   EditText firstName,lastname,emailId,dateOfBith,mobile,address,pinCode,city,password,confirm_password,classNumber;
     Button register;
     Spinner spinState;
     CheckBox termsCondition;
     String [] states;
+   
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -100,7 +107,12 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 
 			}
 		});
-	
+		dateOfBith.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+			activitycontext.showDialog(LoginActivity.DATE_OF_BIRTH);
+			}
+		});
 	    register=(Button)ll.findViewById(R.id.register_btn);
 	    register.setOnClickListener(new OnClickListener() {
 			
@@ -254,5 +266,23 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				
 				
 			}
+			public static class DateSetListener implements OnDateSetListener {
+				private Button button;
 
+				public DateSetListener(Button button) {
+					super();
+					this.button = button;
+				}
+
+				@Override
+				public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+					Calendar c = Calendar.getInstance();
+					c.set(year, monthOfYear, dayOfMonth);
+					updateButtonDisplay(button, c.getTime());
+				}
+			}
+			private static void updateButtonDisplay(Button button, Date dateToSet) {
+				button.setText(new SimpleDateFormat("dd-MM-yyyy").format(dateToSet));
+			}
+			
 }
