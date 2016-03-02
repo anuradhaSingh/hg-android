@@ -14,6 +14,7 @@ public interface HeyURLs {
 	interface Scholarship{
 		String getAllByClassNumber = domain + "/scholarship/all/"; // append classnumber.json
 		String getScholarshipDetail = domain + "/scholarship/"; // append scholarship_id.json
+		String buyScholarship = domain + "/scholarship" + "/buy/";// append scholarshipId and userId
 	}
 	
 	

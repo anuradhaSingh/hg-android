@@ -101,7 +101,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 			   Type type = new TypeToken<UserDetail>(){}.getType();
 	           UserDetail userdetail= new GsonBuilder().create().fromJson(userResponse, type);
 	           SharedPreferencesHelper.setLoggedUserInfo(userdetail);
-	          createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
+	           createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
 		}
 	}catch(Exception e){
 		e.printStackTrace();

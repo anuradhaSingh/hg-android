@@ -1,5 +1,7 @@
 package com.wizardapp.adapter;
 
+import java.util.List;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,15 +15,17 @@ import android.widget.TextView;
 
 import com.example.wizardapp.R;
 import com.wizardapp.main.ScholarshipDetailActivity;
+import com.wizardapp.model.Scholarship;
 
 public class ScholarshipTestAdapter extends BaseAdapter{
 	private Context context;
 	private static LayoutInflater inflater=null;
 	Holder holder;
+	private List<Scholarship> scholarshipList;
 	public ScholarshipTestAdapter(Context context) {
 		this.context = context;
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
+		this.scholarshipList = scholarshipList;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -42,6 +46,15 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	    else{
 	    	 holder = (Holder) vi.getTag();
 	    }
+		
+       holder.buy.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
 		holder.thumb_image.setOnClickListener(new OnClickListener() {
 			
 			@Override
