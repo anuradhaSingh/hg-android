@@ -23,6 +23,15 @@ public class ScoreBoardActivity extends MyBaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scoreboard);
+		RelativeLayout backlayout=(RelativeLayout)findViewById(R.id.back_layout);
+		backlayout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();

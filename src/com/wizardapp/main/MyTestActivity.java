@@ -18,11 +18,21 @@ public class MyTestActivity extends MyBaseActivity{
 	Button available,taken;
 	LinearLayout available_view,taken_view;
 	SimpleSideDrawer slide_me;
+	RelativeLayout backlayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_test);
+		backlayout=(RelativeLayout)findViewById(R.id.backlayout);
+		backlayout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();

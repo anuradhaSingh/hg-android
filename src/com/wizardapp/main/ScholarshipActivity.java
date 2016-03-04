@@ -26,11 +26,13 @@ import com.wizardapp.services.ScholarshipPrimaryServices;
 public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPrimaryServices{
 	ListView listview;
 	 SimpleSideDrawer slide_me;
+	 RelativeLayout back_layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scholarship_list);
+		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
@@ -38,7 +40,14 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		listview=(ListView)findViewById(R.id.scholarship_listview);
 		//ScholarshipApi.getAllScholarshipForClassNumber(ScholarshipActivity.this, null, classNumber);
 		listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this));
+		back_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
 				
+			}
+		});	
 		
 	}
 	
