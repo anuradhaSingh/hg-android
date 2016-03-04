@@ -1,20 +1,34 @@
 package com.wizardapp.main;
 
+import org.json.JSONObject;
+
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.apis.MailApi;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.MailServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class RefferFriendActivity extends MyBaseActivity{
+public class RefferFriendActivity extends MyBaseActivity implements MailServices{
 	SimpleSideDrawer slide_me;
+	EditText enterMailId;
+	Button sendMail;
+	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -22,6 +36,27 @@ public class RefferFriendActivity extends MyBaseActivity{
 		setContentView(R.layout.reffer_friend);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
+		enterMailId = (EditText) findViewById(R.id.enter_email_id);
+		sendMail = (Button) findViewById(R.id.email_send);
+		sendMail.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Editable text = enterMailId.getText();
+				if(null != text){
+					try{
+					JSONObject jObj = new JSONObject();
+					jObj.put("to", new String[]{text.toString().trim()});
+					jObj.put("from", userData.getEmail());
+					jObj.put("subject", "Invitation To Join WIzkid");
+					jObj.put("message", "http://goto.google.play.store/");
+					MailApi.referFriend(RefferFriendActivity.this, null, jObj);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+			}
+		});
 		showCustomActionBar();
 	}
 	private void showCustomActionBar() {
@@ -118,5 +153,21 @@ public class RefferFriendActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+	}
+	@Override
+	public void referToFriend(String response) {
+		try{
+			if(null != response){
+				Toast toast=Toast.makeText(RefferFriendActivity.this, "Request sent successfully", Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+				toast.show();
+				Intent intent=new Intent(RefferFriendActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				RefferFriendActivity.this.finish();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -18,5 +18,9 @@ public interface HeyURLs {
 		String buyScholarship = domain + "/scholarship" + "/buy/";// append scholarshipId and userId
 	}
 	
+	interface Refer{
+		String sendMailTo = domain + "/util/mail/send.json";
+	}
+	
 	
 }
