@@ -2,6 +2,7 @@ package com.wizardapp.main;
 
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -104,6 +105,17 @@ public class MainActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(MainActivity.this,StartTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
+		log_out.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(MainActivity.this,LoginActivity.class);
 				startActivity(intent);
 				finish();
 			}

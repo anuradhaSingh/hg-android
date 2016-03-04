@@ -4,6 +4,7 @@ import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
 import com.wizardapp.adapter.ScoreBoardAdapter;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
@@ -121,6 +122,17 @@ public class ScoreBoardActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(ScoreBoardActivity.this,StartTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
+		log_out.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(ScoreBoardActivity.this,LoginActivity.class);
 				startActivity(intent);
 				finish();
 			}

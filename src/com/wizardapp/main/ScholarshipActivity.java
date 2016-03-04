@@ -22,6 +22,7 @@ import com.wizardapp.adapter.ScholarshipTestAdapter;
 import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.services.ScholarshipPrimaryServices;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPrimaryServices{
 	ListView listview;
@@ -132,6 +133,17 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(ScholarshipActivity.this,StartTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
+		log_out.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(ScholarshipActivity.this,LoginActivity.class);
 				startActivity(intent);
 				finish();
 			}

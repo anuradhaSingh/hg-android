@@ -144,5 +144,16 @@ public class ProfileActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+		LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
+		log_out.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(ProfileActivity.this,LoginActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 }
