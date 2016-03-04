@@ -15,11 +15,21 @@ import android.widget.RelativeLayout;
 public class ContactUsActivity extends MyBaseActivity{
 	
 	SimpleSideDrawer slide_me;
+	RelativeLayout back_layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_us);
+		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
+		back_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();

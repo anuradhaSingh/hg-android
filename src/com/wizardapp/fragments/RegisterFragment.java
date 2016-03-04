@@ -54,7 +54,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     Spinner spinState;
     CheckBox termsCondition;
     String [] states;
-   
+   LinearLayout backlayout;
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -92,6 +92,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    spinState=(Spinner)ll.findViewById(R.id.spinStates);
 	    password=(EditText)ll.findViewById(R.id.password_edittext);
 	    confirm_password=(EditText)ll.findViewById(R.id.confirm_password_edittext);
+	    backlayout=(LinearLayout)ll.findViewById(R.id.header_layout);
 	    classNumber=(EditText)ll.findViewById(R.id.classname_edittext);
 	    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activitycontext,
 				android.R.layout.simple_spinner_item, states);
@@ -108,6 +109,14 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 
+			}
+		});
+		backlayout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				activitycontext.finish();
 			}
 		});
 		updateButtonDisplay(dateOfBith, DateUtil.addDays(new Date(), -0));

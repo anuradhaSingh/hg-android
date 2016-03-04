@@ -34,6 +34,15 @@ public class StartTestActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+		RelativeLayout backlayout=(RelativeLayout)findViewById(R.id.back_layout);
+		backlayout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub
