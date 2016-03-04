@@ -7,5 +7,6 @@ public interface UserServices {
 	
 	void registerUser(String afterRegisteration);
 	
+	void verifyOTP(String response);
 	
 }

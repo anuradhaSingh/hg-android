@@ -3,6 +3,7 @@ package com.wizardapp.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,15 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.wizardapp.R;
+import com.wizardapp.apis.UserApi;
 import com.wizardapp.main.MainActivity;
 import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
-public class MobileVerificationFragment extends MyBaseFragment {
+public class MobileVerificationFragment extends MyBaseFragment implements UserServices {
 	
 	private static Activity activitycontext; // activity/context you can use to call any explicit activities like email,sms,etc...
     private int layout_to_inflate; // layout which you want to show
@@ -58,18 +62,45 @@ public class MobileVerificationFragment extends MyBaseFragment {
 				}
 			}
 		});
-   		otp.setText(userdata.getOneTimePassword());
+   		//otp.setText(userdata.getOneTimePassword());
    		mobile_verified.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent=new Intent(activitycontext,MyTestActivity.class);
-				startActivity(intent);
-				activitycontext.finish();
+				UserApi.verifyuser(activitycontext, MobileVerificationFragment.this, userdata.getPhone(), otp.getText().toString());
 			}
 		});
 		return ll;
    	}
+
+	@Override
+	public void userLoggingIn(String userResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registerUser(String afterRegisteration) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void verifyOTP(String response) {
+		try{
+			if(null != response){
+				Intent intent=new Intent(activitycontext,MyTestActivity.class);
+				startActivity(intent);
+				activitycontext.finish();
+			}else{
+				Toast toast=Toast.makeText(activitycontext, "Incorrect OTP.", Toast.LENGTH_SHORT);
+				toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+				toast.show();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
 
 }

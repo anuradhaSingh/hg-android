@@ -206,12 +206,14 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								requestObj.put("firstName", firstValue);
 								requestObj.put("lastName", lastValue);
 								requestObj.put("mobile",phoneValue );
+								requestObj.put("phone",phoneValue );
 								requestObj.put("streetAddress", addressValue);
 								requestObj.put("gender", "M");
 								requestObj.put("zipCode", pinCodeValue);
 								requestObj.put("city", cityString);
 								requestObj.put("classType", classvalue);
 								requestObj.put("password", passvalue);
+								requestObj.put("dateOfBirth", dobValue);
 								requestObj.put("state", spinState.getSelectedItem().toString());
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
@@ -255,14 +257,12 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 
 			@Override
 			public void registerUser(String afterRegisteration) {
-				// TODO Auto-generated method stub
-				
 				try{
 					if(null != afterRegisteration){
 						Type type = new TypeToken<UserDetail>(){}.getType();
 				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
 				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
-				       createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
+				        createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
 					}
 				}catch(Exception e){
 					e.printStackTrace();
@@ -287,6 +287,12 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			}
 			private static void updateButtonDisplay(Button button, Date dateToSet) {
 				button.setText(new SimpleDateFormat("dd-MM-yyyy").format(dateToSet));
+			}
+
+			@Override
+			public void verifyOTP(String response) {
+				// TODO Auto-generated method stub
+				
 			}
 			
 }

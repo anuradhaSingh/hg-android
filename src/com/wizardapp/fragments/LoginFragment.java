@@ -1,13 +1,12 @@
 package com.wizardapp.fragments;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +21,9 @@ import android.widget.TextView;
 import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.apis.UserApi;
-import com.wizardapp.model.Scholarship;
+import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.model.UserDetail;
-import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
@@ -101,14 +98,15 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 			   Type type = new TypeToken<UserDetail>(){}.getType();
 	           UserDetail userdetail= new GsonBuilder().create().fromJson(userResponse, type);
 	           SharedPreferencesHelper.setLoggedUserInfo(userdetail);
-	           createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
+	           //createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
+	           Intent intent=new Intent(activity,MyTestActivity.class);
+			   startActivity(intent);
+		       activity.finish();
 		}
 	}catch(Exception e){
 		e.printStackTrace();
 		
 	}
-	
-		
 	}
 
 		@Override
@@ -116,6 +114,12 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 		// TODO Auto-generated method stub
 		
 	}
+
+		@Override
+		public void verifyOTP(String response) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 
 

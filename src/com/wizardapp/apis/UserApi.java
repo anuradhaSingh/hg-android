@@ -9,6 +9,7 @@ import android.view.Window;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.UserServices;
+import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.HeyURLs;
 import com.wizardapp.utils.HttpConnection;
 
@@ -90,6 +91,42 @@ public class UserApi {
 			}
 		}
 		new RegisterUserTask().execute();
+	}
+	
+	public static void verifyuser(final Context context,final MyBaseFragment fragment,final String mobileNum,final String otp){
+		if(null != fragment)
+			userServices = (UserServices) fragment;
+		else
+			userServices = (UserServices)context;
+		
+		class VerifyUserTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+			@Override
+			protected void onPreExecute() {
+				
+		         Dialog = new ProgressDialog(context);
+		    	     Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			         Dialog.setMessage("Loading...");
+			         Dialog.setCancelable(false);
+			         Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				return  HttpConnection.getResponse(HeyURLs.Users.verifyOTP+mobileNum+"/"+otp+".json",Constants.httpGet);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if(null != result && result.length() != 0)
+					userServices.verifyOTP(result);
+				else{
+					userServices.verifyOTP(null);
+				}
+			}
+		}
+		new VerifyUserTask().execute();
 	}
 	
 

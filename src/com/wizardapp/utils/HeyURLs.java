@@ -9,6 +9,7 @@ public interface HeyURLs {
 	interface Users{
 		String userLoginPost = domain +"/user/login.json";
 		String registerUser = domain + "/user/register.json";
+		String verifyOTP = domain + "/master/verify/"; //append mobile num and otp.
 	}
 	
 	interface Scholarship{
