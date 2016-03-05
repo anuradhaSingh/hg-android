@@ -31,16 +31,16 @@
         android:layout_gravity="center_horizontal"/>
     <EditText 
         android:id="@+id/firstname_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
-         android:textSize="@dimen/screen_pixel_14"
+        android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="FirstName"/>
     <EditText 
         android:id="@+id/lastname_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+         android:layout_height="42dp"
+        android:layout_width="fill_parent"
          android:textSize="@dimen/screen_pixel_14"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
@@ -52,11 +52,11 @@
          android:background="@drawable/rectangle_edittext">
     <EditText 
         android:id="@+id/gender_edittext"
-        android:layout_height="wrap_content"
+         android:layout_height="42dp"
+        android:layout_width="160dp"
         android:background="@null"
         android:layout_centerVertical="true"
          android:textSize="@dimen/screen_pixel_14"
-        android:layout_width="150dp"
         android:hint="Gender"/>
     <ToggleButton
         android:id="@+id/radiobtn"
@@ -77,8 +77,8 @@
          android:background="@drawable/rectangle_edittext">
     <Button 
         android:id="@+id/dateofbirth_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_width="160dp"
         android:background="@null"
          android:textSize="@dimen/screen_pixel_14"
         android:layout_centerVertical="true"
@@ -98,8 +98,8 @@
     
     <EditText 
         android:id="@+id/email_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="150dp"
+        android:layout_height="42dp"
+        android:layout_width="160dp"
         android:background="@null"
          android:textSize="@dimen/screen_pixel_14"
         android:hint="Email Address"/>
@@ -119,8 +119,8 @@
     
     <EditText 
         android:id="@+id/mobile_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="150dp"
+         android:layout_height="42dp"
+        android:layout_width="160dp"
         android:background="@null"
         android:inputType="number"
         android:textSize="@dimen/screen_pixel_14"
@@ -135,24 +135,24 @@
     </RelativeLayout>
     <EditText 
         android:id="@+id/password_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+         android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Password"/>
     <EditText 
         android:id="@+id/confirm_password_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Retype Password"/>
     <EditText 
         android:id="@+id/classname_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
         android:inputType="number"
          android:textSize="@dimen/screen_pixel_14"
@@ -160,8 +160,8 @@
         android:hint="Class"/>
    <EditText 
         android:id="@+id/city_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
@@ -170,7 +170,7 @@
 <EditText 
         android:id="@+id/address_edittext"
         android:layout_height="80dp"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
@@ -189,8 +189,8 @@
 
 <EditText 
         android:id="@+id/pincode_edittext"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+         android:layout_height="42dp"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
         android:inputType="number"
          android:textSize="@dimen/screen_pixel_14"
