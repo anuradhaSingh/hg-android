@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/light_gray"
+    android:orientation="vertical" >
+    
+ 
+  <RelativeLayout
+        android:id="@+id/headervalues"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@color/orange"
+       >
+
+      
+         <TextView
+             android:id="@+id/timertext"
+             android:layout_width="wrap_content"
+             android:layout_height="fill_parent"
+             android:layout_alignParentLeft="true"
+             android:layout_centerVertical="true"
+             android:layout_margin="10dp"
+             android:paddingLeft="25dp"
+             android:text=""
+             android:textColor="@color/white"
+             android:textSize="16sp"
+             android:textStyle="bold" />
+
+         
+         <TextView
+             android:id="@+id/history"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="History"
+             android:textSize="16sp"
+             android:layout_centerHorizontal="true"
+             android:layout_centerVertical="true"
+             android:textColor="@color/white"
+             android:textStyle="bold"
+             
+          
+              />
+         
+ <TextView
+             android:id="@+id/question_count"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="0"
+             android:textSize="16sp"
+             android:layout_marginRight="15dp"
+             android:layout_alignParentRight="true"
+             android:layout_centerVertical="true"
+             android:textColor="@color/white"
+             android:textStyle="bold"
+             
+          
+              />
+         
+     
+    </RelativeLayout>
+       <TextView
+           android:id="@+id/txtquestion"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/orange"
+           android:textSize="15dp"
+           android:layout_margin="10dp"
+           android:textStyle="bold"
+           android:text="" />
+   
+   <LinearLayout android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_margin="10dp">
+
+      
+        
+            <LinearLayout
+                android:id="@+id/the_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical" >
+
+                <CheckBox
+                    android:id="@+id/checkbox1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+
+                <CheckBox
+                    android:id="@+id/checkbox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="17sp" />
+                
+                <CheckBox
+                    android:id="@+id/checkbox3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox"
+                    android:maxLength="25"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                 <CheckBox
+                    android:id="@+id/checkbox4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CheckBox"
+                    android:maxLength="25"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="2dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+      
+   </LinearLayout>
+<Button 
+    android:id="@+id/btn_next"
+    android:layout_height="40dp"
+    android:layout_width="120dp"
+    android:background="@color/orange"
+    android:text="Next"
+     android:textSize="@dimen/screen_pixel_16"
+    android:layout_marginBottom="10dp"
+    android:layout_gravity="center_horizontal"/>
+</LinearLayout>

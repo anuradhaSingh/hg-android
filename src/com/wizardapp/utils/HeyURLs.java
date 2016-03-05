@@ -17,8 +17,8 @@ public interface HeyURLs {
 		String getScholarshipDetail = domain + "/scholarship/"; // append scholarship_id.json
 		String buyScholarship = domain + "/scholarship" + "/buy/";// append scholarshipId and userId
 		
-		String takenTest = domain + "/scholarship/taken";   //append userId
-		String availableTest = domain + "/scholarship/available";   //append userId
+		String takenTest = domain + "/scholarship/taken/";   //append userId
+		String availableTest = domain + "/scholarship/available/";   //append userId
 	}
 	
 	interface Refer{

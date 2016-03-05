@@ -1,7 +1,19 @@
 package com.wizardapp.main;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.adapter.AvailableTestAdapter;
+import com.wizardapp.adapter.TakenTestAdapter;
+import com.wizardapp.apis.TestApi;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
@@ -13,18 +25,23 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-public class MyTestActivity extends MyBaseActivity{
+public class MyTestActivity extends MyBaseActivity implements TestService{
 	Button available,taken;
 	LinearLayout available_view,taken_view;
 	SimpleSideDrawer slide_me;
 	RelativeLayout backlayout;
+	ListView available_list,taken_list;
+	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_test);
+		available_list=(ListView)findViewById(R.id.available_list);
+		taken_list=(ListView)findViewById(R.id.taken_list);
 		backlayout=(RelativeLayout)findViewById(R.id.backlayout);
 		backlayout.setOnClickListener(new OnClickListener() {
 			
@@ -41,6 +58,7 @@ public class MyTestActivity extends MyBaseActivity{
 		available_view=(LinearLayout)findViewById(R.id.available_layout);
 		taken_view=(LinearLayout)findViewById(R.id.taken_layout);
 		taken=(Button)findViewById(R.id.taken_test);
+		TestApi.getAvailableList(MyTestActivity.this, null, userData.getId());
 		available.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -57,6 +75,7 @@ public class MyTestActivity extends MyBaseActivity{
 				taken.setBackgroundColor(Color.parseColor("#ffffff"));
 				available_view.setVisibility(View.VISIBLE);
 				taken_view.setVisibility(View.GONE);
+				TestApi.getAvailableList(MyTestActivity.this, null, userData.getId());
 			}
 		});
 		taken.setOnClickListener(new OnClickListener() {
@@ -74,6 +93,7 @@ public class MyTestActivity extends MyBaseActivity{
 				taken.setBackgroundColor(Color.parseColor("#FE642E"));
 				available_view.setVisibility(View.GONE);
 				taken_view.setVisibility(View.VISIBLE);
+				TestApi.getTakenList(MyTestActivity.this, null, userData.getId());
 			}
 		});
 	}
@@ -174,6 +194,31 @@ public class MyTestActivity extends MyBaseActivity{
 			finish();
 		}
 	});
+	}
+	@Override
+	public void getAvailableList(String response) {
+		// TODO Auto-generated method stub
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            available_list.setAdapter(new AvailableTestAdapter(MyTestActivity.this, list));
+            System.out.println(list);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public void getTakenList(String response) {
+		// TODO Auto-generated method stub
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            taken_list.setAdapter(new TakenTestAdapter(MyTestActivity.this, list));
+            System.out.println(list);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 }

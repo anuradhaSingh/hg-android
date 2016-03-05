@@ -89,82 +89,10 @@
     android:layout_margin="10dp"
     android:id="@+id/available_layout"
     android:orientation="vertical">
- <TextView
-        android:id="@+id/maths_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1.  2015 June Scholarship"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/science_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:text="2.  2015 June Scholarship"
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/ss_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.  2015 June Scholarship"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/english_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4.  2015 June Scholarship"
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
- <TextView
-        android:id="@+id/english_percentile1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5.  2015 June Scholarship"
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-android:layout_marginBottom="5dp"
-></View>
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/available_list"></ListView>
+
  </LinearLayout>
   <LinearLayout android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -173,51 +101,9 @@ android:layout_marginBottom="5dp"
     android:visibility="gone"
     android:id="@+id/taken_layout"
     android:orientation="vertical">
- <TextView
-        android:id="@+id/takenmaths_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1. You won 2015 June Scholarship"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/takenscience_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:text="2. You won 2015 June Scholarship"
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/takenss_percentile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3. You won 2015 June Scholarship"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  
+    <ListView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/taken_list"></ListView>
+
  </LinearLayout>
 </LinearLayout>
