@@ -16,10 +16,14 @@ public interface HeyURLs {
 		String getAllByClassNumber = domain + "/scholarship/all/"; // append classnumber.json
 		String getScholarshipDetail = domain + "/scholarship/"; // append scholarship_id.json
 		String buyScholarship = domain + "/scholarship" + "/buy/";// append scholarshipId and userId
+		
+		String takenTest = domain + "/scholarship/taken";   //append userId
+		String availableTest = domain + "/scholarship/available";   //append userId
 	}
 	
 	interface Refer{
 		String sendMailTo = domain + "/util/mail/send.json";
+		String referTo = domain + "/util/refer.json";
 	}
 	
 	

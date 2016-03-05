@@ -160,7 +160,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 	@Override
 	public void referToFriend(String response) {
 		try{
-			if(null != response){
+			if(null == response){
 				Toast toast=Toast.makeText(RefferFriendActivity.this, "Request sent successfully", Toast.LENGTH_SHORT);
 				toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 				toast.show();
