@@ -6,7 +6,9 @@ import java.io.Serializable;
 public class UserDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Integer id;
+	private long id;
+
+	
 
 	private String city;
 
@@ -47,14 +49,7 @@ public class UserDetail implements Serializable {
 	public UserDetail() {
 	}
 
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+	
 	public String getCity() {
 		return this.city;
 	}
@@ -198,5 +193,12 @@ public class UserDetail implements Serializable {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
+	public long getId() {
+		return id;
+	}
 
+
+	public void setId(long id) {
+		this.id = id;
+	}
 }

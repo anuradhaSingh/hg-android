@@ -1,46 +1,84 @@
 package com.wizardapp.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
+
+/**
+ * The persistent class for the scholarship database table.
+ * 
+ */
 
 public class Scholarship implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 3915442120008656417L;
+	private Long id;
 
-	private Integer id;
+	private String announcementDate;
 
 	private long createdAt;
 
-	private String createdBy;
+	
 
-	private String endDate;
+	private String createdBy;
+	
+	private String[] noOfQuestion_perSubject;
 
 	private String prizeMoney;
 
-	private String prizeMonth;
+	private String registrationEndDate;
 
-	private String prizeYear;
+	private String registrationStartDate;
+
+	private String scholarshipEndDate;
+
+	private String scholarshipFees;
 
 	private String scholarshipName;
 
-	private String scholarshipSubject;
+	private String scholarshipStartDate;
 
-	private String startDate;
+	private String[] scholarshipSubject;
+
+	private String testTimer;
+
+	private int totalQuestion;
 
 	private long updatedAt;
+
+	
+	public long getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(long updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
 	private ClassNumber classNumber;
 
 	public Scholarship() {
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public String getAnnouncementDate() {
+		return this.announcementDate;
+	}
+
+	public void setAnnouncementDate(String announcementDate) {
+		this.announcementDate = announcementDate;
+	}
+
+	
 
 	public String getCreatedBy() {
 		return this.createdBy;
@@ -50,13 +88,6 @@ public class Scholarship implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public String getEndDate() {
-		return this.endDate;
-	}
-
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
 
 	public String getPrizeMoney() {
 		return this.prizeMoney;
@@ -66,20 +97,36 @@ public class Scholarship implements Serializable {
 		this.prizeMoney = prizeMoney;
 	}
 
-	public String getPrizeMonth() {
-		return this.prizeMonth;
+	public String getRegistrationEndDate() {
+		return this.registrationEndDate;
 	}
 
-	public void setPrizeMonth(String prizeMonth) {
-		this.prizeMonth = prizeMonth;
+	public void setRegistrationEndDate(String registrationEndDate) {
+		this.registrationEndDate = registrationEndDate;
 	}
 
-	public String getPrizeYear() {
-		return this.prizeYear;
+	public String getRegistrationStartDate() {
+		return this.registrationStartDate;
 	}
 
-	public void setPrizeYear(String prizeYear) {
-		this.prizeYear = prizeYear;
+	public void setRegistrationStartDate(String registrationStartDate) {
+		this.registrationStartDate = registrationStartDate;
+	}
+
+	public String getScholarshipEndDate() {
+		return this.scholarshipEndDate;
+	}
+
+	public void setScholarshipEndDate(String scholarshipEndDate) {
+		this.scholarshipEndDate = scholarshipEndDate;
+	}
+
+	public String getScholarshipFees() {
+		return this.scholarshipFees;
+	}
+
+	public void setScholarshipFees(String scholarshipFees) {
+		this.scholarshipFees = scholarshipFees;
 	}
 
 	public String getScholarshipName() {
@@ -90,30 +137,32 @@ public class Scholarship implements Serializable {
 		this.scholarshipName = scholarshipName;
 	}
 
-	public String getStartDate() {
-		return this.startDate;
+	public String getScholarshipStartDate() {
+		return this.scholarshipStartDate;
 	}
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setScholarshipStartDate(String scholarshipStartDate) {
+		this.scholarshipStartDate = scholarshipStartDate;
 	}
 
-	public long getCreatedAt() {
-		return createdAt;
+
+	public String getTestTimer() {
+		return this.testTimer;
 	}
 
-	public void setCreatedAt(long createdAt) {
-		this.createdAt = createdAt;
+	public void setTestTimer(String testTimer) {
+		this.testTimer = testTimer;
 	}
 
-	public long getUpdatedAt() {
-		return updatedAt;
+	public int getTotalQuestion() {
+		return this.totalQuestion;
 	}
 
-	public void setUpdatedAt(long updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setTotalQuestion(int totalQuestion) {
+		this.totalQuestion = totalQuestion;
 	}
 
+	
 	public ClassNumber getClassNumber() {
 		return this.classNumber;
 	}
@@ -122,12 +171,27 @@ public class Scholarship implements Serializable {
 		this.classNumber = classNumber;
 	}
 
-	public String getScholarshipSubject() {
+	public String[] getNoOfQuestion_perSubject() {
+		return noOfQuestion_perSubject;
+	}
+
+	public void setNoOfQuestion_perSubject(String[] noOfQuestion_perSubject) {
+		this.noOfQuestion_perSubject = noOfQuestion_perSubject;
+	}
+
+	public String[] getScholarshipSubject() {
 		return scholarshipSubject;
 	}
 
-	public void setScholarshipSubject(String scholarshipSubject) {
+	public void setScholarshipSubject(String[] scholarshipSubject) {
 		this.scholarshipSubject = scholarshipSubject;
 	}
+	
+	public long getCreatedAt() {
+		return createdAt;
+	}
 
+	public void setCreatedAt(long createdAt) {
+		this.createdAt = createdAt;
+	}
 }
