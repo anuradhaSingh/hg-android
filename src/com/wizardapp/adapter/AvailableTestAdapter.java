@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class AvailableTestAdapter extends BaseAdapter{
 	    	vi = inflater.inflate(R.layout.available_list_row, null);
 	    	holder.title=(TextView)vi.findViewById(R.id.available_row_text);
 	    	holder.startTest=(Button)vi.findViewById(R.id.btn_starttest);
+	    	holder.startTest.setTag(avalable);
 	    	vi.setTag(holder);
 	    }
 	    else{
@@ -55,7 +57,9 @@ public class AvailableTestAdapter extends BaseAdapter{
 			
 			@Override
 			public void onClick(View v) {
+				Scholarship avai=(Scholarship) v.getTag();
 				Intent intent =new Intent(context,TermsConditionActivity.class);
+				intent.putExtra("object_test",avai);
 				context.startActivity(intent);
 			}
 		});

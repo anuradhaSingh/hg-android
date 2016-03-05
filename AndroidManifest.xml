@@ -78,6 +78,11 @@
             android:name="com.wizardapp.main.QuestionActivity"
             android:label="@string/app_name" >
             </activity>
+            <activity
+            android:name="com.wizardapp.main.ResultActivity"
+            android:label="@string/app_name" >
+            </activity>
+            
     </application>
 
 </manifest>
