@@ -26,5 +26,10 @@ public interface HeyURLs {
 		String referTo = domain + "/util/refer.json";
 	}
 	
+	interface Questions{
+		String startTest = domain + "/questions/test/start.json";
+		String submitAnswer = domain + "/questions/answer.json";
+	}
+	
 	
 }
