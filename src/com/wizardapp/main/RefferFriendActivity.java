@@ -1,5 +1,6 @@
 package com.wizardapp.main;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.example.wizardapp.R;
@@ -46,7 +47,9 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 				if(null != text){
 					try{
 					JSONObject jObj = new JSONObject();
-					jObj.put("to", new String[]{text.toString().trim()});
+					JSONArray jArr = new JSONArray();
+					jArr.put( text.toString().trim());
+					jObj.put("to", jArr);
 					jObj.put("from", userData.getEmail());
 					jObj.put("subject", "Invitation To Join WIzkid");
 					jObj.put("message", "http://goto.google.play.store/");
