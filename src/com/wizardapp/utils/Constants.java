@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import android.text.TextUtils;
 
 public class Constants {
-	
+	public static int isNextQuestion=0;
 	public static final String httpGet = "GET";
 	public static final String httpPost = "POST";
 	public static final String httpPut = "PUT";

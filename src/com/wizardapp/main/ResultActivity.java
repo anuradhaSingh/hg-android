@@ -3,53 +3,50 @@ package com.wizardapp.main;
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserScholarshipResult;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-public class TermsConditionActivity extends MyBaseActivity{
+public class ResultActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
-	Scholarship scho;
+	UserScholarshipResult result;
+	TextView total_score,wronganswer,correct_answer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.terms_condition);
-		scho=(Scholarship) getIntent().getSerializableExtra("object_test");
+		setContentView(R.layout.result);
+		result=(UserScholarshipResult) getIntent().getSerializableExtra("result_response");
+		total_score=(TextView)findViewById(R.id.total_score);
+		wronganswer=(TextView)findViewById(R.id.wrong_answer);
+		correct_answer=(TextView)findViewById(R.id.correct_answer);
+		correct_answer.setText(""+result.getCurrectQuestion());
+		wronganswer.setText(""+result.getWrongQuestion());
+		total_score.setText(""+(result.getCurrectQuestion()*2));
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
-		final CheckBox chk=(CheckBox)findViewById(R.id.checkbox);
-		Button startTest=(Button)findViewById(R.id.btn_start);
-		startTest.setOnClickListener(new OnClickListener() {
+		Button thankyou=(Button)findViewById(R.id.btn_thanks);
+		thankyou.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if(chk.isChecked()==false){
-					Toast toast=Toast.makeText(TermsConditionActivity.this, "Please accept terms and conditions!", Toast.LENGTH_SHORT);
-					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
-					toast.show();
-					
-				}else{
-					Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
-					intent.putExtra("object_test", scho);
-					startActivity(intent);
-				}
+				Intent intent=new Intent(ResultActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
 			}
 		});
-		
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub
@@ -78,7 +75,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,ProfileActivity.class);
+			Intent intent=new Intent(ResultActivity.this,ProfileActivity.class);
 			startActivity(intent);
 			finish();
 		}
@@ -89,7 +86,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,RefferFriendActivity.class);
+			Intent intent=new Intent(ResultActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
 			finish();
 		}
@@ -100,7 +97,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,ContactUsActivity.class);
+			Intent intent=new Intent(ResultActivity.this,ContactUsActivity.class);
 			startActivity(intent);
 			finish();
 		}
@@ -111,7 +108,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
+			Intent intent=new Intent(ResultActivity.this,MyTestActivity.class);
 			startActivity(intent);
 			finish();
 		}
@@ -122,7 +119,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,ScoreBoardActivity.class);
+			Intent intent=new Intent(ResultActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
 		}
 	});
@@ -132,7 +129,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(TermsConditionActivity.this,StartTestActivity.class);
+			Intent intent=new Intent(ResultActivity.this,StartTestActivity.class);
 			startActivity(intent);
 			finish();
 		}
@@ -143,7 +140,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			SharedPreferencesHelper.setLoggedUserInfo(null);
-			Intent intent=new Intent(TermsConditionActivity.this,LoginActivity.class);
+			Intent intent=new Intent(ResultActivity.this,LoginActivity.class);
 			startActivity(intent);
 			finish();
 		}

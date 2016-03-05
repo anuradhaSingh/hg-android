@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    android:orientation="vertical" >
+    
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:id="@+id/back_layout"
+    android:layout_height="40dp"
+    android:background="@color/dark_grey"
+   
+    >
+    <RelativeLayout android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:id="@+id/backlayout"
+        android:layout_centerVertical="true"
+        >
+    <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="3dp"
+         android:src="@drawable/back_button" />
+    
+    <TextView
+        android:id="@+id/datetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" /> 
+       </RelativeLayout>
+        <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESULT"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_14"
+        android:textStyle="bold" /> 
+        
+</RelativeLayout>
+
+<View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_margin="5dp"
+android:layout_height="1dp"
+></View>
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3">
+        <RelativeLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+             >
+            
+            <TextView android:layout_width="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                 android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/total_score"
+                android:textSize="@dimen/screen_pixel_14"/>
+        </RelativeLayout>
+    
+    <RelativeLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle"
+             >
+         <TextView android:layout_width="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                 android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/correct_answer"
+                android:textSize="@dimen/screen_pixel_14"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/circle"
+             >
+         <TextView android:layout_width="wrap_content"
+                android:text=""
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/wrong_answer"
+                android:textSize="@dimen/screen_pixel_14"/>
+    </RelativeLayout>
+</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView android:layout_width="wrap_content"
+                android:text="Total Score"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:textSize="@dimen/screen_pixel_12"/>
+    <TextView android:layout_width="wrap_content"
+                android:text="Correct Answer"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/screen_pixel_12"/>
+    <TextView android:layout_width="wrap_content"
+                android:text="Wrong Answer"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                  android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="@dimen/screen_pixel_12"/>
+</RelativeLayout>
+<View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_margin="5dp"
+android:layout_height="1dp"
+></View>
+<RelativeLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+<TextView
+        android:id="@+id/score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Highest Score-we will soon declare scholarship"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_14"
+        android:textStyle="bold" />
+</RelativeLayout>
+<View
+android:background="@color/orange"
+android:layout_width="fill_parent"
+android:layout_margin="5dp"
+android:layout_height="1dp"
+></View>
+<Button 
+    android:id="@+id/btn_thanks"
+    android:layout_height="40dp"
+    android:layout_width="120dp"
+    android:background="@color/orange"
+    android:text="ThankYou"
+     android:textSize="@dimen/screen_pixel_16"
+    android:layout_marginTop="10dp"
+    android:layout_gravity="center_horizontal"/>
+</LinearLayout>
