@@ -277,6 +277,8 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		        UserScholarshipResult userdetail= new GsonBuilder().create().fromJson(response, type);
 		        Intent intent =new Intent(QuestionActivity.this,ResultActivity.class);
 		        intent.putExtra("result_response", userdetail);
+		        intent.putExtra("userid", userdata.getId());
+		        intent.putExtra("scholarId", scho.getId());
 		        startActivity(intent);
 		        finish();
 			}
@@ -284,5 +286,10 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	}
+	@Override
+	public void sendUpadte(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }

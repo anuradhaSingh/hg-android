@@ -6,4 +6,5 @@ public interface QuestionService {
 	
 	void submitAnswer(String response);
 	void getResult(String response);
+	void sendUpadte(String response);
 }

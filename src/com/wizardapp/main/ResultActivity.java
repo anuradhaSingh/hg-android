@@ -2,8 +2,10 @@ package com.wizardapp.main;
 
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.apis.QuestionApi;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.model.UserScholarshipResult;
+import com.wizardapp.services.QuestionService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
@@ -17,19 +19,24 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class ResultActivity extends MyBaseActivity{
+public class ResultActivity extends MyBaseActivity implements QuestionService{
 	SimpleSideDrawer slide_me;
 	UserScholarshipResult result;
 	TextView total_score,wronganswer,correct_answer;
+	long schoid,userid;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
+		Intent intent=getIntent();
+		schoid=intent.getLongExtra("scholarId", 0);
+		userid=intent.getLongExtra("userid", 0);
 		result=(UserScholarshipResult) getIntent().getSerializableExtra("result_response");
 		total_score=(TextView)findViewById(R.id.total_score);
 		wronganswer=(TextView)findViewById(R.id.wrong_answer);
 		correct_answer=(TextView)findViewById(R.id.correct_answer);
+		QuestionApi.sendUpdateResult(ResultActivity.this, null, schoid, userid);
 		correct_answer.setText(""+result.getCurrectQuestion());
 		wronganswer.setText(""+result.getWrongQuestion());
 		total_score.setText(""+(result.getCurrectQuestion()*2));
@@ -145,5 +152,25 @@ public class ResultActivity extends MyBaseActivity{
 			finish();
 		}
 	});
+	}
+	@Override
+	public void getQuestionsList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void submitAnswer(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void getResult(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void sendUpadte(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }
