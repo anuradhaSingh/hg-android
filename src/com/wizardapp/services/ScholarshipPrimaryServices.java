@@ -8,4 +8,6 @@ public interface ScholarshipPrimaryServices {
 	void getDetailById(String response);
 	
 	void buyScholarship(String response);
+	
+	void tobuyTestList(String response);
 }

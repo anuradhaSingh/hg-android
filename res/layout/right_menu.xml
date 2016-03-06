@@ -35,7 +35,7 @@
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -64,7 +64,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -93,7 +93,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -122,7 +122,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -146,11 +146,11 @@ android:layout_height="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:text="@string/plans"
+        android:text="@string/buy_test"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -179,7 +179,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -208,7 +208,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     <View
@@ -237,7 +237,7 @@ android:layout_height="1dp"
         android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:textSize="@dimen/screen_pixel_12"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
       
  </LinearLayout>
     </LinearLayout>

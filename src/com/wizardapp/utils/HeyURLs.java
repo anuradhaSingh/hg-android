@@ -17,14 +17,17 @@ public interface HeyURLs {
 		String getScholarshipDetail = domain + "/scholarship/"; // append scholarship_id.json
 		String buyScholarship = domain + "/scholarship" + "/buy/";// append scholarshipId and userId
 		
+		String toBuyScholarshipList = domain + "/scholarship/to/buy/" ; // append userId
 		String takenTest = domain + "/scholarship/taken/";   //append userId
 		String availableTest = domain + "/scholarship/available/";   //append userId
 		String updateStatus = domain + "/scholarship/update/status/";// {scholarship_id}/{user_id}/{status}
+		String payForTest = domain + "/scholarship/test/pay.json";
 	}
 	
-	interface Refer{
+	interface Mail{
 		String sendMailTo = domain + "/util/mail/send.json";
 		String referTo = domain + "/util/refer.json";
+		String forgotPassword = domain +"/user/password/forgot.json";
 	}
 	
 	interface Questions{

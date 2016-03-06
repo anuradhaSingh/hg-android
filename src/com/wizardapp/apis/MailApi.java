@@ -38,8 +38,7 @@ public class MailApi {
 
 			@Override
 			protected String doInBackground(String... p) {
-				return HttpConnection.getResponse(HeyURLs.Refer.sendMailTo,
-						jObj);
+				return HttpConnection.getResponse(HeyURLs.Mail.sendMailTo,jObj);
 			}
 
 			@Override
@@ -54,6 +53,44 @@ public class MailApi {
 
 		}
 		new ReferFriendTask().execute();
+	}
+	
+	public static void forgotPassword(final Context context ,final MyBaseFragment fragment, final JSONObject jObj) {
+		if (null != fragment)
+			mailServices = (MailServices) fragment;
+		else
+			mailServices = (MailServices) context;
+
+		class ForgotPasswordTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+
+			@Override
+			protected void onPreExecute() {
+
+				Dialog = new ProgressDialog(context);
+				Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+				Dialog.setMessage("Loading...");
+				Dialog.setCancelable(false);
+				Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				return HttpConnection.getResponse(HeyURLs.Mail.sendMailTo,jObj);
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if (null != result && result.length() != 0)
+					mailServices.forgotPassword(result);
+				else {
+					mailServices.forgotPassword(null);
+				}
+			}
+
+		}
+		new ForgotPasswordTask().execute();
 	}
 
 }

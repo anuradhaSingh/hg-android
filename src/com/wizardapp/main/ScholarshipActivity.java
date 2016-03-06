@@ -19,7 +19,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
-import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
@@ -170,6 +169,12 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 
 	@Override
 	public void buyScholarship(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void tobuyTestList(String response) {
 		// TODO Auto-generated method stub
 		
 	}

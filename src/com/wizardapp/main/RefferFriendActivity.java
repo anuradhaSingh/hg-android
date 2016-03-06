@@ -173,4 +173,9 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 		}
 		
 	}
+	@Override
+	public void forgotPassword(String response) {
+		// TODO Auto-generated method stub
+		
+	}
 }
