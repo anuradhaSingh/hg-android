@@ -5,4 +5,6 @@ public interface MailServices {
 	void referToFriend(String response);
 	
 	void forgotPassword(String response);
+	
+	void contactUs(String response);
 }
