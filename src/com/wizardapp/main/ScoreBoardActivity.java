@@ -1,9 +1,20 @@
 package com.wizardapp.main;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
 import com.wizardapp.adapter.ScoreBoardAdapter;
+import com.wizardapp.adapter.TakenTestAdapter;
+import com.wizardapp.apis.TestApi;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
@@ -16,14 +27,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-public class ScoreBoardActivity extends MyBaseActivity{
+public class ScoreBoardActivity extends MyBaseActivity implements TestService{
 	ListView listview;
+	UserDetail user=SharedPreferencesHelper.getLoggedInUserInfo();
 	 SimpleSideDrawer slide_me;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scoreboard);
+		TestApi.getTakenList(ScoreBoardActivity.this, null, user.getId());
 		RelativeLayout backlayout=(RelativeLayout)findViewById(R.id.back_layout);
 		backlayout.setOnClickListener(new OnClickListener() {
 			
@@ -40,7 +53,7 @@ public class ScoreBoardActivity extends MyBaseActivity{
 		showCustomActionBar();
 		
 		listview=(ListView)findViewById(R.id.scoreboard_listview);
-		listview.setAdapter(new ScoreBoardAdapter(ScoreBoardActivity.this));
+		
 				
 	}
 	private void showCustomActionBar() {
@@ -160,5 +173,27 @@ public class ScoreBoardActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+	}
+	@Override
+	public void getAvailableList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void getTakenList(String response) {
+		// TODO Auto-generated method stub
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            listview.setAdapter(new TakenTestAdapter(ScoreBoardActivity.this, list));
+            System.out.println(list);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void updateTestStatus(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }
