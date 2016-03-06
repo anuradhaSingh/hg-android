@@ -156,6 +156,17 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 				finish();
 			}
 		});
+		LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+		buy_test_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(ResultActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 
 	@Override

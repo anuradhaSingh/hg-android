@@ -156,6 +156,17 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 				finish();
 			}
 		});
+		LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+		buy_test_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(RefferFriendActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 	@Override
 	public void referToFriend(String response) {

@@ -180,6 +180,17 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 			finish();
 		}
 	});
+	LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+	buy_test_layout.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			SharedPreferencesHelper.setLoggedUserInfo(null);
+			Intent intent=new Intent(QuestionActivity.this,ScholarshipActivity.class);
+			startActivity(intent);
+			finish();
+		}
+	});
 	}
 	@Override
 	public void getQuestionsList(String response) {

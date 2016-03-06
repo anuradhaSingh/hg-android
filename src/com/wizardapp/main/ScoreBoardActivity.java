@@ -137,5 +137,16 @@ public class ScoreBoardActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+		LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+		buy_test_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SharedPreferencesHelper.setLoggedUserInfo(null);
+				Intent intent=new Intent(ScoreBoardActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 }
