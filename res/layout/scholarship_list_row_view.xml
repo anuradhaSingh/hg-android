@@ -18,7 +18,8 @@
         <LinearLayout android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-             android:layout_marginRight="10dp"
+            android:id="@+id/content_layout"
+             android:layout_margin="10dp"
             android:layout_toRightOf="@+id/scholarship_thumb_image"
             android:layout_centerHorizontal="true"
             android:orientation="vertical">
@@ -62,19 +63,20 @@
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/screen_pixel_10"
         />
-            <Button
+            
+            </LinearLayout>
+
+        
+<Button
             android:id="@+id/buy_now"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_gravity="right"
+            android:layout_below="@+id/content_layout"
+            android:layout_alignParentRight="true"
             android:background="@color/orange"
             android:layout_margin="10dp"
             android:text="Buy Now"
             android:textSize="@dimen/screen_pixel_14" />
-            </LinearLayout>
-
-        
-
            </RelativeLayout>
 
 </LinearLayout>
