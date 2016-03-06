@@ -296,8 +296,9 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
-	public void sendUpadte(String response) {
+	public void getResultForScore(String response) {
 		// TODO Auto-generated method stub
 		
 	}
