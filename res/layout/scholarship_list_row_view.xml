@@ -62,18 +62,18 @@
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/screen_pixel_10"
         />
-            </LinearLayout>
-
-        <Button
+            <Button
             android:id="@+id/buy_now"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
+            android:layout_gravity="right"
             android:background="@color/orange"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Buy Now"
             android:textSize="@dimen/screen_pixel_14" />
+            </LinearLayout>
+
+        
 
            </RelativeLayout>
 
