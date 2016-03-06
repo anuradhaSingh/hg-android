@@ -47,7 +47,7 @@ public class ForgotPasswordFragment extends MyBaseFragment implements MailServic
 				createNewFragment(new LoginFragment(R.layout.login));
 			}
 		});
-   		emailText = (EditText) ll.findViewById(R.id.email_text);
+   		emailText = (EditText) ll.findViewById(R.id.emailtext);
    		sendButton = (Button) ll.findViewById(R.id.send_btn);
    		sendButton.setOnClickListener(new View.OnClickListener() {
 			

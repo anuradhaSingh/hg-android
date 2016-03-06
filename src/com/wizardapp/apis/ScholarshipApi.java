@@ -62,7 +62,7 @@ public class ScholarshipApi {
 		else
 			scholarshipServices = (ScholarshipPrimaryServices)context;
 		
-		class GetAllScholarshipTask extends AsyncTask<String, Void, String> {
+		class ToBuyTestTask extends AsyncTask<String, Void, String> {
 			ProgressDialog Dialog;
 			@Override
 			protected void onPreExecute() {
@@ -84,14 +84,14 @@ public class ScholarshipApi {
 			protected void onPostExecute(String result) {
 				Dialog.dismiss();
 				if(null != result)
-					scholarshipServices.getAllByClassNumber(result);
+					scholarshipServices.tobuyTestList(result);
 				else{
-					scholarshipServices.getAllByClassNumber(null);
+					scholarshipServices.tobuyTestList(null);
 				}
 			}
 
 		}
-		new GetAllScholarshipTask().execute();
+		new ToBuyTestTask().execute();
 	}
 	
 	
@@ -101,7 +101,7 @@ public class ScholarshipApi {
 		else
 			scholarshipServices = (ScholarshipPrimaryServices)context;
 		
-		class GetAllScholarshipTask extends AsyncTask<String, Void, String> {
+		class BuyScholarshipTask extends AsyncTask<String, Void, String> {
 			ProgressDialog Dialog;
 			@Override
 			protected void onPreExecute() {
@@ -130,7 +130,7 @@ public class ScholarshipApi {
 			}
 
 		}
-		new GetAllScholarshipTask().execute();
+		new BuyScholarshipTask().execute();
 	}
 	
 	
