@@ -188,4 +188,9 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void contactUs(String response) {
+		// TODO Auto-generated method stub
+		
+	}
 }
