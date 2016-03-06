@@ -30,14 +30,14 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	Holder holder;
 	Dialog dialogpopUp = null;
 	private List<Scholarship> scholarshipList;
-	public ScholarshipTestAdapter(Activity context) {
+	public ScholarshipTestAdapter(Activity context ,List<Scholarship> scholarList) {
 		this.context = context;
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.scholarshipList = scholarshipList;
+		this.scholarshipList = scholarList;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-
+    Scholarship schlarship=scholarshipList.get(position);
 		View vi=convertView;
 		if(vi==null)
 	    {
@@ -54,7 +54,8 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	    else{
 	    	 holder = (Holder) vi.getTag();
 	    }
-		
+		holder.title.setText(""+schlarship.getScholarshipName());
+		holder.total_price.setText("Rs. "+schlarship.getPrizeMoney());
        holder.buy.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -76,12 +77,12 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	}
 	@Override
 	public int getCount() {
-		return 6;
+		return scholarshipList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return position;
+		return scholarshipList.get(position);
 	}
 
 	@Override

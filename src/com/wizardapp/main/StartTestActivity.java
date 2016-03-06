@@ -1,7 +1,16 @@
 package com.wizardapp.main;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.adapter.AvailableTestAdapter;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
@@ -12,19 +21,23 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-public class StartTestActivity extends MyBaseActivity{
+public class StartTestActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
+	Button buyTest;
+	ListView available_list;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.start_test);
+		available_list=(ListView)findViewById(R.id.start_list);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
-		Button buyTest=(Button)findViewById(R.id.test_buy);
+	    buyTest=(Button)findViewById(R.id.test_buy);
 		buyTest.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -143,5 +156,33 @@ public class StartTestActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+	}
+	@Override
+	public void getAvailableList(String response) {
+		// TODO Auto-generated method stub
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            if(list.size()>0){
+            	buyTest.setVisibility(View.GONE);
+                available_list.setAdapter(new AvailableTestAdapter(StartTestActivity.this, list));
+            }else{
+            	buyTest.setVisibility(View.VISIBLE);
+            }
+            System.out.println(list);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public void getTakenList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateTestStatus(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }
