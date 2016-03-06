@@ -153,16 +153,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 	}
 	@Override
 	public void getAllByClassNumber(String response) {
-		try{
-	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
-            List<Scholarship> list = new GsonBuilder()
-            .create().fromJson(response, listType);
-            System.out.println(list);
-            listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this,list));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
+		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -179,7 +170,15 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 
 	@Override
 	public void tobuyTestList(String response) {
-		// TODO Auto-generated method stub
+		try{
+	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
+            List<Scholarship> list = new GsonBuilder()
+            .create().fromJson(response, listType);
+            System.out.println(list);
+            listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this,list));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 }
