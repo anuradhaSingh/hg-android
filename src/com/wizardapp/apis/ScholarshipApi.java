@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
+import android.widget.BaseAdapter;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.PaymentServices;
@@ -95,9 +96,9 @@ public class ScholarshipApi {
 	}
 	
 	
-	public static void buyScholarship(final Context context,final MyBaseFragment fragment,final String scholarshipId,final String userId){
-		if(null != fragment)
-			scholarshipServices = (ScholarshipPrimaryServices) fragment;
+	public static void buyScholarship(final Context context,final BaseAdapter adapter,final Long scholarshipId,final Long userId){
+		if(null != adapter)
+			scholarshipServices = (ScholarshipPrimaryServices) adapter;
 		else
 			scholarshipServices = (ScholarshipPrimaryServices)context;
 		
@@ -134,9 +135,9 @@ public class ScholarshipApi {
 	}
 	
 	
-	public static void payForScholarship(final Context context,final MyBaseFragment fragment,final JSONObject jObj,final Long userScholarshipDetailId){
-		if(null != fragment)
-			paymentServices = (PaymentServices) fragment;
+	public static void payForScholarship(final Context context,final BaseAdapter adapter,final JSONObject jObj,final Long userScholarshipDetailId){
+		if(null != adapter)
+			paymentServices = (PaymentServices) adapter;
 		else
 			paymentServices = (PaymentServices)context;
 		

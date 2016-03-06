@@ -2,6 +2,9 @@ package com.wizardapp.adapter;
 
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -16,21 +19,27 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wizardapp.R;
+import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.main.MainActivity;
 import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.main.ScholarshipDetailActivity;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.PaymentServices;
+import com.wizardapp.services.ScholarshipPrimaryServices;
+import com.wizardapp.utils.SharedPreferencesHelper;
 
-public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServices{
+public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServices,ScholarshipPrimaryServices{
 	private Activity context;
 	private static LayoutInflater inflater=null;
 	Holder holder;
 	Dialog dialogpopUp = null;
 	private List<Scholarship> scholarshipList;
+	private UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	public ScholarshipTestAdapter(Activity context ,List<Scholarship> scholarList) {
 		this.context = context;
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,11 +66,14 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 	    }
 		holder.title.setText(""+schlarship.getScholarshipName());
 		holder.total_price.setText("Rs. "+schlarship.getPrizeMoney());
-       holder.buy.setOnClickListener(new OnClickListener() {
+		holder.buy.setTag(schlarship);
+        holder.buy.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				showPaymentPopUp();
+				Scholarship schlarship = (Scholarship) v.getTag();
+				
+				ScholarshipApi.buyScholarship(context, ScholarshipTestAdapter.this, schlarship.getId(), userData.getId());
 			}
 		});
 		
@@ -101,7 +113,7 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 	    
 	}
 	
-	 private void showPaymentPopUp() {
+	 private void showPaymentPopUp(final Long scholarshipBuyId) {
 		  dialogpopUp = new Dialog(context);
 		  context.getWindow().setBackgroundDrawable(
 		    new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -110,10 +122,28 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 		  window.requestFeature(window.FEATURE_NO_TITLE);
 		  dialogpopUp.setContentView(R.layout.payment);
 		  Button buttnSuccess = (Button) dialogpopUp.findViewById(R.id.btn_success);
+		  final JSONObject jObj = new JSONObject();
+		  try{
+			  jObj.put("userScholarshipDetailId", scholarshipBuyId);
+			  jObj.put("paymentMode", "from mobile app");
+			  jObj.put("paymentComment", "This is testing");
+			  jObj.put("apiResponse", "nothing");
+			  jObj.put("transactionId", "nothing");
+			  
+		  }catch(Exception e){
+			  e.printStackTrace();
+		  }
+		  
 		  buttnSuccess.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
-			   
+			   try {
+				jObj.put("paymentStatus", "success");
+				ScholarshipApi.payForScholarship(context, ScholarshipTestAdapter.this, jObj, scholarshipBuyId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		   }
 
 		  });
@@ -121,7 +151,13 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 		  btnFail.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
-			  
+			   try {
+				jObj.put("paymentStatus", "fail");
+				ScholarshipApi.payForScholarship(context, ScholarshipTestAdapter.this, jObj, scholarshipBuyId);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		   }
 
 		  });
@@ -142,6 +178,38 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+	}
+
+	@Override
+	public void getAllByClassNumber(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getDetailById(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buyScholarship(String response) {
+		try{
+			if(null != response){
+				showPaymentPopUp(Long.valueOf(response));
+			}else{
+				Toast.makeText(context, "Network Or Api Issue", Toast.LENGTH_SHORT).show();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void tobuyTestList(String response) {
+		// TODO Auto-generated method stub
 		
 	}
 
