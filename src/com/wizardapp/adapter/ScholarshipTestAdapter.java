@@ -66,11 +66,11 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 		holder.total_price.setText(" Prize : Rs. "+schlarship.getPrizeMoney());
 		holder.total_pay.setText(" Fee : Rs. "+schlarship.getScholarshipFees());
 		holder.discount.setText(" discount : Rs. 0.0");
+		holder.buy.setTag(schlarship);
         holder.buy.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Scholarship schlarship = (Scholarship) v.getTag();
-				
 				ScholarshipApi.buyScholarship(context, ScholarshipTestAdapter.this, schlarship.getId(), userData.getId());
 			}
 		});
