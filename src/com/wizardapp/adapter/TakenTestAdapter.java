@@ -57,6 +57,7 @@ public class TakenTestAdapter extends BaseAdapter implements QuestionService{
 	    	holder.title=(TextView)vi.findViewById(R.id.taken_row_text);
 	    	holder.startTest=(Button)vi.findViewById(R.id.btn_scorecard);
 	    	vi.setTag(holder);
+	    	holder.startTest.setTag(avalable);
 	    }
 	    else{
 	    	 holder = (Holder) vi.getTag();
@@ -67,7 +68,7 @@ public class TakenTestAdapter extends BaseAdapter implements QuestionService{
 			@Override
 			public void onClick(View v) {
 				Scholarship schlarship = (Scholarship) v.getTag();
-				QuestionApi.getScoreResult(context, null, schlarship.getId(), userData.getId());
+				QuestionApi.getScoreResult(context, TakenTestAdapter.this, schlarship.getId(), userData.getId());
 				
 			}
 		});

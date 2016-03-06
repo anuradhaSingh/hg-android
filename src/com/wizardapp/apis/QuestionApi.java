@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
+import android.widget.BaseAdapter;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.QuestionService;
@@ -126,9 +127,9 @@ public class QuestionApi {
 		}
 		new endTestTask().execute();
 	}
-	public static void getScoreResult(final Context context,final MyBaseFragment fragment,final long schoId,final long userId){
-		if(null != fragment)
-			questionServices = (QuestionService) fragment;
+	public static void getScoreResult(final Context context,final BaseAdapter adapter,final long schoId,final long userId){
+		if(null != adapter)
+			questionServices = (QuestionService) adapter;
 		else
 			questionServices = (QuestionService)context;
 		
