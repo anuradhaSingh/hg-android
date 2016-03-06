@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="330dp"
+    android:layout_height="280dp" 
+    android:background="@android:color/transparent"
+    >
+
+<RelativeLayout
+    android:layout_width="330dp"
+    android:layout_height="280dp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_margin="20dp"
+    android:background="@color/white" >
+
+    <TextView
+        android:id="@+id/texttotal_question"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="35dp"
+        android:text=" total question"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+         />
+    <TextView
+        android:id="@+id/textcorrect_answer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/texttotal_question"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text=" total question"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+         />
+    <TextView
+        android:id="@+id/textwrong_answer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textcorrect_answer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text=" total question"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+         />
+    <TextView
+        android:id="@+id/text_rank"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:layout_below="@+id/textwrong_answer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text=" total question"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+         />
+ 
+  <ImageView
+    android:id="@+id/imageclose"
+    android:layout_width="30dp"
+    android:layout_height="30dp"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:src="@drawable/remove" />
+
+</RelativeLayout>
+
+
+     
+</RelativeLayout>

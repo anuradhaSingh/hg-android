@@ -126,4 +126,41 @@ public class QuestionApi {
 		}
 		new endTestTask().execute();
 	}
+	public static void getScoreResult(final Context context,final MyBaseFragment fragment,final long schoId,final long userId){
+		if(null != fragment)
+			questionServices = (QuestionService) fragment;
+		else
+			questionServices = (QuestionService)context;
+		
+		class scoreCardTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+			@Override
+			protected void onPreExecute() {
+				
+		         Dialog = new ProgressDialog(context);
+		    	     Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			         Dialog.setMessage("Loading...");
+			         Dialog.setCancelable(false);
+			         Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				String url = HeyURLs.Questions.getResult +"/"+schoId +"/"+userId+".json";
+				return  RetrieveStream.retrieveStreamGET(url);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if(null != result)
+					questionServices.getResultForScore(result);
+				else{
+					questionServices.getResultForScore(null);
+				}
+			}
+
+		}
+		new scoreCardTask().execute();
+	}
 }
