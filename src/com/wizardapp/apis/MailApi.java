@@ -76,7 +76,7 @@ public class MailApi {
 
 			@Override
 			protected String doInBackground(String... p) {
-				return HttpConnection.getResponse(HeyURLs.Mail.sendMailTo,jObj);
+				return HttpConnection.getResponse(HeyURLs.Mail.forgotPassword,jObj);
 			}
 
 			@Override
