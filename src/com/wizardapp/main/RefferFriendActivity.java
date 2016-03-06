@@ -35,6 +35,18 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.reffer_friend);
+		RelativeLayout back_layout=(RelativeLayout)findViewById(R.id.backlayout);
+		back_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent intent=new Intent(RefferFriendActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		enterMailId = (EditText) findViewById(R.id.enter_email_id);

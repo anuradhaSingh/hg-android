@@ -11,7 +11,30 @@
     android:background="@color/dark_grey"
     android:orientation="horizontal"
     >
+    <RelativeLayout android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:id="@+id/backlayout"
+        android:layout_centerVertical="true"
+        >
+     <ImageView
+        android:id="@+id/backbutton"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="3dp"
+         android:src="@drawable/back_button" />
     
+    <TextView
+        android:id="@+id/datetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/screen_pixel_12"
+        android:textStyle="bold" />
+    </RelativeLayout>
         <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
