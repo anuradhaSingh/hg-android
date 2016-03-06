@@ -23,9 +23,7 @@ import android.widget.Toast;
 
 import com.example.wizardapp.R;
 import com.wizardapp.apis.ScholarshipApi;
-import com.wizardapp.main.MainActivity;
 import com.wizardapp.main.MyTestActivity;
-import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.main.ScholarshipDetailActivity;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.model.UserDetail;
@@ -65,17 +63,10 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 	    	 holder = (Holder) vi.getTag();
 	    }
 		holder.title.setText(""+schlarship.getScholarshipName());
-<<<<<<< HEAD
-		holder.total_price.setText("Rs. "+schlarship.getPrizeMoney());
-		holder.buy.setTag(schlarship);
-        holder.buy.setOnClickListener(new OnClickListener() {
-=======
 		holder.total_price.setText(" Prize : Rs. "+schlarship.getPrizeMoney());
 		holder.total_pay.setText(" Fee : Rs. "+schlarship.getScholarshipFees());
 		holder.discount.setText(" discount : Rs. 0.0");
-       holder.buy.setOnClickListener(new OnClickListener() {
->>>>>>> 1cae56863e2025cf1440cde307614f67fe818068
-			
+        holder.buy.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Scholarship schlarship = (Scholarship) v.getTag();
