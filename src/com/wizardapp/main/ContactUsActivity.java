@@ -10,8 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ContactUsActivity extends MyBaseActivity{
 	
@@ -22,6 +25,9 @@ public class ContactUsActivity extends MyBaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_us);
+		TextView emailid=(TextView)findViewById(R.id.email_text);
+		EditText query=(EditText)findViewById(R.id.query);
+		Button sendEmail=(Button)findViewById(R.id.send_contact);
 		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		back_layout.setOnClickListener(new OnClickListener() {
 			
