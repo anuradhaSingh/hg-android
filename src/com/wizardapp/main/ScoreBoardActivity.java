@@ -142,7 +142,6 @@ public class ScoreBoardActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScoreBoardActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

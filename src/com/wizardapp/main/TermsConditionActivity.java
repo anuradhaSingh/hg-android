@@ -153,7 +153,6 @@ public class TermsConditionActivity extends MyBaseActivity{
 		
 		@Override
 		public void onClick(View v) {
-			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(TermsConditionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();

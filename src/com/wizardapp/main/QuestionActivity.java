@@ -185,7 +185,6 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
-			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(QuestionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();

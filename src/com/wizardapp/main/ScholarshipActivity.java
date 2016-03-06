@@ -150,6 +150,16 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 				finish();
 			}
 		});
+		LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+		buy_test_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(ScholarshipActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 	}
 	@Override
 	public void getAllByClassNumber(String response) {

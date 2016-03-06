@@ -160,7 +160,6 @@ public class ProfileActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ProfileActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

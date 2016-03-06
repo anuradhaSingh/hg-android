@@ -161,7 +161,6 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			
 			@Override
 			public void onClick(View v) {
-				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(RefferFriendActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

@@ -199,7 +199,6 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		
 		@Override
 		public void onClick(View v) {
-			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(MyTestActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();

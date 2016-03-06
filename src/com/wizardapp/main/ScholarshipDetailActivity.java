@@ -136,7 +136,6 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScholarshipDetailActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();
