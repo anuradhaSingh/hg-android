@@ -23,8 +23,9 @@ import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.main.ScholarshipDetailActivity;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.services.PaymentServices;
 
-public class ScholarshipTestAdapter extends BaseAdapter{
+public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServices{
 	private Activity context;
 	private static LayoutInflater inflater=null;
 	Holder holder;
@@ -114,10 +115,7 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 		  buttnSuccess.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
-			   Intent intent =new Intent(context,MyTestActivity.class);
-				context.startActivity(intent);
-				context.finish();
-		    dialogpopUp.dismiss();
+			   
 		   }
 
 		  });
@@ -125,10 +123,7 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 		  btnFail.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
-			   Intent intent =new Intent(context,MyTestActivity.class);
-				context.startActivity(intent);
-				context.finish();
-		    dialogpopUp.dismiss();
+			  
 		   }
 
 		  });
@@ -136,5 +131,20 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 		  dialogpopUp.show();
 
 		 }
+
+	@Override
+	public void payForTest(String response, Long userScholarshipDetailId) {
+		try{
+			if(null != response){
+				Intent intent =new Intent(context,MyTestActivity.class);
+				context.startActivity(intent);
+				context.finish();
+		        dialogpopUp.dismiss();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
 
 }
