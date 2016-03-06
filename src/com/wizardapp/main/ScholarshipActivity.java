@@ -19,7 +19,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.ScholarshipTestAdapter;
+import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
@@ -27,6 +29,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 	ListView listview;
 	 SimpleSideDrawer slide_me;
 	 RelativeLayout back_layout;
+	 UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,8 +41,8 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		showCustomActionBar();
 		
 		listview=(ListView)findViewById(R.id.scholarship_listview);
-		//ScholarshipApi.getAllScholarshipForClassNumber(ScholarshipActivity.this, null, classNumber);
-		listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this));
+		ScholarshipApi.getToBuyTestList(ScholarshipActivity.this, null, Long.valueOf(userdata.getClassType()), userdata.getId());
+		
 		back_layout.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -155,6 +158,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
             List<Scholarship> list = new GsonBuilder()
             .create().fromJson(response, listType);
             System.out.println(list);
+            listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this,list));
 		}catch(Exception e){
 			e.printStackTrace();
 		}

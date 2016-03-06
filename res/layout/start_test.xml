@@ -43,16 +43,9 @@
         
 </RelativeLayout>
 
-  <TextView
-        android:id="@+id/no_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buy test "
-        android:layout_margin="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
+ <ListView android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/start_list"></ListView>
 
 <Button
             android:id="@+id/test_buy"
@@ -62,6 +55,7 @@
             android:background="@color/orange"
             android:layout_margin="20dp"
             android:text="Buy test"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="@dimen/screen_pixel_14" />
 </LinearLayout>
