@@ -55,7 +55,9 @@ public class ScholarshipTestAdapter extends BaseAdapter{
 	    	 holder = (Holder) vi.getTag();
 	    }
 		holder.title.setText(""+schlarship.getScholarshipName());
-		holder.total_price.setText("Rs. "+schlarship.getPrizeMoney());
+		holder.total_price.setText(" Prize : Rs. "+schlarship.getPrizeMoney());
+		holder.total_pay.setText(" Fee : Rs. "+schlarship.getScholarshipFees());
+		holder.discount.setText(" discount : Rs. 0.0");
        holder.buy.setOnClickListener(new OnClickListener() {
 			
 			@Override
