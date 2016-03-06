@@ -39,7 +39,6 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
-		
 		listview=(ListView)findViewById(R.id.scholarship_listview);
 		ScholarshipApi.getToBuyTestList(ScholarshipActivity.this, null, Long.valueOf(userdata.getClassType()), userdata.getId());
 		
@@ -157,7 +156,6 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder()
             .create().fromJson(response, listType);
-            System.out.println(list);
             listview.setAdapter(new ScholarshipTestAdapter(ScholarshipActivity.this,list));
 		}catch(Exception e){
 			e.printStackTrace();
