@@ -26,7 +26,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.apis.QuestionApi;
-import com.wizardapp.apis.QuestionsApi;
 import com.wizardapp.model.Question;
 import com.wizardapp.model.Scholarship;
 import com.wizardapp.model.UserDetail;

@@ -5,6 +5,6 @@ public interface TestService {
 	
 	void getTakenList(String response);
 	
-	
+	void updateTestStatus(String response);
 }
 

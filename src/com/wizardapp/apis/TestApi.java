@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.view.Window;
 
 import com.wizardapp.fragments.MyBaseFragment;
+import com.wizardapp.services.QuestionService;
 import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.services.TestService;
 import com.wizardapp.utils.HeyURLs;
@@ -90,5 +91,43 @@ public class TestApi {
 
 		}
 		new GetTakenListTask().execute();
+	}
+	
+	public static void updateScholarshipStatus(final Context context,final MyBaseFragment fragment,final long schoId,final long userId,final boolean status){
+		if(null != fragment)
+			testServices = (TestService) fragment;
+		else
+			testServices = (TestService)context;
+		
+		class sendUpdateTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+			@Override
+			protected void onPreExecute() {
+				
+		         Dialog = new ProgressDialog(context);
+		    	     Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			         Dialog.setMessage("Loading...");
+			         Dialog.setCancelable(false);
+			         Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				String url = HeyURLs.Scholarship.updateStatus +schoId +"/"+userId+"/"+status+".json";
+				return  RetrieveStream.retrieveStreamGET(url);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if(null != result)
+					testServices.updateTestStatus(result);
+				else{
+					testServices.updateTestStatus(null);
+				}
+			}
+
+		}
+		new sendUpdateTask().execute();
 	}
 }

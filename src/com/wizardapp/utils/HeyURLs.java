@@ -19,7 +19,7 @@ public interface HeyURLs {
 		
 		String takenTest = domain + "/scholarship/taken/";   //append userId
 		String availableTest = domain + "/scholarship/available/";   //append userId
-		String updateStatus = domain + "/update/status/";// {scholarship_id}/{user_id}/{status}
+		String updateStatus = domain + "/scholarship/update/status/";// {scholarship_id}/{user_id}/{status}
 	}
 	
 	interface Refer{

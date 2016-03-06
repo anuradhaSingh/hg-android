@@ -220,5 +220,10 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public void updateTestStatus(String response) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

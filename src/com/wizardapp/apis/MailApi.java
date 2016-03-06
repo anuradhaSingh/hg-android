@@ -23,7 +23,7 @@ public class MailApi {
 		else
 			mailServices = (MailServices) context;
 
-		class AppLoginTask extends AsyncTask<String, Void, String> {
+		class ReferFriendTask extends AsyncTask<String, Void, String> {
 			ProgressDialog Dialog;
 
 			@Override
@@ -53,7 +53,7 @@ public class MailApi {
 			}
 
 		}
-		new AppLoginTask().execute();
+		new ReferFriendTask().execute();
 	}
 
 }
