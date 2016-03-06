@@ -9,7 +9,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
 import com.wizardapp.adapter.AvailableTestAdapter;
+import com.wizardapp.apis.TestApi;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
@@ -28,11 +30,13 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
 	Button buyTest;
 	ListView available_list;
+	UserDetail user=SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.start_test);
+		TestApi.getAvailableList(StartTestActivity.this, null, user.getId());
 		available_list=(ListView)findViewById(R.id.start_list);
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
