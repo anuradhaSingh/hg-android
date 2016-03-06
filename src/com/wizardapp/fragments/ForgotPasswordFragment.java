@@ -81,6 +81,7 @@ public class ForgotPasswordFragment extends MyBaseFragment implements MailServic
 		try{
 			if(null != response){
 				Toast.makeText(activitycontext, "Please check your inbox for password ", Toast.LENGTH_SHORT).show();
+				createNewFragment(new LoginFragment(R.layout.login));
 			}else{
 				Toast.makeText(activitycontext, "you have registered from this Email ", Toast.LENGTH_SHORT).show();
 			}
