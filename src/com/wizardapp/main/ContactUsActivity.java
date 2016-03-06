@@ -28,6 +28,9 @@ public class ContactUsActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
+				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
+				startActivity(intent);
 				finish();
 			}
 		});
@@ -46,6 +49,17 @@ public class ContactUsActivity extends MyBaseActivity{
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
+		home.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		RelativeLayout action_drawer=(RelativeLayout)findViewById(R.id.action_drawer);
 		action_drawer.setOnClickListener(new OnClickListener() {
 			

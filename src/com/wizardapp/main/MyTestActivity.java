@@ -43,14 +43,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		available_list=(ListView)findViewById(R.id.available_list);
 		taken_list=(ListView)findViewById(R.id.taken_list);
 		backlayout=(RelativeLayout)findViewById(R.id.backlayout);
-		backlayout.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+		backlayout.setVisibility(View.GONE);
+		
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();

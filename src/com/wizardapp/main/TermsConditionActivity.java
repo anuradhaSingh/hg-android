@@ -26,6 +26,17 @@ public class TermsConditionActivity extends MyBaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.terms_condition);
+		RelativeLayout back_layout=(RelativeLayout)findViewById(R.id.backlayout);
+        back_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});	
 		scho=(Scholarship) getIntent().getSerializableExtra("object_test");
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
@@ -63,6 +74,17 @@ public class TermsConditionActivity extends MyBaseActivity{
 	actionBar.setDisplayShowTitleEnabled(false);
 	actionBar.setDisplayShowCustomEnabled(true);
 	actionBar.setCustomView(actionBarLayout);
+	RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
+	home.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
+			startActivity(intent);
+			finish();
+		}
+	});
 	RelativeLayout action_drawer=(RelativeLayout)findViewById(R.id.action_drawer);
 	action_drawer.setOnClickListener(new OnClickListener() {
 		

@@ -28,6 +28,18 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
+		RelativeLayout back_layout=(RelativeLayout)findViewById(R.id.backlayout);
+		back_layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent intent=new Intent(ResultActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		Intent intent = getIntent();
 		schoid = intent.getLongExtra("scholarId", 0);
 		userid = intent.getLongExtra("userid", 0);
@@ -67,6 +79,17 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
+		home.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(ResultActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		RelativeLayout action_drawer = (RelativeLayout) findViewById(R.id.action_drawer);
 		action_drawer.setOnClickListener(new OnClickListener() {
 
