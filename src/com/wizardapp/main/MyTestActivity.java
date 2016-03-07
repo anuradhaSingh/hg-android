@@ -34,6 +34,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
 	RelativeLayout backlayout;
 	ListView available_list,taken_list;
+	Button buy;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,19 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		setContentView(R.layout.my_test);
 		available_list=(ListView)findViewById(R.id.available_list);
 		taken_list=(ListView)findViewById(R.id.taken_list);
+		buy=(Button)findViewById(R.id.test_buy);
 		backlayout=(RelativeLayout)findViewById(R.id.backlayout);
 		backlayout.setVisibility(View.GONE);
-		
+		buy.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MyTestActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		slide_me = new SimpleSideDrawer(this);
 		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
@@ -206,8 +217,14 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		try{
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            if(list.size()>0){
+            	buy.setVisibility(View.GONE);
             available_list.setAdapter(new AvailableTestAdapter(MyTestActivity.this, list));
+            }else{
+            	buy.setVisibility(View.VISIBLE);
+            }
             System.out.println(list);
+          
 		}catch(Exception e){
 			e.printStackTrace();
 		}

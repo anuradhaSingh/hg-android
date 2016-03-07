@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -31,12 +32,24 @@ public class ScoreBoardActivity extends MyBaseActivity implements TestService{
 	ListView listview;
 	UserDetail user=SharedPreferencesHelper.getLoggedInUserInfo();
 	 SimpleSideDrawer slide_me;
+	 Button buytest;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scoreboard);
 		TestApi.getTakenList(ScoreBoardActivity.this, null, user.getId());
+		buytest=(Button)findViewById(R.id.test_buy);
+		buytest.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent=new Intent(ScoreBoardActivity.this,ScholarshipActivity.class);
+					startActivity(intent);
+					finish();
+				}
+			});
 		RelativeLayout backlayout=(RelativeLayout)findViewById(R.id.back_layout);
 		backlayout.setOnClickListener(new OnClickListener() {
 			
@@ -185,7 +198,12 @@ public class ScoreBoardActivity extends MyBaseActivity implements TestService{
 		try{
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            if(list.size()>0){
+            	buytest.setVisibility(View.GONE);
             listview.setAdapter(new TakenTestAdapter(ScoreBoardActivity.this, list));
+            }else{
+            	buytest.setVisibility(View.VISIBLE);
+            }
             System.out.println(list);
 		}catch(Exception e){
 			e.printStackTrace();
