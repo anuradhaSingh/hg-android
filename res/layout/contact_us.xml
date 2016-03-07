@@ -78,7 +78,7 @@
         android:background="@color/dark_grey"
         android:textColorHint="@color/black"
         android:textColor="@color/black"
-        android:hint="Query"/>
+        android:hint="Please write to us."/>
        <Button
             android:id="@+id/send_contact"
             android:layout_width="100dp"
