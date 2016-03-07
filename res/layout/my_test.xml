@@ -92,6 +92,18 @@
     <ListView android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/available_list"></ListView>
+    
+    <Button
+            android:id="@+id/test_buy"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/orange"
+            android:layout_margin="20dp"
+            android:text="Buy test"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/screen_pixel_14" />
 
  </LinearLayout>
   <LinearLayout android:layout_width="fill_parent"

@@ -46,4 +46,15 @@
     android:id="@+id/scoreboard_listview">
     
 </ListView>
+<Button
+            android:id="@+id/test_buy"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/orange"
+            android:layout_margin="20dp"
+            android:text="Buy test"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/screen_pixel_14" />
 </LinearLayout>
