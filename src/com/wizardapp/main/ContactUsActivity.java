@@ -1,33 +1,62 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-import com.navdrawer.SimpleSideDrawer;
-import com.wizardapp.utils.SharedPreferencesHelper;
+import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class ContactUsActivity extends MyBaseActivity{
+import com.example.wizardapp.R;
+import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.apis.UserApi;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.MailServices;
+import com.wizardapp.utils.SharedPreferencesHelper;
+
+public class ContactUsActivity extends MyBaseActivity implements MailServices{
 	
 	SimpleSideDrawer slide_me;
 	RelativeLayout back_layout;
+	private UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_us);
 		TextView emailid=(TextView)findViewById(R.id.email_text);
-		EditText query=(EditText)findViewById(R.id.query);
+		final EditText query=(EditText)findViewById(R.id.query);
 		Button sendEmail=(Button)findViewById(R.id.send_contact);
+		sendEmail.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Editable queryE = query.getText();
+				if(null != queryE){
+					try{
+						JSONObject jObj = new JSONObject();
+						jObj.put("userEmail", userData.getEmail());
+						jObj.put("userId", userData.getId());
+						jObj.put("name", userData.getFirstName());
+						jObj.put("query", queryE.toString());
+					UserApi.contactUs(ContactUsActivity.this, null, jObj);
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
 		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		back_layout.setOnClickListener(new OnClickListener() {
 			
@@ -122,7 +151,6 @@ public class ContactUsActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent=new Intent(ContactUsActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
@@ -161,5 +189,29 @@ public class ContactUsActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+	}
+	@Override
+	public void referToFriend(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void forgotPassword(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void contactUs(String response) {
+		try{
+			if(null == response){
+				Toast.makeText(ContactUsActivity.this, "We will contact you soon.", Toast.LENGTH_SHORT).show();
+				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
+				startActivity(intent);
+				ContactUsActivity.this.finish();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
 	}
 }
