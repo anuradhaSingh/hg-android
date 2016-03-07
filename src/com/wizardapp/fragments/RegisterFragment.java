@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
@@ -54,7 +55,8 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     Spinner spinState;
     CheckBox termsCondition;
     String [] states;
-   LinearLayout backlayout;
+    LinearLayout backlayout;
+    ToggleButton gender;
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -79,6 +81,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				createNewFragment(new LoginFragment(R.layout.login));
 			}
 		});
+	    gender=(ToggleButton)ll.findViewById(R.id.radiobtn);
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
 	    termsCondition=(CheckBox)ll.findViewById(R.id.checkbox);
 	    city=(EditText)ll.findViewById(R.id.city_edittext);

@@ -5,6 +5,6 @@ android:drawable="@drawable/malenew"
 android:state_checked="true"/>
  
    <item
-android:drawable="@drawable/malenew"
+android:drawable="@drawable/female_icon"
 android:state_checked="false"/>
 </selector>
