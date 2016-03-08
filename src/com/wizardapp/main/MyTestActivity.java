@@ -31,7 +31,6 @@ import android.widget.RelativeLayout;
 public class MyTestActivity extends MyBaseActivity implements TestService{
 	Button available,taken;
 	LinearLayout available_view,taken_view;
-	SimpleSideDrawer slide_me;
 	RelativeLayout backlayout;
 	ListView available_list,taken_list;
 	Button buy;
@@ -56,8 +55,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 				finish();
 			}
 		});
-		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
+		
 		showCustomActionBar();
 		available=(Button)findViewById(R.id.available_test);
 		available_view=(LinearLayout)findViewById(R.id.available_layout);
@@ -114,6 +112,10 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	actionBar.setDisplayShowTitleEnabled(false);
 	actionBar.setDisplayShowCustomEnabled(true);
 	actionBar.setCustomView(actionBarLayout);
+	final SimpleSideDrawer	slide_me = new SimpleSideDrawer(this);
+	
+	slide_me.setRightBehindContentView(R.layout.right_menu);
+	final LinearLayout  linear=(LinearLayout)findViewById(R.id.right_menu_header);
 	RelativeLayout action_drawer=(RelativeLayout)findViewById(R.id.action_drawer);
 	action_drawer.setOnClickListener(new OnClickListener() {
 		
@@ -129,6 +131,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
+			linear.setVisibility(View.GONE);
 			Intent intent=new Intent(MyTestActivity.this,ProfileActivity.class);
 			startActivity(intent);
 			finish();
@@ -140,6 +144,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
 			finish();
@@ -151,6 +157,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,ContactUsActivity.class);
 			startActivity(intent);
 			finish();
@@ -162,9 +170,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			Intent intent=new Intent(MyTestActivity.this,MyTestActivity.class);
-			startActivity(intent);
-			finish();
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 		}
 	});
 	LinearLayout scoreboard=(LinearLayout)findViewById(R.id.scoreboard_view);
@@ -173,6 +180,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
 		}
@@ -183,6 +192,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,StartTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -193,6 +204,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(MyTestActivity.this,LoginActivity.class);
 			startActivity(intent);
@@ -204,6 +217,8 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();

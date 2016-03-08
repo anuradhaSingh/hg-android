@@ -78,6 +78,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -107,6 +108,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -118,6 +120,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
@@ -129,6 +132,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -140,6 +144,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
@@ -152,6 +157,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -162,6 +168,7 @@ public class ProfileActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ProfileActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -173,6 +180,7 @@ public class ProfileActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ProfileActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

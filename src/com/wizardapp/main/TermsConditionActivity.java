@@ -80,6 +80,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -100,6 +101,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ProfileActivity.class);
 			startActivity(intent);
 			finish();
@@ -111,6 +113,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
 			finish();
@@ -122,6 +125,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ContactUsActivity.class);
 			startActivity(intent);
 			finish();
@@ -133,6 +137,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -144,6 +149,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
 		}
@@ -154,6 +160,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,StartTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -164,6 +171,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		
 		@Override
 		public void onClick(View v) {
+			slide_me.closeRightSide();
 			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(TermsConditionActivity.this,LoginActivity.class);
 			startActivity(intent);
@@ -175,6 +183,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 		
 		@Override
 		public void onClick(View v) {
+			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();
