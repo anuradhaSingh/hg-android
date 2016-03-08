@@ -1,7 +1,6 @@
 package com.wizardapp.fragments;
 
 import java.lang.reflect.Type;
-import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -57,6 +56,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     String [] states;
     LinearLayout backlayout;
     ToggleButton gender;
+    private String genderText="M";
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -82,6 +82,17 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			}
 		});
 	    gender=(ToggleButton)ll.findViewById(R.id.radiobtn);
+	    gender.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(gender.isChecked()){
+					genderText = "M";
+				}else{
+					genderText = "F";
+				}
+			}
+		});
 	    firstName=(EditText)ll.findViewById(R.id.firstname_edittext);
 	    termsCondition=(CheckBox)ll.findViewById(R.id.checkbox);
 	    city=(EditText)ll.findViewById(R.id.city_edittext);
@@ -220,7 +231,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								requestObj.put("mobile",phoneValue );
 								requestObj.put("phone",phoneValue );
 								requestObj.put("streetAddress", addressValue);
-								requestObj.put("gender", "M");
+								requestObj.put("gender", genderText);
 								requestObj.put("zipCode", pinCodeValue);
 								requestObj.put("city", cityString);
 								requestObj.put("classType", classvalue);
@@ -239,9 +250,6 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 					}else{
 						Toast.makeText(activitycontext, Constants.passwordMisMatch, Toast.LENGTH_SHORT).show();
 					}
-				
-			
-				
 				
 			}
 		});
