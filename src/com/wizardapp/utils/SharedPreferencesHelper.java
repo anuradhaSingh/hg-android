@@ -1,6 +1,5 @@
 package com.wizardapp.utils;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
@@ -17,17 +16,15 @@ public class SharedPreferencesHelper {
 	
 	public static void setmPrefs(SharedPreferences mPrefs) {
 		SharedPreferencesHelper.mPrefs = mPrefs;
-	}
-
-	public static void setPrefsEditor(Editor prefsEditor) {
-		SharedPreferencesHelper.prefsEditor = prefsEditor;
+		SharedPreferencesHelper.prefsEditor = mPrefs.edit();
 	}
 
 	public static void setLoggedUserInfo(UserDetail userResponse){
 		Gson gson = new Gson();
         String json = gson.toJson(userResponse);
         prefsEditor.putString(Constants.SharedPref.loggedInUserData, json);
-        prefsEditor.commit();
+       // prefsEditor.commit();
+        prefsEditor.apply();
 	}
 	
 	public static UserDetail getLoggedInUserInfo(){

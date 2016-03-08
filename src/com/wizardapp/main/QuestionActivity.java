@@ -20,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
@@ -33,6 +34,7 @@ import com.wizardapp.model.UserScholarshipResult;
 import com.wizardapp.services.QuestionService;
 import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.CustomCountDown;
+import com.wizardapp.utils.RandomNumbers;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class QuestionActivity extends MyBaseActivity implements QuestionService{
@@ -220,31 +222,40 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 
 		@Override
 		public void onClick(View v) {
-			if(Constants.isNextQuestion<=list.size()){
+			try{
+				radiogrp.refreshDrawableState();
+			if(Constants.isNextQuestion<=list.size()-1){
 				int selectedId = radiogrp.getCheckedRadioButtonId();
-				RadioButton radioButton = (RadioButton) findViewById(selectedId);
-				answer = radioButton.getText().toString();
-				JSONObject jObj = new JSONObject();
-				try {
-					jObj.put("userId", userdata.getId());
-					jObj.put("scholarshipId",scho.getId());
-					jObj.put("questionId",question.getId());
-					jObj.put("userSelectOption", answer);
-				if(answer.equalsIgnoreCase(question.getAnswer())){
-					jObj.put("optedStatus", true);
+				if(selectedId > -1){
+					RadioButton radioButton = (RadioButton) findViewById(selectedId);
+					answer = radioButton.getText().toString();
+					JSONObject jObj = new JSONObject();
+					try {
+						jObj.put("userId", userdata.getId());
+						jObj.put("scholarshipId",scho.getId());
+						jObj.put("questionId",question.getId());
+						jObj.put("userSelectOption", answer);
+					if(answer.equalsIgnoreCase(question.getAnswer())){
+						jObj.put("optedStatus", true);
+					}else{
+						jObj.put("optedStatus", false);	
+					}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					QuestionApi.submitAnswerForQuestion(QuestionActivity.this, null, jObj);
 				}else{
-					jObj.put("optedStatus", false);	
+					Toast.makeText(QuestionActivity.this, "Please select some option", Toast.LENGTH_SHORT).show();
 				}
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				QuestionApi.submitAnswerForQuestion(QuestionActivity.this, null, jObj);
 			}else{
-				
+				// questions are over
 			}
 				
-			
+			}catch(Exception e){
+				e.printStackTrace();
+				Toast.makeText(QuestionActivity.this, "Please select some option", Toast.LENGTH_SHORT).show();
+			}
 			
 
 		}
@@ -256,6 +267,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 			if(response!=null){
 				
 				if(Constants.isNextQuestion==list.size()-1){
+					Constants.isNextQuestion = 0; //reset the counter
 					QuestionApi.getEndResult(QuestionActivity.this, null, scho.getId(), userdata.getId());
 				}else{
 					Constants.isNextQuestion++;
@@ -275,12 +287,13 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 
   				questiontext.setText("Q." + (Constants.isNextQuestion + 1)
   							+ " " + question.getQuestion());
-  					checkbox1.setText(question.getOption1());
-  					checkbox2.setText(question.getOption2());
-  					checkbox3.setText(question.getOption3());
-  					checkbox4.setText(question.getOption4());
-  					flag = false;
-  					
+  				String arr[] = {question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4()};
+  				RandomNumbers randomNumbers = new RandomNumbers();
+  					checkbox1.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
+  					checkbox2.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
+  					checkbox3.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
+  					checkbox4.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
+  					randomNumbers =null;
   				}
   			
   		

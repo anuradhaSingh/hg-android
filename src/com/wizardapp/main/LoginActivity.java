@@ -13,9 +13,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 
 import com.example.wizardapp.R;
 import com.wizardapp.fragments.LoginFragment;
@@ -27,16 +27,14 @@ import com.wizardapp.utils.SharedPreferencesHelper;
 public class LoginActivity extends MyBaseActivity {
 
 	SharedPreferences mPrefs;
-	Editor prefsEditor;
 	public static final int DATE_OF_BIRTH = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mPrefs = getPreferences(MODE_PRIVATE);
-		prefsEditor = mPrefs.edit();
+		//mPrefs = getPreferences(MODE_PRIVATE);
+		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferencesHelper.setmPrefs(mPrefs);
-		SharedPreferencesHelper.setPrefsEditor(prefsEditor);
 
 	}
 

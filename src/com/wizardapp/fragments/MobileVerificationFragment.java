@@ -3,6 +3,7 @@ package com.wizardapp.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +68,11 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 			
 			@Override
 			public void onClick(View v) {
-				UserApi.verifyuser(activitycontext, MobileVerificationFragment.this, userdata.getPhone(), otp.getText().toString());
+				Editable otpE = otp.getText();
+				if(null != otpE && !otpE.toString().isEmpty())
+				  UserApi.verifyuser(activitycontext, MobileVerificationFragment.this, userdata.getPhone(), otp.getText().toString());
+				else
+				  Toast.makeText(activitycontext, "Please enter the OTP provided in your registered Email.", Toast.LENGTH_SHORT).show();	
 			}
 		});
 		return ll;
