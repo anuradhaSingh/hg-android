@@ -103,6 +103,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,MyTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -123,6 +124,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ProfileActivity.class);
 			startActivity(intent);
 			finish();
@@ -134,6 +136,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
 			finish();
@@ -145,6 +148,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ContactUsActivity.class);
 			startActivity(intent);
 			finish();
@@ -156,6 +160,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,MyTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -167,6 +172,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
 		}
@@ -177,6 +183,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,StartTestActivity.class);
 			startActivity(intent);
 			finish();
@@ -187,6 +194,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
+			slide_me.closeRightSide();
 			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(QuestionActivity.this,LoginActivity.class);
 			startActivity(intent);
@@ -198,6 +206,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
+			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);
 			finish();

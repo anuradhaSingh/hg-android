@@ -52,6 +52,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -72,6 +73,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ProfileActivity.class);
 				startActivity(intent);
 				finish();
@@ -83,6 +85,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -94,6 +97,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
@@ -105,6 +109,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -116,6 +121,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 			}
@@ -126,6 +132,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -136,6 +143,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -147,6 +155,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

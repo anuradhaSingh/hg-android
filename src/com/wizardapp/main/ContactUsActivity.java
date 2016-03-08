@@ -90,6 +90,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -110,6 +111,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ProfileActivity.class);
 				startActivity(intent);
 				finish();
@@ -121,6 +123,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -141,6 +144,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -151,6 +155,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
@@ -163,6 +168,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -173,6 +179,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ContactUsActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -184,6 +191,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

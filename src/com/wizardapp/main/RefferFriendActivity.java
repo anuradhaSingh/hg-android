@@ -91,6 +91,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -111,6 +112,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ProfileActivity.class);
 				startActivity(intent);
 			}
@@ -130,6 +132,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 			}
@@ -140,6 +143,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -151,6 +155,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
@@ -163,6 +168,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -173,6 +179,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(RefferFriendActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -184,6 +191,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

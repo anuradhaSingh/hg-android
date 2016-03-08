@@ -54,6 +54,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -74,6 +75,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,ProfileActivity.class);
 				startActivity(intent);
 				finish();
@@ -85,6 +87,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -96,6 +99,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
@@ -107,6 +111,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -118,6 +123,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 			}
@@ -128,6 +134,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -138,6 +145,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScholarshipDetailActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -149,6 +157,7 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipDetailActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

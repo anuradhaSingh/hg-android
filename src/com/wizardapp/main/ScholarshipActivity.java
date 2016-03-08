@@ -73,6 +73,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -93,6 +94,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ProfileActivity.class);
 				startActivity(intent);
 				finish();
@@ -104,6 +106,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -115,6 +118,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
@@ -126,6 +130,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -137,6 +142,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 			}
@@ -147,6 +153,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -157,6 +164,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScholarshipActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -168,6 +176,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

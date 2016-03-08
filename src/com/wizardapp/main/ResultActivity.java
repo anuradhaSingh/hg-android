@@ -85,6 +85,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ResultActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -103,6 +104,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						ProfileActivity.class);
 				startActivity(intent);
@@ -114,6 +116,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						RefferFriendActivity.class);
 				startActivity(intent);
@@ -125,6 +128,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(ResultActivity.this,
 						ContactUsActivity.class);
@@ -138,6 +142,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						MyTestActivity.class);
 				startActivity(intent);
@@ -150,6 +155,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						ScoreBoardActivity.class);
 				startActivity(intent);
@@ -161,6 +167,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						StartTestActivity.class);
 				startActivity(intent);
@@ -172,6 +179,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent = new Intent(ResultActivity.this,
 						LoginActivity.class);
@@ -184,6 +192,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			
 			@Override
 			public void onClick(View v) {
+				slide_me.closeRightSide();
 				Intent intent=new Intent(ResultActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();
