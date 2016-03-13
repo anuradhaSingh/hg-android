@@ -69,7 +69,7 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 			public void onClick(View v) {
 				Editable otpE = otp.getText();
 				if(null != otpE && !otpE.toString().isEmpty())
-				  UserApi.verifyuser(activitycontext, MobileVerificationFragment.this, userdata.getPhone(), otp.getText().toString());
+				  UserApi.verifyuser(activitycontext, MobileVerificationFragment.this, userdata.getEmail().trim(), otp.getText().toString());
 				else
 				  Toast.makeText(activitycontext, "Please enter the OTP provided in your registered Email.", Toast.LENGTH_SHORT).show();	
 			}
