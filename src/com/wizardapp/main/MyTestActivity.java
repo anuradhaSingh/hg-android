@@ -38,6 +38,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	RelativeLayout backlayout;
 	ListView available_list,taken_list;
 	Button buy;
+	boolean flag=false;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	 LinearLayout  linear;
 	@Override
@@ -107,7 +108,6 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub
-	// TODO Auto-generated method stub
 	final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
 			.inflate(R.layout.custom_actionbar, null);
 
@@ -127,8 +127,20 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			linear.setVisibility(View.VISIBLE);
+			
+			if(flag==false){
+				
+			linear.setVisibility(View.GONE);
 			slide_me.toggleRightDrawer();
+			flag=true;
+			}else{
+				flag=false;
+				linear.setVisibility(View.VISIBLE);
+				slide_me.toggleRightDrawer();
+				
+				
+			}
+			
 		}
 	});
 	final LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
