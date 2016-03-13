@@ -92,16 +92,18 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 
 @Override
 	public void userLoggingIn(String userResponse) {
-		// TODO Auto-generated method stub
 	try{
 		if(null != userResponse){
 			   Type type = new TypeToken<UserDetail>(){}.getType();
 	           UserDetail userdetail= new GsonBuilder().create().fromJson(userResponse, type);
 	           SharedPreferencesHelper.setLoggedUserInfo(userdetail);
-	           //createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
-	           Intent intent=new Intent(activity,MyTestActivity.class);
-			   startActivity(intent);
-		       activity.finish();
+	           if(userdetail.isUserVerified()){
+	        	   Intent intent=new Intent(activity,MyTestActivity.class);
+	        	   startActivity(intent);
+	        	   activity.finish();
+	           }
+	           else
+	        	   createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,true));
 		}
 	}catch(Exception e){
 		e.printStackTrace();
