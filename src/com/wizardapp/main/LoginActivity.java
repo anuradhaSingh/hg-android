@@ -18,8 +18,10 @@ import android.widget.DatePicker;
 
 import com.example.wizardapp.R;
 import com.wizardapp.fragments.LoginFragment;
+import com.wizardapp.fragments.MobileVerificationFragment;
 import com.wizardapp.fragments.RegisterFragment;
 import com.wizardapp.model.UserDetail;
+import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.DateUtil;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
@@ -50,9 +52,14 @@ public class LoginActivity extends MyBaseActivity {
 			LoginFragment login_fragment = new LoginFragment(R.layout.login);
 			navigateTo(login_fragment, login_fragment.getClass().getSimpleName());
 		}else{
-			Intent intent=new Intent(this,MyTestActivity.class);
-			startActivity(intent);
-			this.finish();
+			if(SharedPreferencesHelper.getIsUserVerified()){
+				Intent intent=new Intent(this,MyTestActivity.class);
+				startActivity(intent);
+				this.finish();
+			}else{
+				MobileVerificationFragment mobile_frag = new MobileVerificationFragment(R.layout.mobile_verification,true);
+				navigateTo(mobile_frag, mobile_frag.getClass().getSimpleName());
+			}
 		}
 	}
 

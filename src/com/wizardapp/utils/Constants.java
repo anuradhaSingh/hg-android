@@ -35,6 +35,7 @@ public class Constants {
 	    }
 	 interface SharedPref{
 			String loggedInUserData = "LoggedInUserData";
+			String isUserVerified = "IsUserVerified";
 		}
 		 public final static boolean isValidEmail(CharSequence target) {
 			  if (TextUtils.isEmpty(target)) {
@@ -44,7 +45,6 @@ public class Constants {
 			  }
 			}
 	
-		
 		 
 		 
 	

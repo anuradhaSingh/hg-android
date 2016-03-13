@@ -19,6 +19,7 @@ import com.wizardapp.apis.UserApi;
 import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
+import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class MobileVerificationFragment extends MyBaseFragment implements UserServices {
@@ -92,6 +93,7 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 	public void verifyOTP(String response) {
 		try{
 			if(null != response){
+				SharedPreferencesHelper.setIsUserVerified(Boolean.valueOf(response));
 				Intent intent=new Intent(activitycontext,MyTestActivity.class);
 				startActivity(intent);
 				activitycontext.finish();
