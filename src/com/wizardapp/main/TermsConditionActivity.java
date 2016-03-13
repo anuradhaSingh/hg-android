@@ -1,32 +1,51 @@
 package com.wizardapp.main;
 
-import com.example.wizardapp.R;
-import com.navdrawer.SimpleSideDrawer;
-import com.wizardapp.model.Scholarship;
-import com.wizardapp.utils.SharedPreferencesHelper;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class TermsConditionActivity extends MyBaseActivity{
+import com.example.wizardapp.R;
+import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.apis.TestApi;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.TestService;
+import com.wizardapp.utils.SharedPreferencesHelper;
+
+public class TermsConditionActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
 	Scholarship scho;
+	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	LinearLayout linear;
+	boolean state_of_drawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.terms_condition);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.terms_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		RelativeLayout back_layout=(RelativeLayout)findViewById(R.id.backlayout);
         back_layout.setOnClickListener(new OnClickListener() {
 			
@@ -54,10 +73,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 					toast.show();
 					
 				}else{
-					Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
-					intent.putExtra("object_test", scho);
-					startActivity(intent);
-					finish();
+					TestApi.updateScholarshipStatus(TermsConditionActivity.this, null, scho.getId(), userData.getId(),true);
 				}
 			}
 		});
@@ -96,8 +112,9 @@ public class TermsConditionActivity extends MyBaseActivity{
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
+		    linear.setVisibility(View.VISIBLE);
 			slide_me.toggleRightDrawer();
+			state_of_drawer = true;
 		}
 	});
 	LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
@@ -202,5 +219,30 @@ public class TermsConditionActivity extends MyBaseActivity{
 			finish();
 		}
 	});
+	}
+	@Override
+	public void getAvailableList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getTakenList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTestStatus(String response) {
+		try{
+			if(null != response){
+				Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
+				intent.putExtra("object_test", scho);
+				startActivity(intent);
+				finish();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

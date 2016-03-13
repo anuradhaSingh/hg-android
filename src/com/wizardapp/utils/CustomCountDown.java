@@ -1,16 +1,5 @@
 package com.wizardapp.utils;
 
-import java.util.List;
-
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.widget.TextView;
-
-import com.example.wizardapp.R;
-import com.wizardapp.utils.HeyURLs.Questions;
 
 
 public class CustomCountDown extends CountDownTimerPausable{

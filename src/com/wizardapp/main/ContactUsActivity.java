@@ -6,8 +6,10 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,11 +31,24 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 	RelativeLayout back_layout;
 	private UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	LinearLayout linear;
+	boolean state_of_drawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.contact_us);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.contact_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		TextView emailid=(TextView)findViewById(R.id.email_text);
 		final EditText query=(EditText)findViewById(R.id.query);
 		Button sendEmail=(Button)findViewById(R.id.send_contact);
@@ -106,8 +121,9 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				linear.setVisibility(View.VISIBLE);
 				slide_me.toggleRightDrawer();
+				state_of_drawer = true;
 			}
 		});
 		LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);

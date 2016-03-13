@@ -3,8 +3,10 @@ package com.wizardapp.main;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,21 +15,32 @@ import android.widget.TextView;
 
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
-import com.wizardapp.apis.TestApi;
 import com.wizardapp.model.UserScholarshipResult;
-import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
-public class ResultActivity extends MyBaseActivity implements TestService {
+public class ResultActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
 	UserScholarshipResult result;
 	TextView total_score, wronganswer, correct_answer;
 	long schoid, userid;
     LinearLayout linear;
+    boolean state_of_drawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.result_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		RelativeLayout back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		back_layout.setOnClickListener(new OnClickListener() {
 			
@@ -48,7 +61,6 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		total_score = (TextView) findViewById(R.id.total_score);
 		wronganswer = (TextView) findViewById(R.id.wrong_answer);
 		correct_answer = (TextView) findViewById(R.id.correct_answer);
-		TestApi.updateScholarshipStatus(ResultActivity.this, null, schoid, userid,true);
 		correct_answer.setText("" + result.getCurrectQuestion());
 		wronganswer.setText("" + result.getWrongQuestion());
 		total_score.setText("" + (result.getCurrectQuestion() * 2));
@@ -99,7 +111,9 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.VISIBLE);
 				slide_me.toggleRightDrawer();
+				state_of_drawer = true;
 			}
 		});
 		LinearLayout profile_view = (LinearLayout) findViewById(R.id.profile_view);
@@ -211,26 +225,4 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		});
 	}
 
-	@Override
-	public void getAvailableList(String response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getTakenList(String response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateTestStatus(String response) {
-		try{
-			if(null != response){
-				
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
 }

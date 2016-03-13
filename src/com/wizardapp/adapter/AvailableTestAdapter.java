@@ -3,25 +3,17 @@ package com.wizardapp.adapter;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wizardapp.R;
-import com.wizardapp.adapter.ScholarshipTestAdapter.Holder;
-import com.wizardapp.main.MyTestActivity;
-import com.wizardapp.main.ScholarshipDetailActivity;
 import com.wizardapp.main.TermsConditionActivity;
 import com.wizardapp.model.Scholarship;
 

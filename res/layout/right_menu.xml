@@ -3,7 +3,7 @@
     android:layout_width="260dp"
     android:layout_height="fill_parent"
     android:id="@+id/right_menu_header"
-    android:visibility="gone"
+    android:visibility="invisible"
     android:background="@drawable/home_backround"
     android:orientation="vertical" >
 <ImageView 
