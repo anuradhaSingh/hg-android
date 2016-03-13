@@ -4,6 +4,20 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+
 import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -16,28 +30,12 @@ import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
-import android.app.ActionBar;
-import android.app.Dialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-
 public class MyTestActivity extends MyBaseActivity implements TestService{
 	Button available,taken;
 	LinearLayout available_view,taken_view;
 	RelativeLayout backlayout;
 	ListView available_list,taken_list;
-	Button buy;
+	Button buy;boolean state_of_drawer;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	 LinearLayout  linear;
 	@Override
@@ -45,6 +43,18 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_test);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.test_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		available_list=(ListView)findViewById(R.id.available_list);
 		taken_list=(ListView)findViewById(R.id.taken_list);
 		buy=(Button)findViewById(R.id.test_buy);
@@ -110,7 +120,6 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	// TODO Auto-generated method stub
 	final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
 			.inflate(R.layout.custom_actionbar, null);
-
 	// Set up your ActionBar
 	final ActionBar actionBar = getActionBar();
 	actionBar.setDisplayShowHomeEnabled(false);
@@ -126,11 +135,13 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
 			linear.setVisibility(View.VISIBLE);
 			slide_me.toggleRightDrawer();
+			state_of_drawer = true;
 		}
 	});
+	
+	
 	final LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
 	profile_view.setOnClickListener(new OnClickListener() {
 		

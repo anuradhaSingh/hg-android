@@ -11,8 +11,10 @@ import org.json.JSONObject;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -40,7 +42,7 @@ import com.wizardapp.utils.SharedPreferencesHelper;
 public class QuestionActivity extends MyBaseActivity implements QuestionService{
 	SimpleSideDrawer slide_me;
 	private RadioButton checkbox1, checkbox2, checkbox3, checkbox4;
-	private boolean flag, isOptionSelected;
+	private boolean flag, isOptionSelected,state_of_drawer;
 	TextView questiontext;
 	Question question;
 	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
@@ -56,6 +58,18 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questions);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.question_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		scho=(Scholarship) getIntent().getSerializableExtra("object_test");
 		questiontext=(TextView)findViewById(R.id.txtquestion);
 		checkbox1=(RadioButton)findViewById(R.id.checkbox1);
@@ -118,8 +132,9 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
+			linear.setVisibility(View.VISIBLE);
 			slide_me.toggleRightDrawer();
+			state_of_drawer = true;
 		}
 	});
 	LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);

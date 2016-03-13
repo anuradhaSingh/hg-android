@@ -16,9 +16,7 @@ import android.widget.Toast;
 
 import com.example.wizardapp.R;
 import com.wizardapp.apis.UserApi;
-import com.wizardapp.main.MainActivity;
 import com.wizardapp.main.MyTestActivity;
-import com.wizardapp.main.ScholarshipActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.SharedPreferencesHelper;

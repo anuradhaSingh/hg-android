@@ -8,8 +8,10 @@ import java.util.List;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,11 +34,24 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 	 RelativeLayout back_layout;
 	 UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
 	 LinearLayout linear;
+	 boolean state_of_drawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scholarship_list);
+		LinearLayout ll = (LinearLayout) findViewById(R.id.scholarship_main);
+		ll.setOnTouchListener(new OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if(state_of_drawer){
+					linear.setVisibility(View.INVISIBLE);
+					state_of_drawer = false;
+				}
+				return false;
+			}
+		});
 		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		slide_me = new SimpleSideDrawer(this);
 		
@@ -89,8 +104,9 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				linear.setVisibility(View.VISIBLE);
 				slide_me.toggleRightDrawer();
+				state_of_drawer = true;
 			}
 		});
 		LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
