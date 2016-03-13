@@ -20,13 +20,14 @@ public class ProfileActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
 	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
 	TextView firstName,lastName,dob,email_id,mobile,state,city,country,address,pincode,gender;
+	 LinearLayout  linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile_layout);
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
+		
 		showCustomActionBar();
 		RelativeLayout back_button=(RelativeLayout)findViewById(R.id.back_button);
 		back_button.setOnClickListener(new OnClickListener() {
@@ -72,6 +73,10 @@ public class ProfileActivity extends MyBaseActivity{
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -99,6 +104,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 			}
 		});
@@ -109,6 +115,7 @@ public class ProfileActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
 				finish();
@@ -121,6 +128,7 @@ public class ProfileActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,ContactUsActivity.class);
 				startActivity(intent);
 				finish();
@@ -133,6 +141,7 @@ public class ProfileActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,MyTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -145,6 +154,7 @@ public class ProfileActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
 				finish();
@@ -158,6 +168,7 @@ public class ProfileActivity extends MyBaseActivity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,StartTestActivity.class);
 				startActivity(intent);
 				finish();
@@ -169,6 +180,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ProfileActivity.this,LoginActivity.class);
 				startActivity(intent);
@@ -181,6 +193,7 @@ public class ProfileActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				slide_me.closeRightSide();
+				linear.setVisibility(View.GONE);
 				Intent intent=new Intent(ProfileActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
 				finish();

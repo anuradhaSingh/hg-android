@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 public class ScoreBoardDetailActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
+	LinearLayout linear;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 	    // TODO Auto-generated method stub
@@ -32,7 +33,6 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			}
 		});
 	    slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 }
 	private void showCustomActionBar() {
@@ -46,6 +46,10 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -73,6 +77,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ProfileActivity.class);
 				startActivity(intent);
@@ -85,6 +90,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
@@ -97,6 +103,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ContactUsActivity.class);
 				startActivity(intent);
@@ -109,6 +116,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -121,6 +129,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
@@ -132,6 +141,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,StartTestActivity.class);
 				startActivity(intent);
@@ -143,6 +153,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,LoginActivity.class);
@@ -155,6 +166,7 @@ public class ScoreBoardDetailActivity extends MyBaseActivity{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScoreBoardDetailActivity.this,ScholarshipActivity.class);
 				startActivity(intent);

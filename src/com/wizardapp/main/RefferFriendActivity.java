@@ -29,7 +29,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 	EditText enterMailId;
 	Button sendMail;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
-	
+	LinearLayout  linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -48,7 +48,6 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			}
 		});
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		enterMailId = (EditText) findViewById(R.id.enter_email_id);
 		sendMail = (Button) findViewById(R.id.email_send);
 		sendMail.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +84,10 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -112,6 +115,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ProfileActivity.class);
 				startActivity(intent);
@@ -123,6 +127,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 			}
 		});
@@ -132,6 +137,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ContactUsActivity.class);
 				startActivity(intent);
@@ -143,6 +149,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -155,6 +162,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
@@ -168,6 +176,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,StartTestActivity.class);
 				startActivity(intent);
@@ -179,6 +188,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(RefferFriendActivity.this,LoginActivity.class);
@@ -191,6 +201,7 @@ public class RefferFriendActivity extends MyBaseActivity implements MailServices
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(RefferFriendActivity.this,ScholarshipActivity.class);
 				startActivity(intent);

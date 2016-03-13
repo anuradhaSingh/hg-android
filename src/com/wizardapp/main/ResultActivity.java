@@ -23,7 +23,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 	UserScholarshipResult result;
 	TextView total_score, wronganswer, correct_answer;
 	long schoid, userid;
-
+    LinearLayout linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +53,6 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		wronganswer.setText("" + result.getWrongQuestion());
 		total_score.setText("" + (result.getCurrectQuestion() * 2));
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 		Button thankyou = (Button) findViewById(R.id.btn_thanks);
 		thankyou.setOnClickListener(new OnClickListener() {
@@ -79,6 +78,10 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -104,6 +107,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						ProfileActivity.class);
@@ -116,6 +120,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						RefferFriendActivity.class);
@@ -128,6 +133,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(ResultActivity.this,
@@ -142,6 +148,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						MyTestActivity.class);
@@ -155,6 +162,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						ScoreBoardActivity.class);
@@ -167,6 +175,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent = new Intent(ResultActivity.this,
 						StartTestActivity.class);
@@ -179,6 +188,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent = new Intent(ResultActivity.this,
@@ -192,6 +202,7 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ResultActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
