@@ -58,14 +58,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 					toast.show();
 					
 				}else{
-<<<<<<< HEAD
 					TestApi.updateScholarshipStatus(TermsConditionActivity.this, null, scho.getId(), userData.getId(),true);
-=======
-					Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
-					intent.putExtra("object_test", scho);
-					startActivity(intent);
-					finish();
->>>>>>> e685f85958da91b80d8ea4ba67fd28ead6b477cf
 				}
 			}
 		});
@@ -230,6 +223,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 				Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
 				intent.putExtra("object_test", scho);
 				startActivity(intent);
+				finish();
 			}
 		}catch(Exception e){
 			e.printStackTrace();
