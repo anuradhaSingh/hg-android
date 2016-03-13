@@ -11,6 +11,8 @@ public class UserDetail implements Serializable {
 	
 
 	private String city;
+	
+	private boolean isUserVerified;
 
 	private String classType;
 
@@ -195,6 +197,15 @@ public class UserDetail implements Serializable {
 	}
 	public long getId() {
 		return id;
+	}
+
+	public boolean isUserVerified() {
+		return isUserVerified;
+	}
+
+
+	public void setUserVerified(boolean isUserVerified) {
+		this.isUserVerified = isUserVerified;
 	}
 
 

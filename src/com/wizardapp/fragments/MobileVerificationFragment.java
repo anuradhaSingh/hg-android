@@ -92,8 +92,7 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 	@Override
 	public void verifyOTP(String response) {
 		try{
-			if(null != response){
-				SharedPreferencesHelper.setIsUserVerified(Boolean.valueOf(response));
+			if(null != response && Boolean.valueOf(response)){
 				Intent intent=new Intent(activitycontext,MyTestActivity.class);
 				startActivity(intent);
 				activitycontext.finish();

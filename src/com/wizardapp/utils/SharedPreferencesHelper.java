@@ -34,17 +34,4 @@ public class SharedPreferencesHelper {
         return obj ;
 	}
 	
-	public static void setIsUserVerified(boolean isVerified){
-		prefsEditor.putBoolean(Constants.SharedPref.isUserVerified, isVerified);
-		prefsEditor.apply();
-	}
-	
-	public static boolean getIsUserVerified(){
-		boolean b = mPrefs.getBoolean(Constants.SharedPref.isUserVerified, false);
-		return b;
-	}
-	
-
-   
-	
 }

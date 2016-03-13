@@ -52,7 +52,7 @@ public class LoginActivity extends MyBaseActivity {
 			LoginFragment login_fragment = new LoginFragment(R.layout.login);
 			navigateTo(login_fragment, login_fragment.getClass().getSimpleName());
 		}else{
-			if(SharedPreferencesHelper.getIsUserVerified()){
+			if(userData.isUserVerified()){
 				Intent intent=new Intent(this,MyTestActivity.class);
 				startActivity(intent);
 				this.finish();
