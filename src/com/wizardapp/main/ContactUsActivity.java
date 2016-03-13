@@ -28,6 +28,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 	SimpleSideDrawer slide_me;
 	RelativeLayout back_layout;
 	private UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
+	LinearLayout linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -70,7 +71,6 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			}
 		});
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 	}
 	private void showCustomActionBar() {
@@ -84,12 +84,17 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -111,6 +116,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ProfileActivity.class);
 				startActivity(intent);
@@ -123,6 +129,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
@@ -135,6 +142,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 			}
 		});
@@ -144,6 +152,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -155,6 +164,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
@@ -168,6 +178,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,StartTestActivity.class);
 				startActivity(intent);
@@ -179,6 +190,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(ContactUsActivity.this,LoginActivity.class);
@@ -191,6 +203,7 @@ public class ContactUsActivity extends MyBaseActivity implements MailServices{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ContactUsActivity.this,ScholarshipActivity.class);
 				startActivity(intent);

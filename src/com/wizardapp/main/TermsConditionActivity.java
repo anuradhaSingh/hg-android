@@ -25,6 +25,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 	SimpleSideDrawer slide_me;
 	Scholarship scho;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
+	LinearLayout linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -43,7 +44,6 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		});	
 		scho=(Scholarship) getIntent().getSerializableExtra("object_test");
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 		final CheckBox chk=(CheckBox)findViewById(R.id.checkbox);
 		Button startTest=(Button)findViewById(R.id.btn_start);
@@ -58,7 +58,14 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 					toast.show();
 					
 				}else{
+<<<<<<< HEAD
 					TestApi.updateScholarshipStatus(TermsConditionActivity.this, null, scho.getId(), userData.getId(),true);
+=======
+					Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
+					intent.putExtra("object_test", scho);
+					startActivity(intent);
+					finish();
+>>>>>>> e685f85958da91b80d8ea4ba67fd28ead6b477cf
 				}
 			}
 		});
@@ -76,6 +83,10 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 	actionBar.setDisplayShowTitleEnabled(false);
 	actionBar.setDisplayShowCustomEnabled(true);
 	actionBar.setCustomView(actionBarLayout);
+	slide_me.setRightBehindContentView(R.layout.right_menu);
+	linear=(LinearLayout)findViewById(R.id.right_menu_header);
+	
+	
 	RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 	home.setOnClickListener(new OnClickListener() {
 		
@@ -103,6 +114,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ProfileActivity.class);
 			startActivity(intent);
@@ -115,6 +127,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
@@ -127,6 +140,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ContactUsActivity.class);
 			startActivity(intent);
@@ -139,6 +153,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,MyTestActivity.class);
 			startActivity(intent);
@@ -151,6 +166,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
@@ -162,6 +178,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,StartTestActivity.class);
 			startActivity(intent);
@@ -173,6 +190,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(TermsConditionActivity.this,LoginActivity.class);
@@ -185,6 +203,7 @@ public class TermsConditionActivity extends MyBaseActivity implements TestServic
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(TermsConditionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);

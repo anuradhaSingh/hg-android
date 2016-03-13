@@ -61,6 +61,7 @@ public class AvailableTestAdapter extends BaseAdapter{
 				Intent intent =new Intent(context,TermsConditionActivity.class);
 				intent.putExtra("object_test",avai);
 				context.startActivity(intent);
+				context.finish();
 			}
 		});
 		

@@ -30,6 +30,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
 	Button buyTest;
 	ListView available_list;
+	LinearLayout linear;
 	UserDetail user=SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 		TestApi.getAvailableList(StartTestActivity.this, null, user.getId());
 		available_list=(ListView)findViewById(R.id.start_list);
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 	    buyTest=(Button)findViewById(R.id.test_buy);
 		buyTest.setOnClickListener(new OnClickListener() {
@@ -75,6 +75,10 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -102,6 +106,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,ProfileActivity.class);
 				startActivity(intent);
@@ -114,6 +119,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
@@ -126,6 +132,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,ContactUsActivity.class);
 				startActivity(intent);
@@ -138,6 +145,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -150,6 +158,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
@@ -163,6 +172,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,StartTestActivity.class);
 				startActivity(intent);
@@ -174,6 +184,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				SharedPreferencesHelper.setLoggedUserInfo(null);
 				Intent intent=new Intent(StartTestActivity.this,LoginActivity.class);
@@ -186,6 +197,7 @@ public class StartTestActivity extends MyBaseActivity implements TestService{
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(StartTestActivity.this,ScholarshipActivity.class);
 				startActivity(intent);

@@ -17,13 +17,17 @@ import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -35,6 +39,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	ListView available_list,taken_list;
 	Button buy;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
+	 LinearLayout  linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -115,30 +120,32 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	final SimpleSideDrawer	slide_me = new SimpleSideDrawer(this);
 	
 	slide_me.setRightBehindContentView(R.layout.right_menu);
-	final LinearLayout  linear=(LinearLayout)findViewById(R.id.right_menu_header);
+	linear=(LinearLayout)findViewById(R.id.right_menu_header);
 	RelativeLayout action_drawer=(RelativeLayout)findViewById(R.id.action_drawer);
 	action_drawer.setOnClickListener(new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.VISIBLE);
 			slide_me.toggleRightDrawer();
 		}
 	});
-	LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
+	final LinearLayout profile_view=(LinearLayout)findViewById(R.id.profile_view);
 	profile_view.setOnClickListener(new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			slide_me.closeRightSide();
+			
 			linear.setVisibility(View.GONE);
+			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,ProfileActivity.class);
 			startActivity(intent);
 			finish();
 		}
 	});
-	LinearLayout refer_friend=(LinearLayout)findViewById(R.id.reffer_friend_view);
+	final LinearLayout refer_friend=(LinearLayout)findViewById(R.id.reffer_friend_view);
 	refer_friend.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -151,7 +158,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			finish();
 		}
 	});
-	LinearLayout contact_us=(LinearLayout)findViewById(R.id.contact_us_view);
+	final LinearLayout contact_us=(LinearLayout)findViewById(R.id.contact_us_view);
 	contact_us.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -164,7 +171,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			finish();
 		}
 	});
-	LinearLayout myTest=(LinearLayout)findViewById(R.id.mytest_view);
+	final LinearLayout myTest=(LinearLayout)findViewById(R.id.mytest_view);
 	myTest.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -174,7 +181,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			slide_me.closeRightSide();
 		}
 	});
-	LinearLayout scoreboard=(LinearLayout)findViewById(R.id.scoreboard_view);
+	final LinearLayout scoreboard=(LinearLayout)findViewById(R.id.scoreboard_view);
 	scoreboard.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -184,9 +191,10 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			slide_me.closeRightSide();
 			Intent intent=new Intent(MyTestActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
+			finish();
 		}
 	});
-	LinearLayout start_test=(LinearLayout)findViewById(R.id.start_view);
+	final LinearLayout start_test=(LinearLayout)findViewById(R.id.start_view);
 	start_test.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -199,7 +207,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			finish();
 		}
 	});
-	LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
+	final LinearLayout log_out=(LinearLayout)findViewById(R.id.log_out_view);
 	log_out.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -212,7 +220,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 			finish();
 		}
 	});
-	LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
+	final LinearLayout buy_test_layout=(LinearLayout)findViewById(R.id.buy_test_layout);
 	buy_test_layout.setOnClickListener(new OnClickListener() {
 		
 		@Override
@@ -262,5 +270,6 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 }

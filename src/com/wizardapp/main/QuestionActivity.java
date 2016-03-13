@@ -50,6 +50,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 	CustomCountDown countDownTimer;
 	Button next;
 	List<Question> list;
+	LinearLayout  linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -65,7 +66,6 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		next=(Button)findViewById(R.id.btn_next);
 		next.setOnClickListener(nextListener);
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
 		showCustomActionBar();
 		QuestionApi.getQuestionList(QuestionActivity.this, null, prepareJson());
 	}
@@ -97,6 +97,10 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 	actionBar.setDisplayShowTitleEnabled(false);
 	actionBar.setDisplayShowCustomEnabled(true);
 	actionBar.setCustomView(actionBarLayout);
+	slide_me.setRightBehindContentView(R.layout.right_menu);
+	linear=(LinearLayout)findViewById(R.id.right_menu_header);
+	
+	
 	RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 	home.setOnClickListener(new OnClickListener() {
 		
@@ -124,6 +128,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ProfileActivity.class);
 			startActivity(intent);
@@ -136,6 +141,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,RefferFriendActivity.class);
 			startActivity(intent);
@@ -148,6 +154,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ContactUsActivity.class);
 			startActivity(intent);
@@ -160,6 +167,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,MyTestActivity.class);
 			startActivity(intent);
@@ -172,6 +180,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ScoreBoardActivity.class);
 			startActivity(intent);
@@ -183,6 +192,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,StartTestActivity.class);
 			startActivity(intent);
@@ -194,6 +204,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			SharedPreferencesHelper.setLoggedUserInfo(null);
 			Intent intent=new Intent(QuestionActivity.this,LoginActivity.class);
@@ -206,6 +217,7 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 		
 		@Override
 		public void onClick(View v) {
+			linear.setVisibility(View.GONE);
 			slide_me.closeRightSide();
 			Intent intent=new Intent(QuestionActivity.this,ScholarshipActivity.class);
 			startActivity(intent);

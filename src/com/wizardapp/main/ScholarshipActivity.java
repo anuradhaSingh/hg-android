@@ -1,3 +1,4 @@
+
 package com.wizardapp.main;
 
 import java.lang.reflect.Type;
@@ -30,6 +31,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 	 SimpleSideDrawer slide_me;
 	 RelativeLayout back_layout;
 	 UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
+	 LinearLayout linear;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -37,7 +39,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		setContentView(R.layout.scholarship_list);
 		back_layout=(RelativeLayout)findViewById(R.id.backlayout);
 		slide_me = new SimpleSideDrawer(this);
-		slide_me.setRightBehindContentView(R.layout.right_menu);
+		
 		showCustomActionBar();
 		
 		listview=(ListView)findViewById(R.id.scholarship_listview);
@@ -67,6 +69,9 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setDisplayShowCustomEnabled(true);
 		actionBar.setCustomView(actionBarLayout);
+		slide_me.setRightBehindContentView(R.layout.right_menu);
+		linear=(LinearLayout)findViewById(R.id.right_menu_header);
+		
 		RelativeLayout home=(RelativeLayout)findViewById(R.id.home_button);
 		home.setOnClickListener(new OnClickListener() {
 			
@@ -94,6 +99,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ProfileActivity.class);
 				startActivity(intent);
@@ -106,6 +112,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,RefferFriendActivity.class);
 				startActivity(intent);
@@ -118,6 +125,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ContactUsActivity.class);
 				startActivity(intent);
@@ -130,6 +138,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,MyTestActivity.class);
 				startActivity(intent);
@@ -142,6 +151,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ScoreBoardActivity.class);
 				startActivity(intent);
@@ -153,6 +163,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,StartTestActivity.class);
 				startActivity(intent);
@@ -176,6 +187,7 @@ public class ScholarshipActivity extends MyBaseActivity implements ScholarshipPr
 			
 			@Override
 			public void onClick(View v) {
+				linear.setVisibility(View.GONE);
 				slide_me.closeRightSide();
 				Intent intent=new Intent(ScholarshipActivity.this,ScholarshipActivity.class);
 				startActivity(intent);
