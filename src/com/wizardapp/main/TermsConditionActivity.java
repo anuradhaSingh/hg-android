@@ -2,7 +2,10 @@ package com.wizardapp.main;
 
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.apis.TestApi;
 import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 import android.app.ActionBar;
@@ -18,9 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class TermsConditionActivity extends MyBaseActivity{
+public class TermsConditionActivity extends MyBaseActivity implements TestService{
 	SimpleSideDrawer slide_me;
 	Scholarship scho;
+	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -54,9 +58,7 @@ public class TermsConditionActivity extends MyBaseActivity{
 					toast.show();
 					
 				}else{
-					Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
-					intent.putExtra("object_test", scho);
-					startActivity(intent);
+					TestApi.updateScholarshipStatus(TermsConditionActivity.this, null, scho.getId(), userData.getId(),true);
 				}
 			}
 		});
@@ -189,5 +191,29 @@ public class TermsConditionActivity extends MyBaseActivity{
 			finish();
 		}
 	});
+	}
+	@Override
+	public void getAvailableList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getTakenList(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTestStatus(String response) {
+		try{
+			if(null != response){
+				Intent intent=new Intent(TermsConditionActivity.this,QuestionActivity.class);
+				intent.putExtra("object_test", scho);
+				startActivity(intent);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

@@ -18,7 +18,7 @@ import com.wizardapp.model.UserScholarshipResult;
 import com.wizardapp.services.TestService;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
-public class ResultActivity extends MyBaseActivity implements TestService {
+public class ResultActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
 	UserScholarshipResult result;
 	TextView total_score, wronganswer, correct_answer;
@@ -48,7 +48,6 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		total_score = (TextView) findViewById(R.id.total_score);
 		wronganswer = (TextView) findViewById(R.id.wrong_answer);
 		correct_answer = (TextView) findViewById(R.id.correct_answer);
-		TestApi.updateScholarshipStatus(ResultActivity.this, null, schoid, userid,true);
 		correct_answer.setText("" + result.getCurrectQuestion());
 		wronganswer.setText("" + result.getWrongQuestion());
 		total_score.setText("" + (result.getCurrectQuestion() * 2));
@@ -200,26 +199,4 @@ public class ResultActivity extends MyBaseActivity implements TestService {
 		});
 	}
 
-	@Override
-	public void getAvailableList(String response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getTakenList(String response) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateTestStatus(String response) {
-		try{
-			if(null != response){
-				
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
 }
