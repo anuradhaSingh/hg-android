@@ -9,4 +9,6 @@ public interface UserServices {
 	
 	void verifyOTP(String response);
 	
+	void isUserExist(String response);
+	
 }

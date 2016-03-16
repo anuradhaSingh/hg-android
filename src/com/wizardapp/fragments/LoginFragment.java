@@ -122,6 +122,12 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 			// TODO Auto-generated method stub
 			
 		}
+
+		@Override
+		public void isUserExist(String response) {
+			// TODO Auto-generated method stub
+			
+		}
 	
 
 
