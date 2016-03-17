@@ -157,15 +157,15 @@
          android:textSize="@dimen/screen_pixel_14"
         android:background="@drawable/rectangle_edittext"
         android:hint="Retype Password"/>
-    <EditText 
-        android:id="@+id/classname_edittext"
-        android:layout_height="42dp"
+    <Spinner 
+        android:id="@+id/class_number"
+        android:layout_height="40dp"
         android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
-        android:inputType="number"
-         android:textSize="@dimen/screen_pixel_14"
-        android:background="@drawable/rectangle_edittext"
-        android:hint="Class"/>
+        android:textSize="@dimen/screen_pixel_14"
+        style="?android:attr/spinnerItemStyle"
+        android:background="@android:drawable/btn_dropdown"
+        />
    <EditText 
         android:id="@+id/city_edittext"
         android:layout_height="42dp"

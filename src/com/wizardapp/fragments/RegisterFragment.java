@@ -48,12 +48,12 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     private int layout_to_inflate; // layout which you want to show
     private Bundle bundle; // Arguments which you want to pass to fragment
     static ProgressDialog progress;
-    public static   EditText firstName,lastname,emailId,mobile,address,pinCode,city,password,confirm_password,classNumber;
+    public static   EditText firstName,lastname,emailId,mobile,address,pinCode,city,password,confirm_password;
     Button register;
     public static Button dateOfBith;
-    Spinner spinState;
+    Spinner spinState,classNumber;
     CheckBox termsCondition;
-    String [] states;
+    String [] states,claases;
     LinearLayout backlayout;
     ToggleButton gender;
     private String genderText="M";
@@ -97,6 +97,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    termsCondition=(CheckBox)ll.findViewById(R.id.checkbox);
 	    city=(EditText)ll.findViewById(R.id.city_edittext);
 	    states=getResources().getStringArray(R.array.state_Array);
+	    claases=getResources().getStringArray(R.array.class_Array);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);
 	    emailId=(EditText)ll.findViewById(R.id.email_edittext);
 	    dateOfBith=(Button)ll.findViewById(R.id.dateofbirth_edittext);
@@ -107,7 +108,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    password=(EditText)ll.findViewById(R.id.password_edittext);
 	    confirm_password=(EditText)ll.findViewById(R.id.confirm_password_edittext);
 	    backlayout=(LinearLayout)ll.findViewById(R.id.header_layout);
-	    classNumber=(EditText)ll.findViewById(R.id.classname_edittext);
+	    classNumber=(Spinner)ll.findViewById(R.id.class_number);
 	    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(activitycontext,
 				android.R.layout.simple_spinner_item, states);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,6 +126,23 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 
 			}
 		});
+		 ArrayAdapter<String> classAdapter = new ArrayAdapter<String>(activitycontext,
+					android.R.layout.simple_spinner_item, claases);
+		 classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			classNumber.setAdapter(dataAdapter);
+			classNumber.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view,
+						int position, long id) {
+					
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+
+				}
+			});
 		backlayout.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -157,7 +175,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				String cityString = city.getText().toString();
 				String pass = password.getText().toString();
 				String retypepass = confirm_password.getText().toString();
-				String classname = classNumber.getText().toString();
+				String classname = classNumber.getSelectedItem().toString();
 				if(!Constants.isValidEmail(emailString)){
 					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your email id", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
@@ -223,7 +241,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 							String lastValue = lastname.getText().toString();
 							String phoneValue = mobile.getText().toString();
 							String passvalue = password.getText().toString();
-							String classvalue = classNumber.getText().toString();
+							String classvalue = classNumber.getSelectedItem().toString();
 								JSONObject requestObj = new JSONObject();
 								requestObj.put("email", emailValue);
 								requestObj.put("firstName", firstValue);
