@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.MailServices;
@@ -50,6 +51,7 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					userServices.userLoggingIn(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					userServices.userLoggingIn(null);
 				}
 			}
@@ -88,6 +90,7 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					userServices.registerUser(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					userServices.registerUser(null);
 				}
 			}
@@ -124,6 +127,7 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					userServices.verifyOTP(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					userServices.verifyOTP(null);
 				}
 			}
@@ -160,6 +164,7 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					mailServices.contactUs(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					mailServices.contactUs(null);
 				}
 			}
@@ -196,6 +201,7 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					userServices.verifyOTP(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					userServices.verifyOTP(null);
 				}
 			}

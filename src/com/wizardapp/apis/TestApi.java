@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.TestService;
@@ -44,6 +45,7 @@ public class TestApi {
 				if(null != result)
 					testServices.getAvailableList(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					testServices.getAvailableList(null);
 				}
 			}
@@ -83,6 +85,7 @@ public class TestApi {
 				if(null != result)
 					testServices.getTakenList(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					testServices.getTakenList(null);
 				}
 			}
@@ -121,6 +124,7 @@ public class TestApi {
 				if(null != result)
 					testServices.updateTestStatus(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					testServices.updateTestStatus(null);
 				}
 			}

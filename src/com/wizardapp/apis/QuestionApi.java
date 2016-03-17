@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.QuestionService;
@@ -45,6 +46,7 @@ public class QuestionApi {
 				if(null != result)
 					questionServices.getQuestionsList(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					questionServices.getQuestionsList(null);
 				}
 			}
@@ -83,6 +85,7 @@ public class QuestionApi {
 				if (null != result && result.length() != 0)
 					questionServices.submitAnswer(result);
 				else {
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					questionServices.submitAnswer(null);
 				}
 			}
@@ -120,6 +123,7 @@ public class QuestionApi {
 				if(null != result)
 					questionServices.getResult(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					questionServices.getResult(null);
 				}
 			}
@@ -157,6 +161,7 @@ public class QuestionApi {
 				if(null != result)
 					questionServices.getResultForScore(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					questionServices.getResultForScore(null);
 				}
 			}

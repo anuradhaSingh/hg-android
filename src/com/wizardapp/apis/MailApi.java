@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.MailServices;
@@ -47,6 +48,7 @@ public class MailApi {
 				if (null != result && result.length() != 0)
 					mailServices.referToFriend(result);
 				else {
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					mailServices.referToFriend(null);
 				}
 			}
@@ -85,6 +87,7 @@ public class MailApi {
 				if (null != result && result.length() != 0)
 					mailServices.forgotPassword(result);
 				else {
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					mailServices.forgotPassword(null);
 				}
 			}

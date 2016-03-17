@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.view.Window;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 import com.wizardapp.fragments.MyBaseFragment;
 import com.wizardapp.services.PaymentServices;
@@ -49,6 +50,7 @@ public class ScholarshipApi {
 				if(null != result)
 					scholarshipServices.getAllByClassNumber(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					scholarshipServices.getAllByClassNumber(null);
 				}
 			}
@@ -87,6 +89,7 @@ public class ScholarshipApi {
 				if(null != result)
 					scholarshipServices.tobuyTestList(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					scholarshipServices.tobuyTestList(null);
 				}
 			}
@@ -126,6 +129,7 @@ public class ScholarshipApi {
 				if(null != result)
 					scholarshipServices.buyScholarship(result);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					scholarshipServices.buyScholarship(null);
 				}
 			}
@@ -165,6 +169,7 @@ public class ScholarshipApi {
 				if(null != result)
 					paymentServices.payForTest(result, userScholarshipDetailId);
 				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					paymentServices.payForTest(null, userScholarshipDetailId);
 				}
 			}

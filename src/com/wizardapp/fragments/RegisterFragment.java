@@ -283,6 +283,8 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
 				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
 				        createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
+					}else{
+						Toast.makeText(activitycontext, "Some went wrong please enter valid credential.", Toast.LENGTH_SHORT).show();
 					}
 				}catch(Exception e){
 					e.printStackTrace();
