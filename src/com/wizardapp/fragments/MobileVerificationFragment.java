@@ -107,4 +107,10 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 		
 	}
 
+	@Override
+	public void isUserExist(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
