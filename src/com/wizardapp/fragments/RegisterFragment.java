@@ -129,7 +129,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 		 ArrayAdapter<String> classAdapter = new ArrayAdapter<String>(activitycontext,
 					android.R.layout.simple_spinner_item, claases);
 		 classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			classNumber.setAdapter(dataAdapter);
+			classNumber.setAdapter(classAdapter);
 			classNumber.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				@Override
