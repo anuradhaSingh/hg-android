@@ -11,7 +11,7 @@ public interface HeyURLs {
 		String registerUser = domain + "/user/register.json";
 		String verifyOTP = domain + "/master/verify/"; //append mobile num and otp.
 		String contactUs = domain + "/util/contactus.json";
-		String isUserExist = domain + "/user/"; //append email 
+		String isUserExist = domain + "/user/exist/"; //append email 
 	}
 	
 	interface Scholarship{

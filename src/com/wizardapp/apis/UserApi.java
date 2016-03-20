@@ -199,10 +199,10 @@ public class UserApi {
 			protected void onPostExecute(String result) {
 				Dialog.dismiss();
 				if(null != result && result.length() != 0)
-					userServices.verifyOTP(result);
+					userServices.isUserExist(result);
 				else{
 					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
-					userServices.verifyOTP(null);
+					userServices.isUserExist(null);
 				}
 			}
 		}

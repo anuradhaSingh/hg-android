@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -56,7 +57,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     String [] states,claases;
     LinearLayout backlayout;
     ToggleButton gender;
-    private String genderText="M";
+    private String genderText="M";boolean newEmail = true;
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -100,6 +101,22 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 	    claases=getResources().getStringArray(R.array.class_Array);
 	    lastname=(EditText)ll.findViewById(R.id.lastname_edittext);
 	    emailId=(EditText)ll.findViewById(R.id.email_edittext);
+	    emailId.setOnFocusChangeListener(new OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(!hasFocus){
+					if(!Constants.isValidEmail(emailId.getText().toString())){
+						Toast toast=Toast.makeText(activitycontext, "Uh ho! Invalid Email Id", Toast.LENGTH_SHORT);
+						toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+						toast.show();
+					}else{
+						UserApi.isUserExist(activitycontext, RegisterFragment.this, emailId.getText().toString());
+					}
+				}
+				
+			}
+		});
 	    dateOfBith=(Button)ll.findViewById(R.id.dateofbirth_edittext);
 	    mobile=(EditText)ll.findViewById(R.id.mobile_edittext);
 	    address=(EditText)ll.findViewById(R.id.address_edittext);
@@ -198,7 +215,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				}
 				
 				else if(TextUtils.isEmpty(phoneString) || phoneString.length() != 10){
-					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your phone number", Toast.LENGTH_SHORT);
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! Invalid Phone Number", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
@@ -219,19 +236,22 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
-				}else if(termsCondition.isChecked()==false){
+				}
+				else if(TextUtils.isEmpty(classname) || "Select Class".equalsIgnoreCase(classname)){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your class", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					count =1;
+				}
+				else if(termsCondition.isChecked()==false){
 					Toast toast=Toast.makeText(activitycontext, "Please accept terms and conditions!", Toast.LENGTH_SHORT);
 					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
 					toast.show();
 					count =1;
 				}
-				else if(TextUtils.isEmpty(classname)){
-					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your class", Toast.LENGTH_SHORT);
-					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
-					toast.show();
-					count =1;
-				}else if(pass.equals(retypepass)){
+				else if(pass.equals(retypepass)){
 					if(count == 0)
+						if(newEmail){
 						try {
 							String addressValue = address.getText().toString();
 							String pinCodeValue = pinCode.getText().toString();
@@ -261,9 +281,8 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 							
 						} catch (JSONException e) {
 							e.printStackTrace();
-						}
+						}}else{Toast.makeText(activitycontext, "User Already Exists. Please Login", Toast.LENGTH_SHORT).show();}
 						else
-							
 							Toast.makeText(activitycontext, "Uh ho! We will need your password", Toast.LENGTH_SHORT).show();
 					}else{
 						Toast.makeText(activitycontext, Constants.passwordMisMatch, Toast.LENGTH_SHORT).show();
@@ -301,6 +320,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
 				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
 				        createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
+				        activitycontext.finish();
 					}else{
 						Toast.makeText(activitycontext, "Some went wrong please enter valid credential.", Toast.LENGTH_SHORT).show();
 					}
@@ -337,7 +357,19 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 
 			@Override
 			public void isUserExist(String response) {
-				// TODO Auto-generated method stub
+				try{
+					if(null != response){
+						if("true".equalsIgnoreCase(response)){
+						    Toast.makeText(activitycontext, "User already exist. Please Login", Toast.LENGTH_SHORT).show();
+						    emailId.setText("");
+						  newEmail = false;
+						}
+						else
+							newEmail = true;
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 				
 			}
 			

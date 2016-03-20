@@ -212,6 +212,7 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 						@Override
 						public void onTransactionSuccess(Bundle inResponse) {
 							final JSONObject jObj = new JSONObject();
+							transactionCounter =0;
 							  try{
 								  jObj.put("userScholarshipDetailId", scholarshipBuyId);
 								  jObj.put("paymentMode", "from mobile app");
