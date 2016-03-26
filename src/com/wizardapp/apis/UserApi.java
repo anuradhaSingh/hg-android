@@ -164,7 +164,6 @@ public class UserApi {
 				if(null != result && result.length() != 0)
 					mailServices.contactUs(result);
 				else{
-					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
 					mailServices.contactUs(null);
 				}
 			}

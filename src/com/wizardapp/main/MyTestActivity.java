@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.wizardapp.R;
 import com.google.gson.GsonBuilder;
@@ -37,7 +38,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	ListView available_list,taken_list;
 	Button buy;boolean state_of_drawer;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
-	 LinearLayout  linear;
+	 LinearLayout  linear; List<Scholarship> availableList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -251,6 +252,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		try{
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
+            this.availableList = list;
             if(list.size()>0){
             	buy.setVisibility(View.GONE);
             available_list.setAdapter(new AvailableTestAdapter(MyTestActivity.this, list));
@@ -270,8 +272,16 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		try{
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
-            taken_list.setAdapter(new TakenTestAdapter(MyTestActivity.this, list));
-            System.out.println(list);
+            if(availableList.size() > 0){
+            	buy.setVisibility(View.GONE);
+            	if(list.size() >0){
+            		taken_list.setAdapter(new TakenTestAdapter(MyTestActivity.this, list));
+            	}else{
+            		Toast.makeText(this, "No Test Taken ! Please take a test to see the list", Toast.LENGTH_LONG).show();
+            	}
+            }else{
+            	buy.setVisibility(View.VISIBLE);
+            }
 		}catch(Exception e){
 			e.printStackTrace();
 		}

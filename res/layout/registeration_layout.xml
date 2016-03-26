@@ -129,6 +129,7 @@
         android:layout_width="fill_parent"
         android:layout_alignParentLeft="true"
         android:background="@null"
+        android:maxLength="10"
         android:inputType="number"
         android:textSize="@dimen/screen_pixel_14"
         android:hint="Mobile no"/>

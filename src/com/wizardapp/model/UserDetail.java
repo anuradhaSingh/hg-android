@@ -12,7 +12,7 @@ public class UserDetail implements Serializable {
 
 	private String city;
 	
-	private boolean isUserVerified;
+	private boolean userVerified;
 
 	private String classType;
 
@@ -200,12 +200,12 @@ public class UserDetail implements Serializable {
 	}
 
 	public boolean isUserVerified() {
-		return isUserVerified;
+		return userVerified;
 	}
 
 
-	public void setUserVerified(boolean isUserVerified) {
-		this.isUserVerified = isUserVerified;
+	public void setUserVerified(boolean userVerified) {
+		this.userVerified = userVerified;
 	}
 
 

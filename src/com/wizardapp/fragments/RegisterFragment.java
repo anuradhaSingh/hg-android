@@ -57,7 +57,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     String [] states,claases;
     LinearLayout backlayout;
     ToggleButton gender;
-    private String genderText="M";boolean newEmail = true;
+    private String genderText="Male";boolean newEmail = true;
     public RegisterFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
@@ -88,9 +88,9 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			@Override
 			public void onClick(View v) {
 				if(gender.isChecked()){
-					genderText = "M";
+					genderText = "Male";
 				}else{
-					genderText = "F";
+					genderText = "Female";
 				}
 			}
 		});
@@ -320,7 +320,6 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				        UserDetail userdetail= new GsonBuilder().create().fromJson(afterRegisteration, type);
 				        SharedPreferencesHelper.setLoggedUserInfo(userdetail);
 				        createNewFragment(new MobileVerificationFragment(R.layout.mobile_verification,false));
-				        activitycontext.finish();
 					}else{
 						Toast.makeText(activitycontext, "Some went wrong please enter valid credential.", Toast.LENGTH_SHORT).show();
 					}
