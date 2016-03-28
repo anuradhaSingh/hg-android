@@ -14,12 +14,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +40,7 @@ import com.wizardapp.model.Scholarship;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.PaymentServices;
 import com.wizardapp.services.ScholarshipPrimaryServices;
+import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServices,ScholarshipPrimaryServices{
@@ -121,7 +124,7 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 	    
 	}
 	
-	/*private void showPaymentPopUp(final Long scholarshipBuyId) {
+	private void showPaymentPopUp(final Long scholarshipBuyId) {
 		  dialogpopUp = new Dialog(context);
 		  context.getWindow().setBackgroundDrawable(
 		    new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -172,7 +175,7 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 		  
 		  dialogpopUp.show();
 	 }
-	 */
+	 
 	 
 		public void onStartTransaction(final Long scholarshipBuyId) {
 			PaytmPGService Service = PaytmPGService.getStagingService();
@@ -340,8 +343,10 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 	public void buyScholarship(String response) {
 		try{
 			if(null != response){
-				//showPaymentPopUp(Long.valueOf(response));
-				onStartTransaction(Long.valueOf(response));
+				if(Constants.isTestMode)
+				   showPaymentPopUp(Long.valueOf(response));
+				else
+				   onStartTransaction(Long.valueOf(response));
 			}else{
 				Toast.makeText(context, "Network Or Api Issue", Toast.LENGTH_SHORT).show();
 			}

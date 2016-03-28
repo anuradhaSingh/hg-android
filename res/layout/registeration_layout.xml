@@ -56,8 +56,7 @@
         android:layout_width="fill_parent"
         android:background="@null"
         android:paddingTop="9dp"
-        android:text="Gender"
-        android:textColor="#000000"
+        android:text="Select Gender"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:textSize="@dimen/screen_pixel_14"/>
@@ -79,13 +78,22 @@
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
          android:background="@drawable/rectangle_edittext">
+    <TextView 
+        android:id="@+id/dob_text"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/dateofbirth_edittext"
+        android:text="DOB"
+        android:textSize="@dimen/screen_pixel_14"
+        />
     <Button 
         android:id="@+id/dateofbirth_edittext"
         android:layout_height="42dp"
         android:layout_width="fill_parent" 
         android:background="@null"
         android:layout_alignParentLeft="true"
-         android:textSize="@dimen/screen_pixel_14"
+        android:textSize="@dimen/screen_pixel_16"
         android:layout_centerVertical="true"
         android:hint="Date of Birth"/>
     <ImageView 

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.example.wizardapp.R;
 import com.navdrawer.SimpleSideDrawer;
@@ -22,7 +23,7 @@ public class ProfileActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
 	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
 	TextView firstName,lastName,dob,email_id,mobile,state,city,country,address,pincode,gender;
-	 LinearLayout  linear;
+	 LinearLayout  linear; ToggleButton genderB ;
 	 boolean state_of_drawer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,8 @@ public class ProfileActivity extends MyBaseActivity{
 		address=(TextView)findViewById(R.id.txt_address);
 		pincode=(TextView)findViewById(R.id.txt_pincode);
 		gender=(TextView)findViewById(R.id.txtview_gender);
+		genderB = (ToggleButton) findViewById(R.id.radiobtn);
+		
 		firstName.setText(userdata.getFirstName());
 		lastName.setText(userdata.getLastName());
 		email_id.setText(userdata.getEmail());
@@ -74,8 +77,11 @@ public class ProfileActivity extends MyBaseActivity{
 		city.setText(userdata.getCity());
 		address.setText(userdata.getStreetAddress());
 		pincode.setText(userdata.getZipCode());
+		dob.setText(userdata.getDateOfBirth());
 		gender.setText(userdata.getGender());
-		
+		if("Male".equalsIgnoreCase(userdata.getGender())){
+			genderB.setChecked(true);
+		}
 	}
 	private void showCustomActionBar() {
 		// TODO Auto-generated method stub

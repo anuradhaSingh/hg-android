@@ -47,6 +47,8 @@ public class UserDetail implements Serializable {
 	private long updatedAt;
 
 	private String zipCode;
+	
+	private String dateOfBirth;
 
 	public UserDetail() {
 	}
@@ -206,6 +208,16 @@ public class UserDetail implements Serializable {
 
 	public void setUserVerified(boolean userVerified) {
 		this.userVerified = userVerified;
+	}
+
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 

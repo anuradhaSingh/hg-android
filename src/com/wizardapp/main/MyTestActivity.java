@@ -36,7 +36,7 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 	LinearLayout available_view,taken_view;
 	RelativeLayout backlayout;
 	ListView available_list,taken_list;
-	Button buy;boolean state_of_drawer;
+	Button buy,buy_taken;boolean state_of_drawer;
 	UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 	 LinearLayout  linear; List<Scholarship> availableList;
 	@Override
@@ -59,9 +59,21 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		available_list=(ListView)findViewById(R.id.available_list);
 		taken_list=(ListView)findViewById(R.id.taken_list);
 		buy=(Button)findViewById(R.id.test_buy);
+		buy_taken=(Button)findViewById(R.id.test_buy_taken);
 		backlayout=(RelativeLayout)findViewById(R.id.backlayout);
 		backlayout.setVisibility(View.GONE);
 		buy.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(MyTestActivity.this,ScholarshipActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
+		
+        buy_taken.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -272,16 +284,17 @@ public class MyTestActivity extends MyBaseActivity implements TestService{
 		try{
 	        Type listType = new TypeToken<ArrayList<Scholarship>>(){}.getType();
             List<Scholarship> list = new GsonBuilder().create().fromJson(response, listType);
-            if(availableList.size() > 0){
-            	buy.setVisibility(View.GONE);
-            	if(list.size() >0){
-            		taken_list.setAdapter(new TakenTestAdapter(MyTestActivity.this, list));
-            	}else{
-            		Toast.makeText(this, "No Test Taken ! Please take a test to see the list", Toast.LENGTH_LONG).show();
-            	}
-            }else{
-            	buy.setVisibility(View.VISIBLE);
-            }
+            if(list.size() >0){
+            	buy_taken.setVisibility(View.GONE);;
+        		taken_list.setAdapter(new TakenTestAdapter(MyTestActivity.this, list));
+        	}else{
+        		buy_taken.setVisibility(View.VISIBLE);
+        		if(availableList.size() > 0){
+        			Toast.makeText(this, "No Test Taken ! Please Look into the available tests OR buy some new test", Toast.LENGTH_LONG).show();
+        		}else{
+        			Toast.makeText(this, "No Test Taken ! Buy some test", Toast.LENGTH_LONG).show();
+        		}
+        	}
 		}catch(Exception e){
 			e.printStackTrace();
 		}

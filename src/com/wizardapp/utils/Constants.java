@@ -17,6 +17,8 @@ public class Constants {
 	public static final String passwordMisMatch = "Password Mismatch";
 	public static final String mobileNumUpdated = "Mobile number successfully updated";
 	
+	public static final boolean isTestMode = true;
+	
 	 public static void CopyStream(InputStream is, OutputStream os)
 	    {
 	        final int buffer_size=1024;

@@ -1,147 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/terms_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/terms_main"
     android:background="@color/light_gray"
     android:orientation="vertical" >
-    
-<RelativeLayout 
-    android:layout_width="fill_parent"
-    android:id="@+id/back_layout"
-    android:layout_height="40dp"
-    android:background="@color/dark_grey"
-   
-    >
-    <RelativeLayout android:layout_width="100dp"
+
+    <RelativeLayout
+        android:id="@+id/back_layout"
+        android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:id="@+id/backlayout"
-        android:layout_centerVertical="true"
-        >
-    <ImageView
-        android:id="@+id/backbutton"
-        android:layout_width="20dp"
-        android:layout_height="15dp"
-        android:layout_centerVertical="true"
-        android:layout_margin="3dp"
-         android:src="@drawable/back_button" />
-    
-    <TextView
-        android:id="@+id/datetext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_toRightOf="@+id/backbutton"
-        android:layout_centerVertical="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-       </RelativeLayout>
-        <TextView
-        android:id="@+id/test_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MyTest"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_12"
-        android:textStyle="bold" /> 
-        
-</RelativeLayout>
-    <LinearLayout android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_margin="10dp"
-    android:id="@+id/available_layout"
-    android:orientation="vertical">
-    
-  <TextView
-        android:id="@+id/maths_percentile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="1.  Test is available only once"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_14"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/science_percentile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-       android:text="2. Fee non refundable."
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_14"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/ss_percentile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="3. 100% Evaluation."
-        android:layout_margin="10dp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_14"
-        android:textStyle="bold" /> 
-        
- <View
-android:background="@color/orange"
-android:layout_width="fill_parent"
-android:layout_height="1dp"
-></View>
-  <TextView
-        android:id="@+id/english_percentile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="4. Result to announce on 6th of April 2016."
-         android:layout_margin="10dp"
-         android:textColor="@color/black"
-        android:textSize="@dimen/screen_pixel_14"
-        android:textStyle="bold" /> 
-        
- 
-        </LinearLayout>
+        android:background="@color/dark_grey" >
+
         <RelativeLayout
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:layout_width="match_parent" >
-<CheckBox 
-    android:id="@+id/checkbox"
-    android:background="@color/white"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:layout_marginTop="5dp"/>
-<TextView 
-    android:id="@+id/checkbox_text"
-    android:layout_margin="5dp"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:layout_centerVertical="true"
-    android:layout_toRightOf="@id/checkbox"
-     android:textSize="@dimen/screen_pixel_14"
-    android:text="Accept the Terms and condition"/>
-</RelativeLayout>
-<Button 
-    android:id="@+id/btn_start"
-    android:layout_height="40dp"
-    android:layout_width="120dp"
-    android:background="@color/orange"
-    android:text="Start"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-     android:textSize="@dimen/screen_pixel_14"
-    android:layout_marginBottom="10dp"
-    android:layout_gravity="center_horizontal"/>
+            android:id="@+id/backlayout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true" >
+
+            <ImageView
+                android:id="@+id/backbutton"
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="3dp"
+                android:src="@drawable/back_button" />
+
+            <TextView
+                android:id="@+id/datetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/backbutton"
+                android:text="Back"
+                android:textColor="@color/black"
+                android:textSize="@dimen/screen_pixel_12"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/test_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="MyTest"
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_12"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/available_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/maths_percentile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="1.  Test is available only once"
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_14"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/orange" >
+        </View>
+
+        <TextView
+            android:id="@+id/science_percentile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="2. Fee non refundable."
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_14"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/orange" >
+        </View>
+
+        <TextView
+            android:id="@+id/ss_percentile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="3. 100% Evaluation."
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_14"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/orange" >
+        </View>
+
+        <TextView
+            android:id="@+id/english_percentile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="4. Result to announce on 6th of April 2016."
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_14"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/orange" >
+        </View>
+
+        <TextView
+            android:id="@+id/taken_if_started"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="5. Once the test is started it will be considered as taken."
+            android:textColor="@color/black"
+            android:textSize="@dimen/screen_pixel_14"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp" >
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/checkbox_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/checkbox"
+            android:text="Accept the Terms and condition"
+            android:textSize="@dimen/screen_pixel_14" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/orange"
+        android:text="Start Test"
+        android:textColor="@color/white"
+        android:textSize="@dimen/screen_pixel_14"
+        android:textStyle="bold" />
+
 </LinearLayout>

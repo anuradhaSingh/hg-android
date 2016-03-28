@@ -76,7 +76,7 @@ public class TestApi {
 			@Override
 			protected String doInBackground(String... p) {
 				String url = HeyURLs.Scholarship.takenTest+userId+".json";
-				return  RetrieveStream.retrieveStreamPOST(url, new JSONObject());
+				return  RetrieveStream.retrieveStreamGET(url);
 			}
 			
 			@Override

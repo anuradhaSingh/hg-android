@@ -264,7 +264,8 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
 				int selectedId = radiogrp.getCheckedRadioButtonId();
 				if(selectedId > -1){
 					RadioButton radioButton = (RadioButton) findViewById(selectedId);
-					answer = radioButton.getText().toString();
+					answer = String.valueOf(radioButton.getTag().toString());
+					//answer = radioButton.getText().toString();
 					JSONObject jObj = new JSONObject();
 					try {
 						jObj.put("userId", userdata.getId());
@@ -325,10 +326,18 @@ public class QuestionActivity extends MyBaseActivity implements QuestionService{
   							+ " " + question.getQuestion());
   				String arr[] = {question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4()};
   				RandomNumbers randomNumbers = new RandomNumbers();
-  					checkbox1.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
-  					checkbox2.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
-  					checkbox3.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
-  					checkbox4.setText(arr[RandomNumbers.generateRandomNumber(arr.length,randomNumbers)]);
+  					int i = RandomNumbers.generateRandomNumber(arr.length,randomNumbers);
+  					checkbox1.setText(arr[i]);
+  					checkbox1.setTag(i+1);
+  					i = RandomNumbers.generateRandomNumber(arr.length,randomNumbers);
+  					checkbox2.setText(arr[i]);
+  					checkbox2.setTag(i+1);
+  					i = RandomNumbers.generateRandomNumber(arr.length,randomNumbers);
+  					checkbox3.setText(arr[i]);
+  					checkbox3.setTag(i+1);
+  					i = RandomNumbers.generateRandomNumber(arr.length,randomNumbers);
+  					checkbox4.setText(arr[i]);
+  					checkbox4.setTag(i+1);
   					randomNumbers =null;
   				}
   			
