@@ -93,7 +93,9 @@ public class ScholarshipTestAdapter extends BaseAdapter implements PaymentServic
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Scholarship schlarship = (Scholarship) v.getTag();
 				Intent intent =new Intent(context,ScholarshipDetailActivity.class);
+				intent.putExtra("schoid", schlarship.getId());
 				context.startActivity(intent);
 			}
 		});

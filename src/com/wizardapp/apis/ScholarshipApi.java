@@ -176,5 +176,43 @@ public class ScholarshipApi {
 		}
 		new PayForTestTask().execute();
 	}
+	public static void ScholarshipDetail(final Context context,final MyBaseFragment adapter,final Long scholarshipId){
+		if(null != adapter)
+			scholarshipServices = (ScholarshipPrimaryServices) adapter;
+		else
+			scholarshipServices = (ScholarshipPrimaryServices)context;
+		
+		class ScholarshipDetailTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+			@Override
+			protected void onPreExecute() {
+				
+		         Dialog = new ProgressDialog(context);
+		    	     Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			         Dialog.setMessage("Loading...");
+			         Dialog.setCancelable(false);
+			         Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				String url = HeyURLs.Scholarship.getScholarshipDetail +scholarshipId+".json";
+				return  RetrieveStream.retrieveStreamGET(url);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if(null != result)
+					scholarshipServices.getDetailById(result);
+				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
+					scholarshipServices.getDetailById(null);
+				}
+			}
+
+		}
+		new ScholarshipDetailTask().execute();
+	}
 	
 }

@@ -1,5 +1,7 @@
 package com.wizardapp.main;
 
+import java.lang.reflect.Type;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,20 +12,38 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.wizardapp.R;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.navdrawer.SimpleSideDrawer;
+import com.wizardapp.adapter.ScholarshipTestAdapter;
+import com.wizardapp.apis.ScholarshipApi;
+import com.wizardapp.fragments.MobileVerificationFragment;
+import com.wizardapp.model.Scholarship;
+import com.wizardapp.model.UserDetail;
+import com.wizardapp.services.ScholarshipPrimaryServices;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
-public class ScholarshipDetailActivity extends MyBaseActivity{
+public class ScholarshipDetailActivity extends MyBaseActivity implements ScholarshipPrimaryServices{
 	SimpleSideDrawer slide_me;
 	LinearLayout linear;
 	boolean state_of_drawer;
+	long scholarid;
+	TextView name,mobile,prize;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.scholarship_detail);
+		Intent intent=getIntent();
+		scholarid=intent.getLongExtra("schoid", 0);
+		name=(TextView)findViewById(R.id.scholar_name);
+		mobile=(TextView)findViewById(R.id.scholar_mobile);
+		prize=(TextView)findViewById(R.id.scholar_prize);
+		
+		ScholarshipApi.ScholarshipDetail(ScholarshipDetailActivity.this, null, scholarid);
 		LinearLayout ll = (LinearLayout) findViewById(R.id.sch_det_main);
 		ll.setOnTouchListener(new OnTouchListener() {
 			
@@ -189,5 +209,38 @@ public class ScholarshipDetailActivity extends MyBaseActivity{
 				finish();
 			}
 		});
+	}
+	@Override
+	public void getAllByClassNumber(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void getDetailById(String response) {
+		// TODO Auto-generated method stub
+		
+		
+		try{
+			if(null != response){
+				   Type type = new TypeToken<UserDetail>(){}.getType();
+		           Scholarship userdetail= new GsonBuilder().create().fromJson(response, type);
+		           name.setText(""+userdetail.getScholarshipName());
+		           mobile.setText(""+userdetail.getScholarshipStartDate());
+		           prize.setText(" Rs. "+userdetail.getPrizeMoney());
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			
+		}
+	}
+	@Override
+	public void buyScholarship(String response) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void tobuyTestList(String response) {
+		// TODO Auto-generated method stub
+		
 	}
 }
