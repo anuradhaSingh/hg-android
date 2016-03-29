@@ -3,8 +3,10 @@ package com.wizardapp.fragments;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +18,9 @@ import android.widget.Toast;
 
 import com.example.wizardapp.R;
 import com.wizardapp.apis.MailApi;
+import com.wizardapp.main.LoginActivity;
 import com.wizardapp.services.MailServices;
+import com.wizardapp.utils.Constants;
 
 public class ForgotPasswordFragment extends MyBaseFragment implements MailServices {
 	
@@ -53,17 +57,26 @@ public class ForgotPasswordFragment extends MyBaseFragment implements MailServic
 			
 			@Override
 			public void onClick(View v) {
-			Editable email = emailText.getText();
-			if(null != email){
-				try{
-					JSONObject jObj = new JSONObject();
-					jObj.put("email", email.toString());
-					MailApi.forgotPassword(activitycontext, ForgotPasswordFragment.this, jObj);
-				}catch(Exception e){
-				    e.printStackTrace();
+				Editable email = emailText.getText();
+				if(!Constants.isValidEmail(email.toString())){
+					Toast toast=Toast.makeText(activitycontext, "Uh ho! We will need your email id", Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+					toast.show();
+					
+				}else{
+					if(null != email){
+						try{
+							JSONObject jObj = new JSONObject();
+							jObj.put("email", email.toString());
+							MailApi.forgotPassword(activitycontext, ForgotPasswordFragment.this, jObj);
+						}catch(Exception e){
+						    e.printStackTrace();
+						}
+					}
+						
 				}
-			}
-				
+			
+		
 			}
 		});
    		
@@ -81,7 +94,10 @@ public class ForgotPasswordFragment extends MyBaseFragment implements MailServic
 		try{
 			if(null != response){
 				Toast.makeText(activitycontext, "Please check your inbox for password ", Toast.LENGTH_SHORT).show();
-				createNewFragment(new LoginFragment(R.layout.login));
+				Intent intent=new Intent(activitycontext,LoginActivity.class);
+				startActivity(intent);
+				activitycontext.finish();
+				
 			}else{
 				Toast.makeText(activitycontext, "you have registered from this Email ", Toast.LENGTH_SHORT).show();
 			}
