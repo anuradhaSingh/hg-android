@@ -3,6 +3,9 @@ package com.wizardapp.utils;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 public class Constants {
@@ -16,7 +19,7 @@ public class Constants {
 	public static final String tokenFailed = "Failed To recieve token"; 
 	public static final String passwordMisMatch = "Password Mismatch";
 	public static final String mobileNumUpdated = "Mobile number successfully updated";
-	
+	public static final String SENDER_ID="heyapp-1265";
 	public static final boolean isTestMode = true;
 	
 	 public static void CopyStream(InputStream is, OutputStream os)
@@ -42,5 +45,48 @@ public class Constants {
 			  	  return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
 			  
 			}
+		  /**
+		     * Tag used on log messages.
+		     */
+		    static final String TAG = "AndroidHive GCM";
 		 
+		    public static final String DISPLAY_MESSAGE_ACTION =
+		            "com.indiahomes.pushnotifications.DISPLAY_MESSAGE";
+		    public static final String EXTRA_MESSAGE = "message";
+		 
+		    /**
+		     * Notifies UI to display a message.
+		     * <p>
+		     * This method is defined in the common helper because it's used both by
+		     * the UI and the background service.
+		     *
+		     * @param context application's context.
+		     * @param message message to be displayed.
+		     */
+		    public static void displayMessage(Context context, String message,String title) {
+		        Intent intent = new Intent(DISPLAY_MESSAGE_ACTION);
+		        intent.putExtra(EXTRA_MESSAGE, message);
+		        intent.putExtra(EXTRA_MESSAGE, title);
+		        context.sendBroadcast(intent);
+		    }
+		    public static  String getDeviceID(TelephonyManager phonyManager)
+		     {
+		    	 String id = phonyManager.getDeviceId();
+		    	 if (id == null)
+		    	 {
+		    	  id = "not available";
+		    	 }
+		    	 int phoneType = phonyManager.getPhoneType();
+		    	 switch(phoneType)
+		    	 {
+		    	   case TelephonyManager.PHONE_TYPE_NONE:
+		    	   return "NONE: " + id;
+		    	   case TelephonyManager.PHONE_TYPE_GSM:
+		    	   return "GSM: IMEI=" + id;
+		    	   case TelephonyManager.PHONE_TYPE_CDMA:
+		    	   return "CDMA: MEID/ESN=" + id;
+		          default:
+		    	   return "UNKNOWN: ID=" + id;
+		    	 }
+		      }
 }
