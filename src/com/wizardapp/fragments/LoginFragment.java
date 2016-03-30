@@ -25,6 +25,7 @@ import com.wizardapp.apis.UserApi;
 import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
+import com.wizardapp.utils.Constants;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 
@@ -70,6 +71,9 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 				try {
 					requestObj.put("email", login_id.getText().toString());
 					requestObj.put("password", password.getText().toString());
+					requestObj.put("deviceId", Constants.getDeviceID(activity) );
+					requestObj.put("device", "ANDROID");
+					requestObj.put("registrationId", "");
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

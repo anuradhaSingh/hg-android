@@ -11,7 +11,9 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -276,6 +278,10 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								requestObj.put("password", passvalue);
 								requestObj.put("dateOfBirth", dobValue);
 								requestObj.put("state", spinState.getSelectedItem().toString());
+								
+								requestObj.put("deviceId", Constants.getDeviceID(activitycontext));
+								requestObj.put("device", "ANDROID");
+								requestObj.put("registrationId", "");
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
 							

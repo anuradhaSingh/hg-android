@@ -3,6 +3,7 @@ package com.wizardapp.utils;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
@@ -69,8 +70,9 @@ public class Constants {
 		        intent.putExtra(EXTRA_MESSAGE, title);
 		        context.sendBroadcast(intent);
 		    }
-		    public static  String getDeviceID(TelephonyManager phonyManager)
+		    public static  String getDeviceID(Activity activity)
 		     {
+		    	TelephonyManager phonyManager = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
 		    	 String id = phonyManager.getDeviceId();
 		    	 if (id == null)
 		    	 {
