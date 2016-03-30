@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ import com.wizardapp.utils.SharedPreferencesHelper;
 public class ProfileActivity extends MyBaseActivity{
 	SimpleSideDrawer slide_me;
 	UserDetail userdata=SharedPreferencesHelper.getLoggedInUserInfo();
-	TextView firstName,lastName,dob,email_id,mobile,state,city,country,address,pincode,gender;
+	TextView dob,email_id,gender;
+	EditText firstName,lastName,pincode,state,city,mobile,address,country;
 	 LinearLayout  linear; ToggleButton genderB ;
 	 boolean state_of_drawer;
 	@Override
@@ -57,15 +59,15 @@ public class ProfileActivity extends MyBaseActivity{
 			}
 		});
 		
-		firstName=(TextView)findViewById(R.id.txtview_firstname);
-		lastName=(TextView)findViewById(R.id.txtview_secondname);
+		firstName=(EditText)findViewById(R.id.firstname_edittext);
+		lastName=(EditText)findViewById(R.id.lastname_edittext);
 		dob=(TextView)findViewById(R.id.txtview_dateofbirth);
 		email_id=(TextView)findViewById(R.id.txt_email);
-		mobile=(TextView)findViewById(R.id.txt_mobileno);
-		state=(TextView)findViewById(R.id.txt_state);
-		city=(TextView)findViewById(R.id.txt_city);
-		address=(TextView)findViewById(R.id.txt_address);
-		pincode=(TextView)findViewById(R.id.txt_pincode);
+		mobile=(EditText)findViewById(R.id.mobile_edittext);
+		state=(EditText)findViewById(R.id.txt_state);
+		city=(EditText)findViewById(R.id.txt_city);
+		address=(EditText)findViewById(R.id.txt_address);
+		pincode=(EditText)findViewById(R.id.txt_pincode);
 		gender=(TextView)findViewById(R.id.txtview_gender);
 		genderB = (ToggleButton) findViewById(R.id.radiobtn);
 		

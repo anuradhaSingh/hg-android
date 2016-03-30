@@ -40,20 +40,22 @@
         android:layout_centerInParent="true"/>
     
     </RelativeLayout>
-    <TextView 
-        android:id="@+id/txtview_firstname"
-        android:layout_height="38dp"
-        android:layout_width="match_parent"
+    <EditText 
+        android:id="@+id/firstname_edittext"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/screen_pixel_14"
+        android:background="@drawable/rectangle_edittext"
+        android:hint="FirstName"/>
+    <EditText 
+        android:id="@+id/lastname_edittext"
+         android:layout_height="42dp"
+        android:layout_width="fill_parent"
+         android:textSize="@dimen/screen_pixel_14"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
-        android:text="FirstName"/>
-    <TextView 
-        android:id="@+id/txtview_secondname"
-        android:layout_height="38dp"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/rectangle_edittext"
-        android:text="LastName"/>
+        android:hint="LastName"/>
     <RelativeLayout 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -123,14 +125,18 @@
         android:layout_marginTop="5dp"
          android:background="@drawable/rectangle_edittext">
     
-    <TextView 
-        android:id="@+id/txt_mobileno"
-        android:layout_height="38dp"
-        android:layout_width="wrap_content"
+    <EditText 
+        android:id="@+id/mobile_edittext"
+         android:layout_height="42dp"
+        android:layout_width="fill_parent"
+        android:layout_alignParentLeft="true"
         android:background="@null"
-        android:text="Mobile no"/>
+        android:maxLength="10"
+        android:inputType="number"
+        android:textSize="@dimen/screen_pixel_14"
+        android:hint="Mobile no"/>
     <ImageView 
-        android:id="@+id/img_mobile"
+        android:id="@+id/mobile_image"
         android:layout_height="30dp"
         android:layout_width="30dp"
         android:layout_alignParentRight="true"
@@ -143,19 +149,19 @@
         android:layout_marginTop="5dp"
          android:background="@drawable/rectangle_edittext">
     
-   <TextView 
+   <EditText 
         android:id="@+id/txt_city"
         android:layout_height="38dp"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:background="@null"
         android:text="City"/>
     
     </RelativeLayout>
     
-<TextView 
+<EditText 
         android:id="@+id/txt_address"
         android:layout_height="80dp"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
         android:text="Address"/>
@@ -165,7 +171,7 @@
         android:layout_marginTop="5dp"
          android:background="@drawable/rectangle_edittext">
     
-   <TextView 
+   <EditText 
         android:id="@+id/txt_state"
         android:layout_height="38dp"
         android:layout_width="wrap_content"
@@ -175,10 +181,10 @@
     
     </RelativeLayout>
 
-<TextView 
+<EditText 
         android:id="@+id/txt_pincode"
         android:layout_height="38dp"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
         android:text="Pincode"/>
