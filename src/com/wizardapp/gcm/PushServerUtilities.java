@@ -1,26 +1,17 @@
 package com.wizardapp.gcm;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+
+import android.app.Activity;
 import android.content.Context;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.example.wizardapp.R;
@@ -38,12 +29,12 @@ public final class PushServerUtilities {
 	     * Register this account/device pair within the server.
 	     *
 	     */
-	    public static void register(final Context context, String name, String email, final String regId) {
+	    public static void register(final Activity context, String name, String email, final String regId) {
 	    	//add url here
 	       String serverUrl = "http://"+ HeyURLs.domain + "";
-	       TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+	       //TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 	        Map<String, String> params = new HashMap<String, String>();
-	        params.put("deviceId", Constants.getDeviceID(telephonyManager));
+	        params.put("deviceId", Constants.getDeviceID(context));
 	        params.put("registrationId",regId);
 	        params.put("device", "Android");
 	        long backoff = BACKOFF_MILLI_SECONDS + random.nextInt(1000);
