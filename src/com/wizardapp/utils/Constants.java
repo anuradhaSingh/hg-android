@@ -25,7 +25,7 @@ public class Constants {
 	public static final String tokenFailed = "Failed To recieve token"; 
 	public static final String passwordMisMatch = "Password Mismatch";
 	public static final String mobileNumUpdated = "Mobile number successfully updated";
-	public static final String SENDER_ID="heyapp-1265";
+	public static final String SENDER_ID="483714569864";
 	public static final boolean isTestMode = true;
 	
 	 public static void CopyStream(InputStream is, OutputStream os)
@@ -57,7 +57,7 @@ public class Constants {
 		    static final String TAG = "AndroidHive GCM";
 		 
 		    public static final String DISPLAY_MESSAGE_ACTION =
-		            "com.wizkid.pushnotifications.DISPLAY_MESSAGE";
+		            "com.example.wizardapp.DISPLAY_MESSAGE";
 		    public static final String EXTRA_MESSAGE = "message";
 		 
 		    /**
@@ -96,6 +96,7 @@ public class Constants {
 		    	   return "UNKNOWN: ID=" + id;
 		    	 }
 		      }
+
 		    
 	public static String getRegistrationId(Activity context,final BroadcastReceiver mHandleMessageReceiver) {
 		// Make sure the device has the proper dependencies.
@@ -136,4 +137,5 @@ public class Constants {
 		return regId;
 
 	}
+
 }

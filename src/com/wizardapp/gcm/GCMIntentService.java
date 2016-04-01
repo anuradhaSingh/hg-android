@@ -26,7 +26,7 @@ public class GCMIntentService extends GCMBaseIntentService {
      **/
     @Override
     protected void onRegistered(Context context, String registrationId) {
-       Constants.displayMessage(context, "Your device registred with GCM","IHC");
+       Constants.displayMessage(context, "Your device registred with GCM","WIZKID");
       //  PushServerUtilities.register(context, "", "", registrationId);
     }
  
@@ -44,9 +44,9 @@ public class GCMIntentService extends GCMBaseIntentService {
      * */
     @Override
     protected void onMessage(Context context, Intent intent) {
-        String message = intent.getExtras().getString("message");
         String title = intent.getExtras().getString("title");
-         
+        String message = intent.getExtras().getString("message");
+        
         Constants.displayMessage(context, message,title);
         // notifies user
         generateNotification(context, message,title);
