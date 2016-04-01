@@ -179,6 +179,12 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 		super.onDestroy();
 		}
 
+		@Override
+		public void changePassword(String result) {
+			// TODO Auto-generated method stub
+			
+		}
+
 
 
 }

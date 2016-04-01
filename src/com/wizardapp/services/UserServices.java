@@ -11,4 +11,6 @@ public interface UserServices {
 	
 	void isUserExist(String response);
 	
+	void changePassword(String result);
+	
 }
