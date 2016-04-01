@@ -447,23 +447,21 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		  dialogpopUp.setContentView(R.layout.change_password);
 		  TextView emailID=(TextView)dialogpopUp.findViewById(R.id.txtEmail_id);
 		  emailID.setText(""+emailId);
+		  final EditText password=(EditText)dialogpopUp.findViewById(R.id.passwordtext);
 		  Button buttnSuccess = (Button) dialogpopUp.findViewById(R.id.confirm_btn);
 		 buttnSuccess.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
-			   final JSONObject jObj = new JSONObject();
-				  try{
-					 
-				  }catch(Exception e){
-					  e.printStackTrace();
-				  }
-				  
-				  
-			   
-			
+			   	 UserApi.changePassword(ProfileActivity.this, null, emailId, password.getText().toString());
+				 
 		   }
 
 		  });
 		  dialogpopUp.show();
 	 }
+	@Override
+	public void changePassword(String result) {
+		// TODO Auto-generated method stub
+		dialogpopUp.dismiss();
+	}
 }

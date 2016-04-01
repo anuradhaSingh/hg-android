@@ -122,4 +122,10 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 		
 	}
 
+	@Override
+	public void changePassword(String result) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -428,5 +428,11 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 				// TODO Auto-generated method stub
 				
 			}
+
+			@Override
+			public void changePassword(String result) {
+				// TODO Auto-generated method stub
+				
+			}
 			
 }
