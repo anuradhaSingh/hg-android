@@ -26,7 +26,7 @@ import com.wizardapp.utils.DateUtil;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class LoginActivity extends MyBaseActivity {
-	 String regId;
+	String regId;
 	SharedPreferences mPrefs;
 	public static final int DATE_OF_BIRTH = 0;
 	// Asyntask

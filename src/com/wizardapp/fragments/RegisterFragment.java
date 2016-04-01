@@ -422,5 +422,11 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 			}
 			super.onDestroy();
 			}
+
+			@Override
+			public void updateUser(String updateUser) {
+				// TODO Auto-generated method stub
+				
+			}
 			
 }

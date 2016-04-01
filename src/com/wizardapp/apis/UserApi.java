@@ -207,5 +207,41 @@ public class UserApi {
 		}
 		new VerifyUserTask().execute();
 	}
+	public static void updateUser(final Context context,final MyBaseFragment fragment,final JSONObject jObj){
+		if(null != fragment)
+			userServices = (UserServices) fragment;
+		else
+			userServices = (UserServices)context;
+		
+		class UpdateUserTask extends AsyncTask<String, Void, String> {
+			ProgressDialog Dialog;
+			@Override
+			protected void onPreExecute() {
+				
+		         Dialog = new ProgressDialog(context);
+		    	     Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			         Dialog.setMessage("Loading...");
+			         Dialog.setCancelable(false);
+			         Dialog.show();
+			}
+
+			@Override
+			protected String doInBackground(String... p) {
+				return  HttpConnection.getResponse(HeyURLs.Users.updateUser,jObj);
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				Dialog.dismiss();
+				if(null != result && result.length() != 0)
+					userServices.updateUser(result);
+				else{
+					Toast.makeText(context, "Api error", Toast.LENGTH_SHORT).show();
+					userServices.updateUser(null);
+				}
+			}
+		}
+		new UpdateUserTask().execute();
+	}
 	
 }

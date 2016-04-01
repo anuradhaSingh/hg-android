@@ -116,4 +116,10 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 		
 	}
 
+	@Override
+	public void updateUser(String updateUser) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

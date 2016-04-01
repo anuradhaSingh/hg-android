@@ -2,13 +2,15 @@ package com.wizardapp.utils;
 
 public interface HeyURLs {
 	
-	String prodDomain = "",testDomain="http://188.166.255.205:8080/hey_pub_dev";
-	String domain = testDomain ;
+	String prodDomain = "http://192.168.16.1:8090",testDomain="http://188.166.255.205:8080/hey_pub_dev";
+
+	String domain = prodDomain ;
 	
 	
 	interface Users{
 		String userLoginPost = domain +"/user/login.json";
 		String registerUser = domain + "/user/register.json";
+		String updateUser = domain + "/user/update.json";
 		String verifyOTP = domain + "/master/verify/"; //append mobile num and otp.
 		String contactUs = domain + "/util/contactus.json";
 		String isUserExist = domain + "/user/exist/"; //append email 

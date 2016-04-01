@@ -85,13 +85,24 @@
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
          android:background="@drawable/rectangle_edittext">
-    <TextView 
-        android:id="@+id/txtview_dateofbirth"
-        android:layout_height="38dp"
+   <TextView 
+        android:id="@+id/dob_text"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/dateofbirth_edittext"
+        android:text="DOB"
+        android:textSize="@dimen/screen_pixel_14"
+        />
+    <Button 
+        android:id="@+id/dateofbirth_edittext"
+        android:layout_height="42dp"
+        android:layout_width="fill_parent" 
         android:background="@null"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/screen_pixel_16"
         android:layout_centerVertical="true"
-        android:text="Date of Birth"/>
+        android:hint="Date of Birth"/>
     <ImageView 
         android:id="@+id/img_calender"
         android:layout_height="30dp"
@@ -143,6 +154,15 @@
         android:src="@drawable/mobile"/>
    
     </RelativeLayout>
+    <Spinner 
+        android:id="@+id/class_number"
+        android:layout_height="40dp"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/screen_pixel_14"
+        style="?android:attr/spinnerItemStyle"
+        android:background="@android:drawable/btn_dropdown"
+        />
     <RelativeLayout 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -165,22 +185,15 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
         android:text="Address"/>
-<RelativeLayout 
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-         android:background="@drawable/rectangle_edittext">
-    
+   
    <EditText 
         android:id="@+id/txt_state"
         android:layout_height="38dp"
-        android:layout_width="wrap_content"
-        android:background="@null"
+        android:layout_width="fill_parent"
+        android:background="@drawable/rectangle_edittext"
         android:text="State"/>
     
-    
-    </RelativeLayout>
-
+  
 <EditText 
         android:id="@+id/txt_pincode"
         android:layout_height="38dp"
@@ -188,8 +201,28 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_edittext"
         android:text="Pincode"/>
+<TextView 
+    android:id="@+id/change_password"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_centerVertical="true"
+     android:textSize="@dimen/screen_pixel_14"
+     android:textColor="@color/orange"
+     android:textStyle="bold"
+    android:text="@string/change_password"/>
 
+<Button 
+    android:id="@+id/update_btn"
+    android:layout_height="40dp"
+    android:layout_width="120dp"
+    android:background="@color/orange"
+    android:text="Update"
+     android:textSize="@dimen/screen_pixel_14"
+    android:layout_margin="10dp"
+    android:layout_gravity="center_horizontal"/>
 </LinearLayout>
+
+        
         
     </ScrollView>
 

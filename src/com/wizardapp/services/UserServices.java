@@ -6,6 +6,7 @@ public interface UserServices {
 	void userLoggingIn(String userResponse);
 	
 	void registerUser(String afterRegisteration);
+	void updateUser(String updateUser);
 	
 	void verifyOTP(String response);
 	
