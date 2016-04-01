@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -34,6 +35,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.wizardapp.R;
+import com.google.android.gcm.GCMRegistrar;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.UserApi;
@@ -59,6 +61,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     String [] states,claases;
     LinearLayout backlayout;
     ToggleButton gender;
+    String regId;
     private String genderText="Male";boolean newEmail = true;
     public RegisterFragment(int layout) 
 	{
@@ -75,13 +78,37 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 		
 	    
 	    final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
+	 // Make sure the device has the proper dependencies.
+        GCMRegistrar.checkDevice(activitycontext);
+ 
+        // Make sure the manifest was properly set - comment out this line
+        // while developing the app, then uncomment it when it's ready.
+        GCMRegistrar.checkManifest(activitycontext);
+       // registerReceiver(mHandleMessageReceiver, new IntentFilter(Constants.DISPLAY_MESSAGE_ACTION));
+        
+        // Get GCM registration id
+          regId =GCMRegistrar.getRegistrationId(activitycontext);
+       System.out.println("registration id is "+regId);
+        // Check if regid already presents
+        if (regId.equals("")) {
+            // Registration is not present, register now with GCM           
+            GCMRegistrar.register(activitycontext, Constants.SENDER_ID);
+        } else {
+            // Device is already registered on GCM
+            if (GCMRegistrar.isRegisteredOnServer(activitycontext)) {
+                // Skips registration.              
+            //  Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
+            } 
+ 
+                   
+        }
 	    LinearLayout headerback=(LinearLayout)ll.findViewById(R.id.header_layout);
 	    headerback.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNewFragment(new LoginFragment(R.layout.login));
+				createNewFragment(new LoginFragment(R.layout.login,""));
 			}
 		});
 	    gender=(ToggleButton)ll.findViewById(R.id.radiobtn);
@@ -281,7 +308,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								
 								requestObj.put("deviceId", Constants.getDeviceID(activitycontext));
 								requestObj.put("device", "ANDROID");
-								requestObj.put("registrationId", "");
+								requestObj.put("registrationId", regId);
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
 							

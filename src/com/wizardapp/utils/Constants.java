@@ -3,9 +3,13 @@ package com.wizardapp.utils;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.google.android.gcm.GCMRegistrar;
+import com.wizardapp.main.LoginActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
@@ -91,4 +95,5 @@ public class Constants {
 		    	   return "UNKNOWN: ID=" + id;
 		    	 }
 		      }
+		   
 }

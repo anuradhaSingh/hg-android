@@ -54,7 +54,7 @@ public class MobileVerificationFragment extends MyBaseFragment implements UserSe
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNewFragment(new LoginFragment(R.layout.login));
+				createNewFragment(new LoginFragment(R.layout.login,""));
 				/*if(flag==true){
 					createNewFragment(new LoginFragment(R.layout.login));
 				}else{

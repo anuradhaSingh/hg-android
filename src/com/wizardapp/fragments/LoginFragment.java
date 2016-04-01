@@ -35,9 +35,11 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
     private Bundle bundle; // Arguments which you want to pass to fragment
     EditText login_id,password;
     Button login,register;
-    public LoginFragment(int layout) 
+    String regID;
+    public LoginFragment(int layout,String regId) 
 	{
 	  layout_to_inflate = layout;
+	  regID=regId;
 	}
 	
 	public LoginFragment() 
@@ -73,7 +75,7 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 					requestObj.put("password", password.getText().toString());
 					requestObj.put("deviceId", Constants.getDeviceID(activity) );
 					requestObj.put("device", "ANDROID");
-					requestObj.put("registrationId", "");
+					requestObj.put("registrationId", regID);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

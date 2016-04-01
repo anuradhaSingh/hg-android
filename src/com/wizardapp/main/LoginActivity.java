@@ -36,7 +36,7 @@ import com.wizardapp.utils.DateUtil;
 import com.wizardapp.utils.SharedPreferencesHelper;
 
 public class LoginActivity extends MyBaseActivity {
-
+	 String regId;
 	SharedPreferences mPrefs;
 	public static final int DATE_OF_BIRTH = 0;
 	// Asyntask
@@ -53,10 +53,10 @@ public class LoginActivity extends MyBaseActivity {
         // Make sure the manifest was properly set - comment out this line
         // while developing the app, then uncomment it when it's ready.
         GCMRegistrar.checkManifest(this);
-        registerReceiver(mHandleMessageReceiver, new IntentFilter(Constants.DISPLAY_MESSAGE_ACTION));
+       // registerReceiver(mHandleMessageReceiver, new IntentFilter(Constants.DISPLAY_MESSAGE_ACTION));
         
         // Get GCM registration id
-        final String regId =GCMRegistrar.getRegistrationId(LoginActivity.this);
+         regId =GCMRegistrar.getRegistrationId(LoginActivity.this);
        System.out.println("registration id is "+regId);
         // Check if regid already presents
         if (regId.equals("")) {
@@ -91,7 +91,7 @@ public class LoginActivity extends MyBaseActivity {
 		super.onResume();
 		UserDetail userData = SharedPreferencesHelper.getLoggedInUserInfo();
 		if(null == userData){
-			LoginFragment login_fragment = new LoginFragment(R.layout.login);
+			LoginFragment login_fragment = new LoginFragment(R.layout.login,regId);
 			navigateTo(login_fragment, login_fragment.getClass().getSimpleName());
 		}else{
 			if(userData.isUserVerified()){

@@ -48,7 +48,7 @@ public class ForgotPasswordFragment extends MyBaseFragment implements MailServic
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNewFragment(new LoginFragment(R.layout.login));
+				createNewFragment(new LoginFragment(R.layout.login,""));
 			}
 		});
    		emailText = (EditText) ll.findViewById(R.id.emailtext);
