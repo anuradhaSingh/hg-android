@@ -11,11 +11,14 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +42,7 @@ import com.google.android.gcm.GCMRegistrar;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.UserApi;
+import com.wizardapp.gcm.WakeLocker;
 import com.wizardapp.main.LoginActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
@@ -61,7 +65,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
     String [] states,claases;
     LinearLayout backlayout;
     ToggleButton gender;
-    String regId;
+    String registrationId = null;
     private String genderText="Male";boolean newEmail = true;
     public RegisterFragment(int layout) 
 	{
@@ -78,37 +82,13 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 		
 	    
 	    final LinearLayout ll = (LinearLayout) inflater.inflate(layout_to_inflate, container, false);
-	 // Make sure the device has the proper dependencies.
-        GCMRegistrar.checkDevice(activitycontext);
- 
-        // Make sure the manifest was properly set - comment out this line
-        // while developing the app, then uncomment it when it's ready.
-        GCMRegistrar.checkManifest(activitycontext);
-       // registerReceiver(mHandleMessageReceiver, new IntentFilter(Constants.DISPLAY_MESSAGE_ACTION));
-        
-        // Get GCM registration id
-          regId =GCMRegistrar.getRegistrationId(activitycontext);
-       System.out.println("registration id is "+regId);
-        // Check if regid already presents
-        if (regId.equals("")) {
-            // Registration is not present, register now with GCM           
-            GCMRegistrar.register(activitycontext, Constants.SENDER_ID);
-        } else {
-            // Device is already registered on GCM
-            if (GCMRegistrar.isRegisteredOnServer(activitycontext)) {
-                // Skips registration.              
-            //  Toast.makeText(getApplicationContext(), "Already registered with GCM", Toast.LENGTH_LONG).show();
-            } 
- 
-                   
-        }
-	    LinearLayout headerback=(LinearLayout)ll.findViewById(R.id.header_layout);
+	 LinearLayout headerback=(LinearLayout)ll.findViewById(R.id.header_layout);
 	    headerback.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNewFragment(new LoginFragment(R.layout.login,""));
+				createNewFragment(new LoginFragment(R.layout.login));
 			}
 		});
 	    gender=(ToggleButton)ll.findViewById(R.id.radiobtn);
@@ -291,6 +271,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 							String phoneValue = mobile.getText().toString();
 							String passvalue = password.getText().toString();
 							String classvalue = classNumber.getSelectedItem().toString();
+							registrationId = Constants.getRegistrationId(activitycontext, mHandleMessageReceiver);
 								JSONObject requestObj = new JSONObject();
 								requestObj.put("email", emailValue);
 								requestObj.put("firstName", firstValue);
@@ -308,7 +289,7 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 								
 								requestObj.put("deviceId", Constants.getDeviceID(activitycontext));
 								requestObj.put("device", "ANDROID");
-								requestObj.put("registrationId", regId);
+								requestObj.put("registrationId", registrationId);
 								
 								UserApi.registerUser(activitycontext,RegisterFragment.this, requestObj);
 							
@@ -403,6 +384,43 @@ public class RegisterFragment extends MyBaseFragment implements UserServices{
 					e.printStackTrace();
 				}
 				
+			}
+			/**
+			* Receiving push messages
+			* */
+			private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+			    String newMessage = intent.getExtras().getString(Constants.EXTRA_MESSAGE);
+			    // Waking up mobile if it is sleeping
+			    WakeLocker.acquire(activitycontext);
+			     
+			    /**
+			     * Take appropriate action on this message
+			     * depending upon your app requirement
+			     * For now i am just displaying it on the screen
+			     * */
+			     
+			    // Showing received message
+			    Toast.makeText(activitycontext, "New Message: " + newMessage, Toast.LENGTH_LONG).show();
+			     
+			    // Releasing wake lock
+			    WakeLocker.release();
+			}
+			};
+
+			@Override
+			public void onDestroy() {
+			/*if (mRegisterTask != null) {
+			    mRegisterTask.cancel(true);
+			}*/
+			try {
+			    activitycontext.unregisterReceiver(mHandleMessageReceiver);
+			    GCMRegistrar.onDestroy(activitycontext);
+			} catch (Exception e) {
+			    Log.e("UnRegister Receiver Error", "> " + e.getMessage());
+			}
+			super.onDestroy();
 			}
 			
 }

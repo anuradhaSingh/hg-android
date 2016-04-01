@@ -6,8 +6,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,11 +20,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wizardapp.R;
+import com.google.android.gcm.GCMRegistrar;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wizardapp.apis.UserApi;
+import com.wizardapp.gcm.WakeLocker;
 import com.wizardapp.main.MyTestActivity;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
@@ -35,11 +41,10 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
     private Bundle bundle; // Arguments which you want to pass to fragment
     EditText login_id,password;
     Button login,register;
-    String regID;
-    public LoginFragment(int layout,String regId) 
+    String registrationId = null;
+    public LoginFragment(int layout) 
 	{
 	  layout_to_inflate = layout;
-	  regID=regId;
 	}
 	
 	public LoginFragment() 
@@ -71,11 +76,12 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 				// TODO Auto-generated method stub
 				JSONObject requestObj = new JSONObject();
 				try {
+					registrationId = Constants.getRegistrationId(activity, mHandleMessageReceiver);
 					requestObj.put("email", login_id.getText().toString());
 					requestObj.put("password", password.getText().toString());
 					requestObj.put("deviceId", Constants.getDeviceID(activity) );
 					requestObj.put("device", "ANDROID");
-					requestObj.put("registrationId", regID);
+					requestObj.put("registrationId", registrationId);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -135,6 +141,44 @@ public class LoginFragment extends MyBaseFragment  implements UserServices {
 			
 		}
 	
+		/**
+		* Receiving push messages
+		* */
+		private final BroadcastReceiver mHandleMessageReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+		    String newMessage = intent.getExtras().getString(Constants.EXTRA_MESSAGE);
+		    // Waking up mobile if it is sleeping
+		    WakeLocker.acquire(activity);
+		     
+		    /**
+		     * Take appropriate action on this message
+		     * depending upon your app requirement
+		     * For now i am just displaying it on the screen
+		     * */
+		     
+		    // Showing received message
+		    Toast.makeText(activity, "New Message: " + newMessage, Toast.LENGTH_LONG).show();
+		     
+		    // Releasing wake lock
+		    WakeLocker.release();
+		}
+		};
+
+		@Override
+		public void onDestroy() {
+		/*if (mRegisterTask != null) {
+		    mRegisterTask.cancel(true);
+		}*/
+		try {
+		    activity.unregisterReceiver(mHandleMessageReceiver);
+		    GCMRegistrar.onDestroy(activity);
+		} catch (Exception e) {
+		    Log.e("UnRegister Receiver Error", "> " + e.getMessage());
+		}
+		super.onDestroy();
+		}
+
 
 
 }

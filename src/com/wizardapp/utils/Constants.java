@@ -7,6 +7,7 @@ import com.google.android.gcm.GCMRegistrar;
 import com.wizardapp.main.LoginActivity;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -24,7 +25,7 @@ public class Constants {
 	public static final String tokenFailed = "Failed To recieve token"; 
 	public static final String passwordMisMatch = "Password Mismatch";
 	public static final String mobileNumUpdated = "Mobile number successfully updated";
-	public static final String SENDER_ID="heyapp-1265";
+	public static final String SENDER_ID="483714569864";
 	public static final boolean isTestMode = true;
 	
 	 public static void CopyStream(InputStream is, OutputStream os)
@@ -56,7 +57,7 @@ public class Constants {
 		    static final String TAG = "AndroidHive GCM";
 		 
 		    public static final String DISPLAY_MESSAGE_ACTION =
-		            "com.indiahomes.pushnotifications.DISPLAY_MESSAGE";
+		            "com.example.wizardapp.DISPLAY_MESSAGE";
 		    public static final String EXTRA_MESSAGE = "message";
 		 
 		    /**
@@ -95,5 +96,46 @@ public class Constants {
 		    	   return "UNKNOWN: ID=" + id;
 		    	 }
 		      }
-		   
+
+		    
+	public static String getRegistrationId(Activity context,final BroadcastReceiver mHandleMessageReceiver) {
+		// Make sure the device has the proper dependencies.
+		GCMRegistrar.checkDevice(context);
+
+		// Make sure the manifest was properly set - comment out this line
+		// while developing the app, then uncomment it when it's ready.
+		GCMRegistrar.checkManifest(context);
+		context.registerReceiver(mHandleMessageReceiver, new IntentFilter(
+				Constants.DISPLAY_MESSAGE_ACTION));
+
+		// Get GCM registration id
+		final String regId = GCMRegistrar.getRegistrationId(context);
+		System.out.println("registration id is " + regId);
+		// Check if regid already presents
+		if (regId.equals("")) {
+			// Registration is not present, register now with GCM
+			GCMRegistrar.register(context, Constants.SENDER_ID);
+		} else {
+			// Device is already registered on GCM
+			if (GCMRegistrar.isRegisteredOnServer(context)) {
+				// Skips registration.
+				// Toast.makeText(getApplicationContext(),
+				// "Already registered with GCM", Toast.LENGTH_LONG).show();
+			} else {
+
+				// Try to register again, but not in the UI thread.
+				// It's also necessary to cancel the thread onDestroy(),
+				// hence the use of AsyncTask instead of a raw thread.
+
+				TelephonyManager telephonyManager = (TelephonyManager) context
+						.getSystemService(Context.TELEPHONY_SERVICE);
+
+			}
+
+		}
+
+		return regId;
+
+	}
+
 }
