@@ -4,7 +4,7 @@ public interface HeyURLs {
 	
 	String prodDomain = "http://192.168.16.1:8090",testDomain="http://188.166.255.205:8080/hey_pub_dev";
 
-	String domain = prodDomain ;
+	String domain = testDomain ;
 	
 	
 	interface Users{

@@ -95,7 +95,7 @@
         android:textSize="@dimen/screen_pixel_14"
         />
     <Button 
-        android:id="@+id/dateofbirth_edittext"
+        android:id="@+id/dateofbirth"
         android:layout_height="42dp"
         android:layout_width="fill_parent" 
         android:background="@null"

@@ -5,10 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.http.ParseException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ActionBar;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
@@ -19,6 +21,7 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -41,6 +44,7 @@ import com.wizardapp.adapter.ScholarshipTestAdapter;
 import com.wizardapp.apis.ScholarshipApi;
 import com.wizardapp.apis.UserApi;
 import com.wizardapp.fragments.RegisterFragment;
+import com.wizardapp.main.LoginActivity.DateSetListener;
 import com.wizardapp.model.UserDetail;
 import com.wizardapp.services.UserServices;
 import com.wizardapp.utils.Constants;
@@ -65,6 +69,7 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile_layout);
+		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		TextView txt=(TextView)findViewById(R.id.change_password);
 		txt.setOnClickListener(new OnClickListener() {
 			
@@ -104,7 +109,7 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		 classNumber=(Spinner)ll.findViewById(R.id.class_number);
 		firstName=(EditText)findViewById(R.id.firstname_edittext);
 		lastName=(EditText)findViewById(R.id.lastname_edittext);
-		dateOfBith=(Button)ll.findViewById(R.id.dateofbirth_edittext);
+		dateOfBith=(Button)ll.findViewById(R.id.dateofbirth);
 		email_id=(TextView)findViewById(R.id.txt_email);
 		mobile=(EditText)findViewById(R.id.mobile_edittext);
 		state=(EditText)findViewById(R.id.txt_state);
@@ -138,7 +143,7 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		dateOfBith.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-		       ProfileActivity.this.showDialog(LoginActivity.DATE_OF_BIRTH);
+		       ProfileActivity.this.showDialog(ProfileActivity.DATE_OF_BIRTH);
 			}
 		});
 		genderText=userdata.getGender();
@@ -448,11 +453,23 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		  TextView emailID=(TextView)dialogpopUp.findViewById(R.id.txtEmail_id);
 		  emailID.setText(""+emailId);
 		  final EditText password=(EditText)dialogpopUp.findViewById(R.id.passwordtext);
+		  final EditText confirmpassword=(EditText)dialogpopUp.findViewById(R.id.confirmtext);
 		  Button buttnSuccess = (Button) dialogpopUp.findViewById(R.id.confirm_btn);
 		 buttnSuccess.setOnClickListener(new OnClickListener() {
 		   @Override
 		   public void onClick(View v) {
+			   
+			   String pass = password.getText().toString();
+				String retypepass = confirmpassword.getText().toString();
+				if(pass.equals("") && retypepass.equals("")){
+					Toast.makeText(ProfileActivity.this, "Uh ho! We will need your password and confirm password", Toast.LENGTH_SHORT).show();
+				}else{
+				if(pass.equals(retypepass)){
 			   	 UserApi.changePassword(ProfileActivity.this, null, emailId, password.getText().toString());
+				}else{
+					Toast.makeText(ProfileActivity.this, Constants.passwordMisMatch, Toast.LENGTH_SHORT).show();
+				}
+				}
 				 
 		   }
 
@@ -464,4 +481,31 @@ public class ProfileActivity extends MyBaseActivity implements UserServices{
 		// TODO Auto-generated method stub
 		dialogpopUp.dismiss();
 	}
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Dialog r = null;
+		switch (id) {
+		case ProfileActivity.DATE_OF_BIRTH:
+			try {
+				Date startDate;
+				try {
+					startDate = DateUtil.parse(userdata.getDateOfBirth());
+					OnDateSetListener listener = new DateSetListener(ProfileActivity.dateOfBith);
+					int year = DateUtil.getYear(startDate);
+					int month = DateUtil.month(startDate);
+					int dayOfMonth = DateUtil.dayOfMonth(startDate);
+					r = new DatePickerDialog(this, listener, year, month,
+							dayOfMonth);
+				} catch (java.text.ParseException e) {
+					e.printStackTrace();
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			break;
+		}
+		return r;
+	}
+
+	
 }

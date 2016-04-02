@@ -77,7 +77,7 @@
     <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
     <string name="options_register">Register</string>
     <string name="options_unregister">Unregister</string>
-    <string name="change_password">Change password <u>underline</u>.</string>
+    <string name="change_password"><u>Change password</u></string>
     <string name="options_clear">Clear</string>
     <string name="options_exit">Exit</string>
 
